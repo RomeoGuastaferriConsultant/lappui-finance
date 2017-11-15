@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+body {
+    color: rgb(0, 84, 108);
+}
+
+hr {
+	margin-top: -2px;
+	color: rgb(200,197,194);
+}
+
+#id-lbl-bienvenue {
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
+#id-tbl-banniere {
+	width:100%;
+	color: black;
+	margin-top:-10px;
+}
+
+#id-lbl-suivez-nous {
+	color: black;
+	font-family: "Kadwa", "Georgia", serif;
+	font-weight: 600;
+}
+
+#id-img-lappui {
+	margin-left:50px;
+	cursor: pointer;
+}
+
+.banniere-suivez-nous {
+}
