@@ -3,29 +3,28 @@
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {
-		$.get('lang/' + getHtmlLang() + '/home.json', setLanguage);
-	});
+	$("html").on("change", function() {updateDocLang('home.json');});
 
-	// simulate language change event
-	// to load first static content 
+	// simulate 1st language change event
+	// to load initial static content 
 	$("html").trigger("change");
 	
-	// fill regions select box
+	// fill in regions select box
 	$.get('api/regions', setRegions);
 });
 
 //
-// selection des regions
+// initialisation des regions
 //
 
-function setRegions(data) {
-	// make sure select is empty
+function setRegions(regions) {
 	select = $("#id-sel-region");
-	select.empty();
-	
-	for(datum in data) {
-		// data comes back as JSON list of IDs and names
-		select.append(new Option(data[datum].name, data[datum].id));
+	if (select) {
+		// on s'assure que select est vide avant de débuter
+		select.empty();
+		
+		for(region in regions) {
+			select.append(new Option(regions[region].name, regions[region].id));
+		}
 	}
 }

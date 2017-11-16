@@ -25,6 +25,26 @@ function toggleLanguage() {
 }
 
 /**
+ * Update static language-related document content
+ * based on localized strings that are configured
+ * in the provided JSON file.
+ * This function will typically be called inside an event handler
+ * configured to respond to language change events (see toggleLanguage above).
+ */
+function updateDocLang(jsonFilename) {
+	// fetch language file on server via AJAX
+	// then use contents to update doc language
+	$.get(getLangPath(jsonFilename), setLanguage);
+}
+
+/** 
+ * Returns path of specified language JSON file.
+ * */
+function getLangPath(filename) {
+	return 'lang/' + getHtmlLang() + '/' + filename;
+}
+
+/**
  * This function is typically invoked in AJAX context.
  * Localization strings are queried via AJAX, and the 
  * returned data is used to populate various locale-sensitive
@@ -34,7 +54,7 @@ function setLanguage(data) {
 	// fetch current language
 	lang=getHtmlLang();
 	
-	// update page
+	// update various document elements
 	setLanguageContent(lang, data);
 	setLanguageImages(lang, data);
 }
@@ -46,7 +66,7 @@ function setLanguageContent(lang, data) {
 
 function setElementLanguageContent(element, data) {
 	newVal = data[element.id];
-	if (newVal != null) {
+	if (newVal) {
 		$(element).html(newVal);
 	}
 }
@@ -58,7 +78,7 @@ function setLanguageImages(lang, data) {
 function setImageLanguageContent(element, data) {
 	keyName = element.id + ".src";
 	newVal = data[keyName];
-	if (newVal != null) {
+	if (newVal) {
 		$(element).attr("src", newVal);
 	}
 }
@@ -70,8 +90,9 @@ function setImageLanguageContent(element, data) {
 * source: https://davidwalsh.name/change-text-size-onclick-with-javascript
 */
 function resizeText(multiplier) {
-if (document.body.style.fontSize == "") {
- document.body.style.fontSize = "1.0em";
-}
-document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
+	if (document.body.style.fontSize == "") {
+	 document.body.style.fontSize = "1.0em";
+	}
+	document.body.style.fontSize = parseFloat(document.body.style.fontSize) 
+		+ (multiplier * 0.2) + "em";
 }
