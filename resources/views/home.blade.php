@@ -1,10 +1,15 @@
 @extends('layouts.master')
 
 @section('titre', 'Page d\'accueil')
+@section('javascript', 'js/home.js')
 
 @section('contenu')
-Contenu :)
-    <form>
-    	<select id="id-region"></select>
-    </form>
+<form>
+    <table>
+         <tr>
+             <td><span id="id-lbl-region"></span>:</td>
+             <td><select id="id-sel-region"></select></td>
+         </tr>
+    </table>
+</form>
 @endsection

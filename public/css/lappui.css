@@ -9,6 +9,12 @@ hr {
 	color: rgb(200,197,194);
 }
 
+.contenu {
+	margin-left: 50px;
+	margin-top: 25px;
+	font-family: "Helvetica", "Arial", sans-serif;
+}
+
 #id-lbl-bienvenue {
 	margin-left: 50px;
 	margin-top: 50px;

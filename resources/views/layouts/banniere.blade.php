@@ -1,7 +1,7 @@
     <table id="id-tbl-banniere">
         <tr>
             <td style="width:50%; direction:rtl;">
-                <span id="id-lbl-suivez-nous">:Suivez-nous</span>
+                :<span id="id-lbl-suivez-nous"></span>
             </td>
             <td>
                 <img id="id-img-suivez-nous"

@@ -15,12 +15,12 @@
     <body>
         @include('layouts.banniere')
 
-        <div class="content">
+        <div class="contenu">
             @yield('contenu')
         </div>
+        <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="js/global.js"></script>
+        <script type="text/javascript" src="js/banniere.js"></script>
+        <script type="text/javascript" src="@yield('javascript')"></script>
     </body>
 </html>
-<script type="text/javascript">
-<?php include 'js/jquery-3.2.1.js'?>
-<?php include 'js/footer.js'?>
-</script>
