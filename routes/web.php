@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +23,9 @@ Route::get('users', function()
     return 'Users!';
 });
 
-Route::get('home', function() {
-    return view('home');
+Route::get('home2', function() {
+    return view('home2');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
