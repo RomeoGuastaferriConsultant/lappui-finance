@@ -11,6 +11,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
+     * role: 1=admin, 2=national, 3=regional, 4=organisme
      *
      * @var array
      */

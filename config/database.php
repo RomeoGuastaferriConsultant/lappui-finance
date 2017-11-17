@@ -1,5 +1,11 @@
 <?php
 
+// extract db connection parameters from AWS Beanstalk Server if available
+define('DB_HOSTNAME', $_SERVER['RDS_HOSTNAME'] ?: env('DB_HOST',     '127.0.0.1'));
+define('DB_DATABASE', $_SERVER['RDS_DB_NAME' ] ?: env('DB_DATABASE', 'database'));
+define('DB_USERNAME', $_SERVER['RDS_USERNAME'] ?: env('DB_USERNAME', 'user'));
+define('DB_PASSWORD', $_SERVER['RDS_PASSWORD'] ?: env('DB_PASSWORD' ,'password'));
+
 return [
 
     /*
@@ -41,11 +47,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => DB_HOSTNAME,
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => DB_DATABASE,
+            'username' => DB_USERNAME,
+            'password' => DB_PASSWORD,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

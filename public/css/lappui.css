@@ -5,12 +5,14 @@ body {
 }
 
 hr {
-	margin-top: -2px;
-	color: rgb(200,197,194);
+	margin-top: 0px;
+	color: rgb(225,225,225);
+	border-width:1px;
+	border-style:solid;
 }
 
 .contenu {
-	margin-left: 50px;
+	margin-left: 100px;
 	margin-top: 25px;
 	font-family: "Helvetica", "Arial", sans-serif;
 }
@@ -23,7 +25,7 @@ hr {
 #id-tbl-banniere {
 	width:100%;
 	color: black;
-	margin-top:-10px;
+	margin-top:0px;
 }
 
 #id-lbl-suivez-nous {
@@ -33,7 +35,7 @@ hr {
 }
 
 #id-img-lappui {
-	margin-left:50px;
+	margin-left:100px;
 	cursor: pointer;
 }
 
