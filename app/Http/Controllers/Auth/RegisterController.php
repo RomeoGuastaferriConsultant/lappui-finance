@@ -65,16 +65,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if (Auth::user()->role != 1)
+        $currentUser = Auth::user();
+        // is current user admin ?
+        if ($currentUser->role != 1)
         {
-            throw new AuthorizationException('Seul un admin peut effectuer cette opération.');
+            throw new AuthorizationException('Seul un admin peut créer un nouvel utilisateur.');
         }
 
-        return User::create([
+        // create new user...
+        User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
             'password' => bcrypt($data['password']),
         ]);
+        // ...but keep CURRENT user logged in
+        return $currentUser;
     }
 }
