@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class RegisterController extends Controller
 {
@@ -36,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -63,6 +65,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (Auth::user()->role != 1)
+        {
+            throw new AuthorizationException('Seul un admin peut effectuer cette opération.');
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
