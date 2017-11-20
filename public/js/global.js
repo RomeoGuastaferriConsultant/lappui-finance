@@ -41,8 +41,16 @@ function updateDocLang(jsonFilename) {
  * Returns path of specified language JSON file.
  * */
 function getLangPath(filename) {
-	return 'lang/' + getHtmlLang() + '/' + filename;
+	return getURL('lang/' + getHtmlLang() + '/' + filename);
 }
+
+function getURL(pathname) {
+	return window.location.protocol
+		.concat("//")
+		.concat(window.location.host)
+		.concat("/")
+		.concat(pathname);
+} 
 
 /**
  * This function is typically invoked in AJAX context.
@@ -54,6 +62,13 @@ function setLanguage(data) {
 	// fetch current language
 	lang=getHtmlLang();
 	
+	// inform server of new lang
+	messanger = $('#id-frm-lang');
+	// messanger (if present) would be a hidden input field
+	if (messanger) {
+		messanger.val(lang);
+	}
+	
 	// update various document elements
 	setLanguageContent(lang, data);
 	setLanguageImages(lang, data);
@@ -62,6 +77,9 @@ function setLanguage(data) {
 function setLanguageContent(lang, data) {
 	$("h2").each(function(index, element) {setElementLanguageContent(element, data);});
 	$("span").each(function(index, element) {setElementLanguageContent(element, data);});
+	$("label").each(function(index, element) {setElementLanguageContent(element, data);});
+	$("a").each(function(index, element) {setElementLanguageContent(element, data);});
+	$("button").each(function(index, element) {setElementLanguageContent(element, data);});
 }
 
 function setElementLanguageContent(element, data) {
@@ -79,7 +97,7 @@ function setImageLanguageContent(element, data) {
 	keyName = element.id + ".src";
 	newVal = data[keyName];
 	if (newVal) {
-		$(element).attr("src", newVal);
+		$(element).attr("src", getURL(newVal));
 	}
 }
 

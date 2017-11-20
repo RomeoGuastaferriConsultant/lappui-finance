@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Access\AuthorizationException;
 
 class RegisterController extends Controller
 {
@@ -65,12 +64,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $currentUser = Auth::user();
-        // is current user admin ?
-        if ($currentUser->role != 1)
-        {
-            throw new AuthorizationException('Seul un admin peut créer un nouvel utilisateur.');
-        }
+        // user authorized to perform this action ?
+        $this->authorize('create', User::class);
 
         // create new user...
         User::create([
@@ -79,7 +74,8 @@ class RegisterController extends Controller
             'role' => $data['role'],
             'password' => bcrypt($data['password']),
         ]);
-        // ...but keep CURRENT user logged in
-        return $currentUser;
+
+        // return currently authenticated user
+        return Auth::user();
     }
 }

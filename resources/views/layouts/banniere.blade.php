@@ -4,8 +4,6 @@
                     <ul class="nav navbar-nav navbar-right" style="left-margin:-10px;">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown" style="margin-top: 5px;">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -14,13 +12,27 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                    </li>
+
+                                    {{-- section réservée aux admins qui peuvent créer des nouveaux comptes --}}
+                                    @can('create', App\User::class)
+                                    <li id="id-itm-register">
+                                        <a href="{{ route('register') }}">
+                                            Register
+                                        </a>
+                                    </li>
+                                    @endcan
+
+                                    <li id="id-itm-accueil">
+                                        <a href="{{ route('accueil') }}">
+                                            Home
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -28,11 +40,11 @@
                     </ul>
             </td>
             <td style="width:45%; direction:rtl;">
-                :<span id="id-lbl-suivez-nous"></span>
+                :<span id="id-lbl-suivez-nous">Suivez-nous</span>
             </td>
             <td>
                 <img id="id-img-suivez-nous"
-                     src="img/banniere_fr.png"
+                     src="{{ asset('img/banniere_fr.png') }}"
                      usemap="#banner-map"
                      alt="Suivez-nous sur Facebook, Twitter et YouTube !"/>
             </td>
@@ -40,13 +52,13 @@
     </table>
     <hr/>
     <img id="id-img-lappui"
-         src="img/lappui.png"
+         src="{{ asset('img/lappui.png') }}"
          height="42"
          width="269"
          onclick="javascript:window.open('https://www.lappui.org/');"
          alt="L'Appui pour les proches aidants d'ainés"/>
     <img id="id-img-vous-etes-la"
-         src="img/vous-etes-la.png"
+         src="{{ asset('img/vous-etes-la.png') }}"
          height="44"
          width="258"
          alt="L'Appui pour les proches aidants d'ainés"/>

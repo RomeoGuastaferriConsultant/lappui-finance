@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home2';
+    protected $redirectTo = 'accueil';
 
     /**
      * Create a new controller instance.
@@ -40,5 +41,17 @@ class LoginController extends Controller
     public function username()
     {
         return 'name';
+    }
+
+    /**
+     * Redefine so that we can choose where to redirect after logout.
+     * (By default framework seems to redirect to '/')
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+
+        return redirect()->route('accueil');
     }
 }

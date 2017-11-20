@@ -1,0 +1,16 @@
+{
+    "id-lbl-name" : "Name",
+    "id-lbl-email" : "E-mail Address",
+    "id-lbl-role" : "Role",
+    "id-lbl-pswd" : "Password",
+    "id-lbl-pswd-conf" : "Confirm Password",
+    "id-div-register" : "User Registration",
+    "id-btn-register" : "Register",
+    "id-chk-remember" : "Remember me",
+    "id-div-login" : "Login",
+    "id-btn-login" : "Login",
+    "id-a-pswd-forgot" : "Forgot your Password ?",
+    "id-div-pwsd-reset" : "Password Reset",
+    "id-btn-pwsd-reset" : "Reset Password",
+    "id-btn-pswd-link-send" : "Send Password Reset Link"
+}

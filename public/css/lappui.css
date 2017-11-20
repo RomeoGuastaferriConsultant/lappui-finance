@@ -17,6 +17,12 @@ hr {
 	font-family: "Helvetica", "Arial", sans-serif;
 }
 
+.panel-heading {
+    color: rgb(0, 84, 108);
+    font-weight: 600;
+	font-family: "Helvetica", "Arial", sans-serif;
+}
+
 #id-lbl-bienvenue {
 	margin-left: 50px;
 	margin-top: 50px;
@@ -37,7 +43,4 @@ hr {
 #id-img-lappui {
 	margin-left:100px;
 	cursor: pointer;
-}
-
-.banniere-suivez-nous {
 }

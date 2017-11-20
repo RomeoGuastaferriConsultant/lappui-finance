@@ -1,10 +1,15 @@
 @extends('layouts.master')
 
 @section('titre', 'Page d\'accueil')
-@section('javascript', 'js/home.js')
+@section('javascript', 'js/accueil.js')
 
 @section('contenu')
 <form>
+    {{ csrf_field() }}
+
+	{{-- for communicating language changes back to server --}}
+    <input id="id-frm-lang" name="lang" type="hidden">
+
     <table>
          <tr>
              <td><span id="id-lbl-region"></span>:</td>

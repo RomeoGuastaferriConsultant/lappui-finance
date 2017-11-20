@@ -14,19 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('users', function()
-{
-    return 'Users!';
-});
-
-Route::get('home2', function() {
-    return view('home2');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home',    'HomeController@index');
+Route::get('/accueil', 'HomeController@index')->name('accueil');
+
+Route::get('register', function() {return view('auth.register');})
+    ->name('register')
+    // user authorized to see this user-creation view ?
+    ->middleware('can:create,App\User');
+

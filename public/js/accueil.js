@@ -11,6 +11,9 @@ $(document).ready(function(){
 	
 	// fill in regions select box
 	$.get('api/regions', setRegions);
+	
+	// hide 'home' option (we're already there)
+	$('#id-itm-accueil').hide()
 });
 
 //

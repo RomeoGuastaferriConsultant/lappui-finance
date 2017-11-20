@@ -5,13 +5,18 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+// les rôles applicatifs
+define('ROLE_ADMIN',     1);
+define('ROLE_NATIONAL',  2);
+define('ROLE_REGIONAL',  3);
+define('ROLE_ORGANISME', 4);
+
 class User extends Authenticatable
 {
     use Notifiable;
 
     /**
      * The attributes that are mass assignable.
-     * role: 1=admin, 2=national, 3=regional, 4=organisme
      *
      * @var array
      */
@@ -27,4 +32,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role==ROLE_ADMIN;
+    }
+
+    public function name()
+    {
+        return ucwords($this->name);
+    }
 }

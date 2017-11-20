@@ -1,0 +1,16 @@
+{
+    "id-lbl-name" : "Nom",
+    "id-lbl-email" : "Adresse de courriel",
+    "id-lbl-role" : "Rôle",
+    "id-lbl-pswd" : "Mot de passe",
+    "id-lbl-pswd-conf" : "Confirmer mot de passe",
+    "id-div-register" : "Enregistrement d'un nouvel utilisateur",
+    "id-btn-register" : "Enregistrer",
+    "id-chk-remember" : "Persister ma connexion",
+    "id-div-login" : "Connexion",
+    "id-btn-login" : "Connexion",
+    "id-a-pswd-forgot" : "Vous avez oublié votre mot de passe ?",
+    "id-div-pwsd-reset" : "Réinitialisation mot de passe",
+    "id-btn-pwsd-reset" : "Réinitialiser mot de passe",
+    "id-btn-pswd-link-send" : "Expédier lien pour réinitialiser mot de passe"
+}

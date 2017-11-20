@@ -6,5 +6,7 @@
 	"id-img-lappui.alt" : "L'Appui pour les proches aidants d'ainés",
 	"id-img-vous-etes-la.src" : "img/you-care.png",
 	"id-img-suivez-nous.src" : "img/banniere_en.png",
-	"id-img-suivez-nous.alt" : "Follow us on Facebook, Twitter and YouTube !"
+	"id-img-suivez-nous.alt" : "Follow us on Facebook, Twitter and YouTube !",
+	"id-menu-logout" : "",
+	"id-menu-home" : ""
 }
