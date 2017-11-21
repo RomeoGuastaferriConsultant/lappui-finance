@@ -10,13 +10,6 @@
                                    <span id="id-menu-hello"></span> {{ ucwords(Auth::user()->name) }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a id="id-menu-logout" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
 
                                     {{-- section réservée aux admins qui peuvent créer des nouveaux comptes --}}
                                     @can('create', App\User::class)
@@ -27,6 +20,14 @@
 
                                     <li id="id-itm-accueil">
                                         <a id="id-menu-home" href="{{ route('accueil') }}"></a>
+                                    </li>
+
+                                    <li>
+                                        <a id="id-menu-logout" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </li>
                                 </ul>
                             </li>
