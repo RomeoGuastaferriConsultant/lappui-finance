@@ -30,7 +30,7 @@ return [
         'array'   => ':attribute doit contenir entre :min et :max items.',
     ],
     'boolean'              => ':attribute doit être vrai ou faux.',
-    'confirmed'            => 'La confirmation :attribute ne correspond pas.',
+    'confirmed'            => 'Le mot de passe confirmé ne correspond pas au mot de passe initial.',
     'date'                 => ':attribute n\'est pas une date valide.',
     'date_format'          => ':attribute ne correspond pas au format :format.',
     'different'            => ':attribute et :other doivent être différents.',

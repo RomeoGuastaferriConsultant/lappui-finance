@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('titre', 'Réinitialisation de mot de passe')
-@section('javascript', 'js/authentication.js')
+@push('scripts')
+    <script src="{{ asset('js/authentication.js') }}"></script>
+@endpush
 
 @section('contenu')
 <div class="container">

@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('titre', 'Création de nouveaux comptes')
-@section('javascript', 'js/authentication.js')
+@push('scripts')
+    <script src="{{ asset('js/authentication.js') }}"></script>
+@endpush
 
 @section('contenu')
-@can('create', App\User::class)
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -42,11 +43,31 @@
                             		<option value="3">Regional</option>
                             		<option value="4" selected="selected">Organisme</option>
                             	</select>
-                                {{-- <input id="role" type="text" class="form-control" name="role" value="{{ old('role') }}" required> --}}
 
                                 @if ($errors->has('role'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- Inject RegionController to fetch list of regions --}}
+                        @inject('regions', 'App\Http\Controllers\RegionController')
+
+                        <div id="id-div-region" class="form-group{{ $errors->has('region') ? ' has-error' : '' }}">
+                            <label id="id-lbl-region" for="region" class="col-md-4 control-label"></label>
+
+                            <div class="col-md-6">
+                            	<select id="region" name="region" class="form-control">
+                                    @foreach($regions->createAll() as $region)
+                                    <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                    @endforeach
+                            	</select>
+
+                                @if ($errors->has('region'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('region') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -101,5 +122,4 @@
         </div>
     </div>
 </div>
-@endcan
 @endsection

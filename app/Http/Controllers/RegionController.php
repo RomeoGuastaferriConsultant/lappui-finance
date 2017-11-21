@@ -8,7 +8,7 @@ class RegionController extends Controller
 {
     /** collection de toutes les regions */
     protected $regions;
-    
+
     /**
      * Create a new RegionController instance.
      *
@@ -17,21 +17,21 @@ class RegionController extends Controller
     public function __construct()
     {
         // créer liste des régions
-        $this->regions=$this->createAll();
+        $this->regions = RegionController::createAll();
     }
 
     /**
-     * 
+     *
      */
     public function all()
     {
         return response()->json($this->regions);
     }
-    
+
     /**
      * Create and return all Region instances.
      */
-    public function createAll()
+    public static function createAll()
     {
         return collect([
             new Region('1', 'Appui-National'),

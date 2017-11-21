@@ -7,6 +7,8 @@
 	"id-img-vous-etes-la.src" : "img/you-care.png",
 	"id-img-suivez-nous.src" : "img/banniere_en.png",
 	"id-img-suivez-nous.alt" : "Follow us on Facebook, Twitter and YouTube !",
-	"id-menu-logout" : "",
-	"id-menu-home" : ""
+    "id-menu-hello" : "Hello, ",
+    "id-menu-logout" : "Logout",
+	"id-menu-home" : "Home",
+    "id-menu-register" : "Register New User"
 }

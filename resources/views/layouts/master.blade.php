@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{$lang}}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +22,6 @@
         <script src="{{ asset('js/global.js') }}"></script>
         <script src="{{ asset('js/banniere.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="../@yield('javascript')"></script>
+        @stack('scripts')
     </body>
 </html>

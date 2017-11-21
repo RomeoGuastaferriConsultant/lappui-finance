@@ -3,16 +3,14 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 use Closure;
-
-Log::info('class SetLocale');
 
 class SetLocale
 {
     /**
-     * Handle an incoming request.
+     * Adjusts application locale based on user input.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -20,16 +18,27 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next)
     {
+        // lang change detected in current request ?
         $lang = $request->input('lang');
-        Log::info('SetLocale handling, lang='.$lang);
         if ($lang)
         {
             if ($lang == 'fr' or $lang == 'en')
             {
-                Log::info('setting locale:'.$lang);
-                App::setLocale($lang);
+                // record new lang in user session
+                Session::put('lang', $lang);
             }
+
         }
+
+        // has lang been defined ?
+        $lang = Session::get('lang');
+        if ($lang)
+        {
+            app()->setLocale($lang);
+        }
+
+        // systematically share lang with view
+        View::share(['lang' => app()->getLocale()]);
 
         return $next($request);
     }

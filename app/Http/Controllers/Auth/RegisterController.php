@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/register';
 
     /**
      * Create a new controller instance.
@@ -37,7 +37,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // wire-in authentication middleware
+        $this->middleware('guest');
     }
 
     /**
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'role' => 'required|integer|min:1|max:4',
             'password' => 'required|string|min:6|confirmed',
+            'region' => 'integer|min:1|max:18'
         ]);
     }
 
@@ -72,6 +74,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
+            'region' => $data['region'],
             'password' => bcrypt($data['password']),
         ]);
 

@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('titre', 'Page d\'accueil')
-@section('javascript', 'js/accueil.js')
+@push('scripts')
+    <script src="{{ asset('js/accueil.js') }}"></script>
+@endpush
 
 @section('contenu')
 <form>

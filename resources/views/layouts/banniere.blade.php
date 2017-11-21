@@ -7,14 +7,12 @@
                         @else
                             <li class="dropdown" style="margin-top: 5px;">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                   <span>Bonjour,</span> {{ Auth::user()->name }} <span class="caret"></span>
+                                   <span id="id-menu-hello"></span> {{ ucwords(Auth::user()->name) }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                        <a id="id-menu-logout" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
@@ -23,16 +21,12 @@
                                     {{-- section réservée aux admins qui peuvent créer des nouveaux comptes --}}
                                     @can('create', App\User::class)
                                     <li id="id-itm-register">
-                                        <a href="{{ route('register') }}">
-                                            Register
-                                        </a>
+                                        <a id="id-menu-register" href="{{ route('register') }}"></a>
                                     </li>
                                     @endcan
 
                                     <li id="id-itm-accueil">
-                                        <a href="{{ route('accueil') }}">
-                                            Home
-                                        </a>
+                                        <a id="id-menu-home" href="{{ route('accueil') }}"></a>
                                     </li>
                                 </ul>
                             </li>
@@ -44,7 +38,11 @@
             </td>
             <td>
                 <img id="id-img-suivez-nous"
+                    @lang('fr')
                      src="{{ asset('img/banniere_fr.png') }}"
+                    @elselang('en')
+                     src="{{ asset('img/banniere_en.png') }}"
+                    @endlang
                      usemap="#banner-map"
                      alt="Suivez-nous sur Facebook, Twitter et YouTube !"/>
             </td>
@@ -58,7 +56,11 @@
          onclick="javascript:window.open('https://www.lappui.org/');"
          alt="L'Appui pour les proches aidants d'ainés"/>
     <img id="id-img-vous-etes-la"
+        @lang('fr')
          src="{{ asset('img/vous-etes-la.png') }}"
+        @elselang('en')
+         src="{{ asset('img/you care.png') }}"
+        @endlang
          height="44"
          width="258"
          alt="L'Appui pour les proches aidants d'ainés"/>
