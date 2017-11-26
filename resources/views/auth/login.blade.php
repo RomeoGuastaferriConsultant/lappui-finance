@@ -13,7 +13,7 @@
                 <div class="panel-heading"><span id="id-div-login" class="panel-heading"></span></div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <form id="id-frm-login" class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
 						{{-- for communicating language changes back to server --}}

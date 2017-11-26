@@ -15,10 +15,11 @@ services:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
     ports:
-      # to expose VNC Viewer
+      # to expose chrome VNC Viewer on port 5901
       - "5901:5900"
 
   firefox:
+    # image 'selenium/node-firefox-debug' est... boguée...
     image: travix/selenium-node-firefox
     depends_on:
       - selenium-hub
@@ -26,5 +27,5 @@ services:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
     ports:
-      # to expose VNC Viewer
+      # to expose firefox VNC Viewer on port 5902
       - "5902:5900"

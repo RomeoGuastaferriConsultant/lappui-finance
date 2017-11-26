@@ -67,10 +67,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // user authorized to perform this action ?
-        $this->authorize('create', User::class);
+        if (! $this->userProvisionMode())
+        {
+            $this->authorize('create', User::class);
+        }
 
-        // create new user...
-        User::create([
+        $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
@@ -78,7 +80,11 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        // return currently authenticated user
-        return Auth::user();
+        return $this->userProvisionMode() ? $newUser : Auth::user();
+    }
+
+    protected function userProvisionMode()
+    {
+        return env('USER_PROVISION_MODE') == 'true';
     }
 }

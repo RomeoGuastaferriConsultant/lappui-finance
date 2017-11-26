@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserPolicy
 {
@@ -39,6 +40,12 @@ class UserPolicy
      */
     public function create(User $user)
     {
+        if (env('USER_PROVISION_MODE') == 'true') {
+            // special case: anyone can create
+            Log::info('create returns true');
+            return true;
+        }
+        Log::info('create returns normally');
         return $user->isAdmin();
     }
 

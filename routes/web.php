@@ -19,8 +19,16 @@ Auth::routes();
 Route::get('/home',    'HomeController@index');
 Route::get('/accueil', 'HomeController@index')->name('accueil');
 
-Route::get('register', function() {return view('auth.register');})
+if (env('USER_PROVISION_MODE') == 'true')
+{
+    // user provision mode : no security middleware
+    Route::get('register', function() {return view('auth.register');})
+    ->name('register');
+}
+else
+{
+    // mode normal : page register est protégée
+    Route::get('register', function() {return view('auth.register');})
     ->name('register')
-    // user authorized to see this user-creation view ?
     ->middleware('can:create,App\User');
-
+}
