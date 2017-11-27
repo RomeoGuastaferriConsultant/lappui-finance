@@ -38,7 +38,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         // wire-in authentication middleware
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -66,11 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // user authorized to perform this action ?
-        if (! $this->userProvisionMode())
-        {
-            $this->authorize('create', User::class);
-        }
+        $this->authorize('create', User::class);
 
         $newUser = User::create([
             'name' => $data['name'],
@@ -80,11 +76,6 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        return $this->userProvisionMode() ? $newUser : Auth::user();
-    }
-
-    protected function userProvisionMode()
-    {
-        return env('USER_PROVISION_MODE') == 'true';
+        return Auth::user();
     }
 }

@@ -14,6 +14,7 @@ class UserPolicy
     public function before($user, $ability)
     {
         if ($user->isAdmin()) {
+            // admin has all the rights
             return true;
         }
         // else, delegate decision to individual policy methods
@@ -40,12 +41,6 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        if (env('USER_PROVISION_MODE') == 'true') {
-            // special case: anyone can create
-            Log::info('create returns true');
-            return true;
-        }
-        Log::info('create returns normally');
         return $user->isAdmin();
     }
 

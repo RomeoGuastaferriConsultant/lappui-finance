@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 define('WEB_DRIVER_HOST', env('WEB_DRIVER_HOST', 'http://localhost:4444/wd/hub'));
 define('BROWSER',         env('BROWSER',  'chrome'));
 define('PLATFORM',        env('PLATFORM', 'linux'));
-define('APP_URL',         env('APP_URL',  'http://localhost:8000/accueil'));
+define('APP_URL',         env('APP_URL',  'http://173.176.184.76:8000/accueil'));
 
 abstract class FeatureTestBase extends BaseTestCase
 {
