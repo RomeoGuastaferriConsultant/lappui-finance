@@ -10,6 +10,7 @@
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/lappui.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/tabs.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
     </head>
@@ -21,6 +22,7 @@
         <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
         <script src="{{ asset('js/global.js') }}"></script>
         <script src="{{ asset('js/banniere.js') }}"></script>
+        <script src="{{ asset('js/tabs.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         @stack('scripts')
     </body>

@@ -12,7 +12,8 @@ hr {
 }
 
 .contenu {
-	margin-left: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
 	margin-top: 25px;
 	font-family: "Helvetica", "Arial", sans-serif;
 }

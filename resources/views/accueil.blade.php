@@ -19,4 +19,8 @@
          </tr>
     </table>
 </form>
+
+<p>
+
+@include('layouts.onglets')
 @endsection
