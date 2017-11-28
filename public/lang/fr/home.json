@@ -1,3 +1,10 @@
 {
-    "id-lbl-region" : "Région"
+    "id-lbl-region" : "Région",
+    "id-lbl-organisme" : "Organisme",
+    "id-lbl-projet" : "Projet",
+    "id-lbl-resume" : "Résumé",
+    "id-lbl-dates" : "Dates",
+    "id-lbl-au" : "au",
+    "id-btn-details-projet" : "Détails...",
+    "id-btn-nouveau-projet" : "Nouveau projet..."
 }

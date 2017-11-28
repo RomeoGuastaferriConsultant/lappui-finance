@@ -3,6 +3,11 @@
 jQuery(document).ready(function() {
     jQuery('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = jQuery(this).attr('href');
+        
+        if (currentAttrValue == '#tab4' || currentAttrValue == '#tab5') {
+        	// rapports et budgets désactivés pour l'instant
+        	return;
+        }
  
         // Show/Hide Tabs
         jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();

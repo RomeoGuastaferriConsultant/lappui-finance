@@ -70,34 +70,39 @@ function setLanguage(data) {
 	}
 	
 	// update various document elements
-	setLanguageContent(lang, data);
-	setLanguageImages(lang, data);
+	updateDocumentLocale(lang, data);
 }
 
-function setLanguageContent(lang, data) {
-	$("h2").each(function(index, element) {setElementLanguageContent(element, data);});
-	$("span").each(function(index, element) {setElementLanguageContent(element, data);});
-	$("label").each(function(index, element) {setElementLanguageContent(element, data);});
-	$("a").each(function(index, element) {setElementLanguageContent(element, data);});
-	$("button").each(function(index, element) {setElementLanguageContent(element, data);});
+function updateDocumentLocale(lang, data) {
+	$("h2")     .each(function(index, element) {setElementLocale(element, data);});
+	$("span")   .each(function(index, element) {setElementLocale(element, data);});
+	$("label")  .each(function(index, element) {setElementLocale(element, data);});
+	$("a")      .each(function(index, element) {setElementLocale(element, data);});
+	
+	$("img")    .each(function(index, element) {setImageLocale(element, data);});
+
+	$(":button").each(function(index, element) {setButtonLocale(element, data);});
 }
 
-function setElementLanguageContent(element, data) {
+function setElementLocale(element, data) {
 	newVal = data[element.id];
 	if (newVal) {
 		$(element).html(newVal);
 	}
 }
 
-function setLanguageImages(lang, data) {
-	$("img").each(function(index, element) {setImageLanguageContent(element, data);});
-}
-
-function setImageLanguageContent(element, data) {
+function setImageLocale(element, data) {
 	keyName = element.id + ".src";
 	newVal = data[keyName];
 	if (newVal) {
 		$(element).attr("src", getURL(newVal));
+	}
+}
+
+function setButtonLocale(element, data) {
+	newVal = data[element.id];
+	if (newVal) {
+		$(element).val(newVal);
 	}
 }
 
