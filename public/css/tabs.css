@@ -42,14 +42,22 @@ li.active a, li.active a:hover {
     color:#4c4c4c;
 }
 
+li.active.interne a {
+	background:#ffffff;
+}
+
 /*----- Content of Tabs -----*/
+
+div.interne {
+    background: #ffffff;
+}
+
 .tab-content {
 	margin-top:-15px;
     padding:15px;
     border-radius:3px;
     box-shadow:-3px 3px 3px rgba(0,0,0,0.15);
     background:#e0f1f9;
-/*    background:#d5ffff;*/
 }
  
 .tab {
