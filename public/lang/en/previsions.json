@@ -1,0 +1,23 @@
+{
+    "id-lbl-tab-previsions" : "Forecasts",
+    "id-lbl-periode-pre" : "Period",
+    "id-lbl-prevu-pre" : "planned",
+    "id-lbl-pa-pre" : "Number of distinct caregivers",
+    "id-lbl-rejoints-pre" : "Number of participants",
+    "id-lbl-outils-pre" : "Size of broadcast, audience, other",
+    "id-lbl-seances-pre" : "Sessions and intervention hours...",
+    "id-lbl-seances-ind-pre" : "Total number of individual sessions",
+    "id-lbl-seances-grp-pre" : "Total number of group sessions",
+    "id-lbl-int-pre" : "Total number of hours of direct interventions",
+    "id-lbl-plage-per-pre" : "...by time slots and periods",
+    "id-lbl-sem-jour-pre" : "day",
+    "id-lbl-sem-soir-pre" : "evening",
+    "id-lbl-sem-tot-pre" : "total",
+    "id-lbl-sem-pre" : "Week",
+    "id-lbl-fin-jour-pre" : "day",
+    "id-lbl-fin-soir-pre" : "evening",
+    "id-lbl-fin-tot-pre" : "total",
+    "id-lbl-fin-pre" : "Weekend",
+    "id-btn-terr-pre" : "Targetted territories...",
+    "id-btn-save-pre" : "Save"
+}

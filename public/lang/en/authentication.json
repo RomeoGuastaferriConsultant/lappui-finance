@@ -3,6 +3,7 @@
     "id-lbl-email" : "E-mail Address",
     "id-lbl-role" : "Role",
     "id-lbl-region" : "Region",
+    "id-lbl-organisme" : "Organization",
     "id-lbl-pswd" : "Password",
     "id-lbl-pswd-conf" : "Confirm Password",
     "id-div-register" : "User Registration",

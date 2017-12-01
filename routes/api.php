@@ -14,4 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/regions', 'RegionController@all');
-//$router->get('/regions', 'RegionController@all');
+
+Route::get('/regions/{regionId}/organismes', 'OrganismeController@getAll');
+
+Route::get('/organismes/{organismeId}/projets', 'ProjetController@getAll');

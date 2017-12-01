@@ -21,7 +21,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'region'
+        // for all users
+        'name', 'email', 'password', 'role',
+        // regional and organisme roles only
+        'region',
+        // organisme role only
+        'organisme'
     ];
 
     /**
@@ -36,5 +41,16 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role==ROLE_ADMIN;
+    }
+
+    public function isRegional()
+    {
+        // return true for regional(3) and organisme(4)
+        return $this->role > ROLE_NATIONAL;
+    }
+
+    public function isOrganisme()
+    {
+        return $this->role == ROLE_ORGANISME;
     }
 }

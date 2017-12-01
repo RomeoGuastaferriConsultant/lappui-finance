@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->smallInteger('role');
             $table->smallInteger('region');
+            $table->smallInteger('organisme');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,0 +1,23 @@
+{
+    "id-lbl-tab-previsions" : "Prévisions",
+    "id-lbl-periode-pre" : "Période",
+    "id-lbl-prevu-pre" : "prévu",
+    "id-lbl-pa-pre" : "Nombre de proches aidants uniques",
+    "id-lbl-rejoints-pre" : "Nombre de participants",
+    "id-lbl-outils-pre" : "Nombre d'outils diffusés, auditoire, autres",
+    "id-lbl-seances-pre" : "Séances et heures d'intervention...",
+    "id-lbl-seances-ind-pre" : "Nombre total de séances individuelles",
+    "id-lbl-seances-grp-pre" : "Nombre total de séances de groupe",
+    "id-lbl-int-pre" : "Nombre total d'heures d'intervention directe",
+    "id-lbl-plage-per-pre" : "...par plage horaire et période",
+    "id-lbl-sem-jour-pre" : "jour",
+    "id-lbl-sem-soir-pre" : "soir",
+    "id-lbl-sem-tot-pre" : "total",
+    "id-lbl-sem-pre" : "Semaine",
+    "id-lbl-fin-jour-pre" : "jour",
+    "id-lbl-fin-soir-pre" : "soir",
+    "id-lbl-fin-tot-pre" : "total",
+    "id-lbl-fin-pre" : "Fin de semaine",
+    "id-btn-terr-pre" : "Territoires ciblés...",
+    "id-btn-save-pre" : "Sauvegarder"
+}

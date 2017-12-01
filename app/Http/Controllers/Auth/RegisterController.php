@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -54,7 +55,8 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'role' => 'required|integer|min:1|max:4',
             'password' => 'required|string|min:6|confirmed',
-            'region' => 'integer|min:1|max:18'
+            'region' => 'integer|min:1|max:18',
+            'organisme' => 'integer'
         ]);
     }
 
@@ -68,11 +70,19 @@ class RegisterController extends Controller
     {
         $this->authorize('create', User::class);
 
+        // organisme is optional
+        // there might be a cleaner way to do this, but...
+        if (! array_key_exists('organisme', $data))
+        {
+            $data['organisme'] = 0;
+        }
+
         $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
             'region' => $data['region'],
+            'organisme' => $data['organisme'],
             'password' => bcrypt($data['password']),
         ]);
 

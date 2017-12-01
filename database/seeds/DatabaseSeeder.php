@@ -19,15 +19,16 @@ class DatabaseSeeder extends Seeder
         // create other roles
         $this->createUser('test national',  2,  1, 'bogus2@bogus.com', 'passnational');
         $this->createUser('test regional',  3, 15, 'bogus3@bogus.com', 'passregional');
-        $this->createUser('test organisme', 4, 15, 'bogus4@bogus.com', 'passorganisme');
+        $this->createUser('test organisme', 4, 15, 'bogus4@bogus.com', 'passorganisme', 1);
     }
 
-    private function createUser($name, $role, $region, $email, $password)
+    private function createUser($name, $role, $region, $email, $password, $organisme = 0)
     {
         DB::table('users')->insert([
             'name' => $name,
             'role' => $role,
             'region' => $region,
+            'organisme' => $organisme,
             'email' => $email,
             'password' => bcrypt($password),
         ]);

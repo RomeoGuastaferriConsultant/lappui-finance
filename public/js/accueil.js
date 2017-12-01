@@ -1,3 +1,8 @@
+/* global api variables */
+var regions;
+var organismes;
+var projets;
+
 /** 
  * code to execute upon document load 
  */
@@ -9,25 +14,9 @@ $(document).ready(function(){
 	// to load initial static content 
 	$("html").trigger("change");
 	
-	// fill in regions select box
-	$.get('api/regions', setRegions);
+	// initialize regions select box
+	$.get('api/regions', function(data) {regions = new Regions(data)});
 	
-	// hide 'home' option (we're already there)
+	// hide 'home' menu option (we're already there)
 	$('#id-itm-accueil').hide()
 });
-
-//
-// initialisation des regions
-//
-
-function setRegions(regions) {
-	select = $("#id-sel-region");
-	if (select) {
-		// on s'assure que select est vide avant de débuter
-		select.empty();
-		
-		for(region in regions) {
-			select.append(new Option(regions[region].name, regions[region].id));
-		}
-	}
-}

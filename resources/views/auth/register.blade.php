@@ -73,6 +73,25 @@
                             </div>
                         </div>
 
+                        {{-- Inject OrganismeController to fetch list of organizations --}}
+                        @inject('organismes', 'App\Http\Controllers\OrganismeController')
+
+                        <div id="id-div-organisme" class="form-group{{ $errors->has('organisme') ? ' has-error' : '' }}">
+                            <label id="id-lbl-organisme" for="organisme" class="col-md-4 control-label"></label>
+
+                            <div class="col-md-6">
+                            	<select id="organisme" name="organisme" class="form-control">
+                            		{{-- This select will need to be filled in via javascript --}}
+                            	</select>
+
+                                @if ($errors->has('organisme'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('organisme') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label id="id-lbl-email" for="email" class="col-md-4 control-label"></label>
 

@@ -25,15 +25,15 @@
 						{{-- for communicating language changes back to server --}}
                         <input id="id-frm-lang" name="lang" type="hidden">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label id="id-lbl-email" for="email" class="col-md-4 control-label"></label>
+                        <div class="form-group{{ $errors->has('courriel') ? ' has-error' : '' }}">
+                            <label id="id-lbl-courriel" for="courriel" class="col-md-4 control-label"></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="motpasse" type="email" class="form-control" name="motpasse" value="{{ old('motpasse') }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('motpasse'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('motpasse') }}</strong>
                                     </span>
                                 @endif
                             </div>

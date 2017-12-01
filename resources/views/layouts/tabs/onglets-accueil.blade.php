@@ -1,7 +1,7 @@
 <div class="tabs">
     <ul class="tab-links">
-        <li class="active"><a href="#tab-organisme">Organisme</a></li>
-        <li><a href="#tab-previsions">Prévisions</a></li>
+        <li class="active"><a href="#tab-organisme"><span id="id-lbl-tab-organisme"></span></a></li>
+        <li><a href="#tab-previsions"><span id="id-lbl-tab-previsions"></span></a></li>
         <li><a href="#tab-tab-resultats">Résultats</a></li>
         <li><a href="#tab-budgets">Budgets</a></li>
         <li><a href="#tab-rapports">Rapports</a></li>
@@ -29,3 +29,4 @@
         </div>
     </div>
 </div>
+<p>

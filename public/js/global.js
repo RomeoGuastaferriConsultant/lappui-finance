@@ -85,7 +85,7 @@ function updateDocumentLocale(lang, data) {
 }
 
 function setElementLocale(element, data) {
-	newVal = data[element.id];
+	newVal = getNewLocalizedElementValue(element, data);
 	if (newVal) {
 		$(element).html(newVal);
 	}
@@ -100,9 +100,36 @@ function setImageLocale(element, data) {
 }
 
 function setButtonLocale(element, data) {
-	newVal = data[element.id];
+	newVal = getNewLocalizedElementValue(element, data);
 	if (newVal) {
 		$(element).val(newVal);
+	}
+}
+
+function getNewLocalizedElementValue(element, data) {
+	if (hasMultipleIds(element)) {
+		// remove last digit
+		keyName = element.id.substr(0, element.id.length-1);
+	}
+	else {
+		keyName = element.id;
+	}
+	return data[keyName];
+}
+
+// les onglets multiples (prévisions et résultats)
+// renferment des champs dont le id est quasi-identique
+// mis à part les suffixes (pre[1-4] ou res[1-4])
+function hasMultipleIds(element) {
+	lastchar = element.id.substr(element.id.length-1, element.id.length);
+	if (isNaN(lastchar)) {
+		// definately not a multiple field
+		return false;
+	} 
+	else {
+		// last char is a number - let's remove it
+		result = element.id.substr(0, element.id.length - 1);
+		return result.endsWith("pre") || result.endsWith("res");
 	}
 }
 

@@ -1,0 +1,9 @@
+{
+    "id-lbl-tab-organisme" : "Organization",
+    "id-lbl-nom-org" : "Name",
+    "id-lbl-adresse-org" : "Postal Address",
+    "id-lbl-telephone-org" : "Phone",
+    "id-lbl-courriel-org" : "E-Mail",
+    "id-lbl-contact-org" : "Contact",
+    "id-btn-details-org" : "Details..."
+}
