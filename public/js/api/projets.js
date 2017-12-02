@@ -3,33 +3,28 @@
  * @param list list of projects returned by REST api
  * @returns nothing directly... meant to be instantiated with new
  */
-function Projets(organismeId, list) {
-	/** id of organization these projects are associated with */
-	this.organismeId = organismeId;
-	// TODO: is this really needed ?
-	
+function Projets(list) {
 	/** list of projects associated with specified organization */
 	this.list = list;
 	/** HTML select element */
 	this.htmlSelect = $("#id-sel-projet");
 	
-//	alert('projets requis pour organisme ' + organismeId + '?');
+	/** helpful alias to be used from within callbacks ('this' can be confusing) */
+	var projets = this;
+
 	/** specified project has been selected */
 	this.onSelect = function(projetId) {
 		// update document to reflect new selection
-		for(proj in this.list) {
-			// fetch selected organization from list
+		for(var proj in this.list) {
+			// fetch selected project from list
 			if (this.list[proj].id == projetId) {
 				// fill in project data
 				$('#id-txt-resume').val(this.list[proj].resume);
+
+				// delegate period-related processing
+				projets.periodes = new Periodes(this.list[proj].periodes);
 			}
 		}
-
-		// fetch forecasts associated with current project
-//		$.get('api/organismes/' + organismeId + '/projets', function(data) {
-//			alert('just received projects !');
-//			projets = new Projets(organismeId, data);
-//		});
 	}
 
 	// ensure select is empty before init
@@ -38,7 +33,7 @@ function Projets(organismeId, list) {
 	this.htmlSelect.off();
 	
 	// add appropriate select options
-	for(proj in this.list) {
+	for(var proj in this.list) {
 		this.htmlSelect.append(new Option(this.list[proj].nom, this.list[proj].id));
 	}
 	
@@ -54,3 +49,4 @@ function Projets(organismeId, list) {
 		this.onSelect(this.list[0].id);
 	}
 }
+

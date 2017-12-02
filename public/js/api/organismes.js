@@ -11,10 +11,13 @@ function Organismes(regionId, list) {
 	/** HTML select element */
 	this.htmlSelect = $("#id-sel-organisme");
 	
+	/** helpful alias to be used from within callbacks ('this' can be confusing) */
+	var organismes = this;
+
 	/** specified organization has been selected */
 	this.onSelect = function(organismeId) {
 		// update document to reflect new selection
-		for(org in this.list) {
+		for(var org in this.list) {
 			// fetch selected organization from list
 			if (this.list[org].id == organismeId) {
 				// fill in Organization data
@@ -23,6 +26,7 @@ function Organismes(regionId, list) {
 				$('#id-txt-telephone').val(this.list[org].telephone);
 				$('#id-txt-courriel').val(this.list[org].courriel);
 				$('#id-txt-contact').val(this.list[org].contact);
+				
 				// in the case of organisme user
 				$('#id-nom-organisme').text(this.list[org].nom);
 			}
@@ -30,7 +34,7 @@ function Organismes(regionId, list) {
 
 		// fetch projects associated with current organization
 		$.get('api/organismes/' + organismeId + '/projets', function(data) {
-			projets = new Projets(organismeId, data);
+			organismes.projets = new Projets(data);
 		});
 	}
 
@@ -60,7 +64,6 @@ function Organismes(regionId, list) {
 	}
 	else {
 		// user's organization should be found in hidden form field
-		console.log('about to select ' + $('#id-frm-organisme').val());
 		this.onSelect($('#id-frm-organisme').val());
 	}
 }

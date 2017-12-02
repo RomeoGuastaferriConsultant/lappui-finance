@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Organisme;
+use App\Period;
 use App\Projet;
 
 class ProjetController extends Controller
@@ -43,16 +44,21 @@ class ProjetController extends Controller
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
                 .'Suspendisse feugiat est nisl, at tempor diam hendrerit sit amet. '
                 .'Suspendisse a lectus sit amet lacus condimentum faucibus non id lectus.',
-            'periodes'
-            );
+            array(
+                new Period('1', '2015-10-01', '2016-03-31', 'previsions'),
+                new Period('1', '2016-04-01', '2016-09-30', 'previsions'),
+                new Period('1', '2016-10-01', '2017-03-31', 'previsions'),
+            ));
 
         $proj2 = new Projet(
             '2',
             'On s\'informe en région',
             'Pellentesque fermentum euismod sapien, sit amet lobortis purus dignissim pulvinar. '
                 .'Proin pharetra volutpat erat id pulvinar. ',
-            'periodes'
-            );
+            array(
+                new Period('2', '2017-04-01', '2017-09-30', 'previsions'),
+                new Period('2', '2017-10-01', '2018-03-31', 'previsions'),
+            ));
 
         $proj3 = new Projet(
             '3',
@@ -60,16 +66,21 @@ class ProjetController extends Controller
             'Vestibulum faucibus felis nulla, ut varius erat varius in. Nunc eget velit sodales, '
                 .'tincidunt massa et, consequat purus. Quisque nec dolor neque. '
                 .'Aenean finibus sagittis diam, sit amet posuere enim aliquet sed.',
-            'periodes'
-            );
+            array(
+                new Period('3', '2017-10-01', '2018-03-31', 'previsions'),
+                new Period('3', '2018-04-01', '2018-09-30', 'previsions'),
+            ));
 
         $proj4 = new Projet(
             '4',
             'Projet de Soutien et Répit',
             'Sed laoreet diam quis arcu laoreet faucibus. In ante nisi, dictum eget cursus in, '
                 .'dapibus eu erat. Duis malesuada nunc dui, tincidunt euismod ex fermentum sit amet. ',
-            'periodes'
-            );
+            array(
+                new Period('4', '2017-04-01', '2017-09-30', 'previsions'),
+                new Period('4', '2017-10-01', '2018-03-31', 'previsions'),
+                new Period('4', '2018-04-01', '2018-09-30', 'previsions'),
+            ));
 
         return array(
             // key is organismeId

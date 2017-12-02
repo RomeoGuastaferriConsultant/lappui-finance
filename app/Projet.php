@@ -21,15 +21,15 @@ class Projet
 class Period
 {
     public $projetId;
-    public $fromDate;
-    public $toDate;
+    public $dateFrom;
+    public $dateTo;
     public $previsions;
 
-    public function __construct($projetId, $fromDate, $toDate, $previsions)
+    public function __construct($projetId, $dateFrom, $dateTo, $previsions)
     {
         $this->projetId = $projetId;
-        $this->fromDate = $fromDate;
-        $this->toDate = $toDate;
+        $this->dateFrom = $dateFrom;
+        $this->dateTo = $dateTo;
         $this->previsions = $previsions;
     }
 }

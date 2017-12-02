@@ -8,16 +8,19 @@ function Regions(list) {
 	this.list = list;
 	/** HTML select element */
 	this.htmlSelect = $("#id-sel-region");
+
+	/** helpful alias to be used from within callbacks ('this' can be confusing) */
+	var regions = this;
 	
 	/** specified region has been selected */
 	this.onSelect = function(regionId) {
 		// fetch organizations associated with current region
 		$.get('api/regions/' + regionId + '/organismes', function(data) {
-			organismes = new Organismes(regionId, data)
+			regions.organismes = new Organismes(regionId, data);
 		});	
 
 		// fill in region name
-		for(region in this.list) {
+		for(var region in this.list) {
 			if (this.list[region].id == regionId) {
 				$('#id-nom-region').text(this.list[region].name);
 			}
@@ -32,7 +35,7 @@ function Regions(list) {
 		this.htmlSelect.off();
 		
 		// add appropriate select options
-		for(region in this.list) {
+		for(var region in this.list) {
 			this.htmlSelect.append(new Option(this.list[region].name, this.list[region].id));
 		}
 		

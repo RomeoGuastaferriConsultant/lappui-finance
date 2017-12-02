@@ -14,7 +14,7 @@ function setHtmlLang(lang) {
 
 function toggleLanguage() {
 	// get current doc language
-	lang=getHtmlLang();
+	var lang=getHtmlLang();
 	// toggle language
 	lang=lang=="fr" ? "en" : "fr";
 	// set language to new value
@@ -60,10 +60,10 @@ function getURL(pathname) {
  */
 function setLanguage(data) {
 	// fetch current language
-	lang=getHtmlLang();
+	var lang=getHtmlLang();
 	
 	// inform server of new lang
-	messanger = $('#id-frm-lang');
+	var messanger = $('#id-frm-lang');
 	// messanger (if present) would be a hidden input field
 	if (messanger) {
 		messanger.val(lang);
@@ -85,28 +85,29 @@ function updateDocumentLocale(lang, data) {
 }
 
 function setElementLocale(element, data) {
-	newVal = getNewLocalizedElementValue(element, data);
+	var newVal = getNewLocalizedElementValue(element, data);
 	if (newVal) {
 		$(element).html(newVal);
 	}
 }
 
 function setImageLocale(element, data) {
-	keyName = element.id + ".src";
-	newVal = data[keyName];
+	var keyName = element.id + ".src";
+	var newVal = data[keyName];
 	if (newVal) {
 		$(element).attr("src", getURL(newVal));
 	}
 }
 
 function setButtonLocale(element, data) {
-	newVal = getNewLocalizedElementValue(element, data);
+	var newVal = getNewLocalizedElementValue(element, data);
 	if (newVal) {
 		$(element).val(newVal);
 	}
 }
 
 function getNewLocalizedElementValue(element, data) {
+	var keyName;
 	if (hasMultipleIds(element)) {
 		// remove last digit
 		keyName = element.id.substr(0, element.id.length-1);
@@ -121,14 +122,14 @@ function getNewLocalizedElementValue(element, data) {
 // renferment des champs dont le id est quasi-identique
 // mis à part les suffixes (pre[1-4] ou res[1-4])
 function hasMultipleIds(element) {
-	lastchar = element.id.substr(element.id.length-1, element.id.length);
+	var lastchar = element.id.substr(element.id.length-1, element.id.length);
 	if (isNaN(lastchar)) {
 		// definately not a multiple field
 		return false;
 	} 
 	else {
 		// last char is a number - let's remove it
-		result = element.id.substr(0, element.id.length - 1);
+		var result = element.id.substr(0, element.id.length - 1);
 		return result.endsWith("pre") || result.endsWith("res");
 	}
 }

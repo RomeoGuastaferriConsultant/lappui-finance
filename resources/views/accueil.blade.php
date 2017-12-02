@@ -2,9 +2,11 @@
 
 @section('titre', 'Page d\'accueil')
 @push('scripts')
-    <script src="{{ asset('js/api/projets.js') }}"></script>
-    <script src="{{ asset('js/api/organismes.js') }}"></script>
+    <script src="{{ asset('js/api/previsions.js') }}"></script>
+    <script src="{{ asset('js/api/periodes.js') }}"></script>
     <script src="{{ asset('js/api/regions.js') }}"></script>
+    <script src="{{ asset('js/api/organismes.js') }}"></script>
+    <script src="{{ asset('js/api/projets.js') }}"></script>
     <script src="{{ asset('js/accueil.js') }}"></script>
 @endpush
 
@@ -65,7 +67,7 @@
          <tr>
              <td style="direction:rtl;"><label id="id-lbl-dates"></label></td>
              <td>
-             	 <input id="id-txt-dates" type="text" size="36" value="1 octobre 2016 - 31 mars 2018" readonly>
+             	 <input id="id-txt-dates" type="text" size="36" readonly>
              </td>
          </tr>
          <tr>

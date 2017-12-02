@@ -1,7 +1,5 @@
 /* global api variables */
 var regions;
-var organismes;
-var projets;
 
 /** 
  * code to execute upon document load 
@@ -15,7 +13,9 @@ $(document).ready(function(){
 	$("html").trigger("change");
 	
 	// initialize regions select box
-	$.get('api/regions', function(data) {regions = new Regions(data)});
+	$.get('api/regions', function(data) {
+		regions = new Regions(data)
+	});
 	
 	// hide 'home' menu option (we're already there)
 	$('#id-itm-accueil').hide()
