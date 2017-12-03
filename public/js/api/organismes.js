@@ -20,22 +20,25 @@ function Organismes(regionId, list) {
 		for(var org in this.list) {
 			// fetch selected organization from list
 			if (this.list[org].id == organismeId) {
+				// found it
+				var organisme = this.list[org];
+				
 				// fill in Organization data
-				$('#id-txt-nom').val(this.list[org].nom);
-				$('#id-txt-adresse').val(this.list[org].adresse);
-				$('#id-txt-telephone').val(this.list[org].telephone);
-				$('#id-txt-courriel').val(this.list[org].courriel);
-				$('#id-txt-contact').val(this.list[org].contact);
+				$('#id-txt-nom').val(organisme.nom);
+				$('#id-txt-adresse').val(organisme.adresse);
+				$('#id-txt-telephone').val(organisme.telephone);
+				$('#id-txt-courriel').val(organisme.courriel);
+				$('#id-txt-contact').val(organisme.contact);
 				
 				// in the case of organisme user
-				$('#id-nom-organisme').text(this.list[org].nom);
+				$('#id-nom-organisme').text(organisme.nom);
+
+				// fetch projects associated with current organization
+				$.get(organisme.links.projets, function(data) {
+					organismes.projets = new Projets(data);
+				});
 			}
 		}
-
-		// fetch projects associated with current organization
-		$.get('api/organismes/' + organismeId + '/projets', function(data) {
-			organismes.projets = new Projets(data);
-		});
 	}
 
 	// select exists ? (only for admins, national & regional)

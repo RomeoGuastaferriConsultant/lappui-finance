@@ -14,15 +14,16 @@ function Regions(list) {
 	
 	/** specified region has been selected */
 	this.onSelect = function(regionId) {
-		// fetch organizations associated with current region
-		$.get('api/regions/' + regionId + '/organismes', function(data) {
-			regions.organismes = new Organismes(regionId, data);
-		});	
-
-		// fill in region name
+		// find the actual region object
 		for(var region in this.list) {
 			if (this.list[region].id == regionId) {
+				// update region name in document
 				$('#id-nom-region').text(this.list[region].name);
+
+				// fetch organizations associated with current region
+				$.get(list[region].links['organismes'], function(data) {
+					regions.organismes = new Organismes(regionId, data);
+				});	
 			}
 		}
 	}

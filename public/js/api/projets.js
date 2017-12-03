@@ -18,11 +18,18 @@ function Projets(list) {
 		for(var proj in this.list) {
 			// fetch selected project from list
 			if (this.list[proj].id == projetId) {
+				var projet = this.list[proj];
+				
 				// fill in project data
-				$('#id-txt-resume').val(this.list[proj].resume);
+				$('#id-txt-resume').val(projet.resume);
 
 				// delegate period-related processing
-				projets.periodes = new Periodes(this.list[proj].periodes);
+				projets.periodes = new Periodes(projet.periodes);
+
+				// delegate tabs related stuff
+				$.get(projet.links.previsions, function(data) {
+					projets.previsions = new Previsions(data, projets);
+				});
 			}
 		}
 	}

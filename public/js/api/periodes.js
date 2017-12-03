@@ -38,9 +38,6 @@ function Periodes(list) {
 
 	// display project duration
 	$('#id-txt-dates').val(this.formatPeriodes(this.list));
-	
-	// delegate tabs related stuff
-	this.previsions = new Previsions(list, this);
 }
 
 

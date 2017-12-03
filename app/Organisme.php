@@ -11,6 +11,9 @@ class Organisme
     public $telephone;
     public $courriel;
     public $contact;
+    public $links;
+
+    protected $baseURL = '/api/organismes';
 
     /**
      * Create a new Organisme instance.
@@ -26,5 +29,13 @@ class Organisme
         $this->telephone = $telephone;
         $this->courriel = $courriel;
         $this->contact = $contact;
+
+        // REST best practice
+        $urlGet = $this->baseURL."/".$this->id;
+        $urlProjets = $urlGet."/projets";
+        $this->links = array(
+            "get" => $urlGet,
+            "projets" => $urlProjets
+        );
     }
 }

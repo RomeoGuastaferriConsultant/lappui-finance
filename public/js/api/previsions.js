@@ -6,7 +6,7 @@
 function Previsions(list, parent) {
 	/** handle to parent */
 	this.parent = parent;
-	/** list of periods */
+	/** list of forecasts */
 	this.list = list;
 	
 	/** helpful alias to be used from within callbacks ('this' can be confusing) */
@@ -18,7 +18,11 @@ function Previsions(list, parent) {
 	/** specified period has been selected */
 	this.onSelect = function(index) {
 		// fill in project data
-		$('#id-txt-pa-pre1').val('999');
+		var current = this.list[index];
+		
+		$('#id-txt-pa-pre'      +index+1).val(current.nbPaUniques);
+		$('#id-txt-rejoints-pre'+index+1).val(current.nbParticipants);
+		$('#id-txt-outils-pre'  +index+1).val(current.nbOutilsAutres);
 	}
 
 	// ensure listbox is empty before init
@@ -27,9 +31,16 @@ function Previsions(list, parent) {
 	this.htmlSelect.off();
 	
 	// add appropriate select options
-	var index = 1;
-	for(var periode in this.list) {
-		var text = this.parent.formatDates(this.list[periode].dateFrom, this.list[periode].dateTo);
+	var nbOptions = this.list.length;
+	for(var index = 0; index < nbOptions; index++) {
+		// get start & end date of current period
+		var dateFrom = this.parent.periodes.list[index].dateFrom;
+		var dateTo   = this.parent.periodes.list[index].dateTo;
+		
+		// transform this to text..
+		var text = this.parent.periodes.formatDates(dateFrom, dateTo);
+		
+		// display
 		this.htmlSelect.append(new Option(text, index++));
 	}
 	
