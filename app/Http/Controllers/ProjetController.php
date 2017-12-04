@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Organisme;
+use App\ActiviteFormation;
+use App\ActiviteInformation;
+use App\ActiviteRepit;
+use App\ActiviteSoutien;
 use App\Period;
 use App\Projet;
 
@@ -21,7 +24,7 @@ class ProjetController extends Controller
     public function getAll($organismeId)
     {
         if ($this->projets == null) {
-            $this->projets = $this->createAll();
+            $this->projets = ProjetController::createAll();
         }
 
         // provided $organismeId exists in projects array ?
@@ -35,7 +38,7 @@ class ProjetController extends Controller
     /**
      * Create and return all Region instances.
      */
-    public function createAll()
+    public static function createAll()
     {
         /** collection de tous les projets, par organisme */
         $proj1 = new Projet(
@@ -49,6 +52,12 @@ class ProjetController extends Controller
                 new Period('2015-10-01', '2016-03-31', 'previsions'),
                 new Period('2016-04-01', '2016-09-30', 'previsions'),
                 new Period('2016-10-01', '2017-03-31', 'previsions'),
+            ),
+            array(
+                new ActiviteFormation(ActiviteFormation::ACTIVITE_ATELIER),
+                new ActiviteInformation(ActiviteInformation::CAFE_RENCONTRE),
+                new ActiviteInformation(ActiviteInformation::SENSIBILISATION),
+                new ActiviteInformation(ActiviteInformation::CONFERENCE)
             ));
 
         $proj2 = new Projet(
@@ -60,6 +69,11 @@ class ProjetController extends Controller
             array(
                 new Period('2017-04-01', '2017-09-30', 'previsions'),
                 new Period('2017-10-01', '2018-03-31', 'previsions'),
+            ),
+            array(
+                new ActiviteSoutien(ActiviteSoutien::SOUTIEN_INDIVIDUEL),
+                new ActiviteSoutien(ActiviteSoutien::GROUPE_SOUTIEN),
+                new ActiviteSoutien(ActiviteSoutien::GROUPE_ENTRAIDE)
             ));
 
         $proj3 = new Projet(
@@ -72,6 +86,11 @@ class ProjetController extends Controller
             array(
                 new Period('2017-10-01', '2018-03-31', 'previsions'),
                 new Period('2018-04-01', '2018-09-30', 'previsions'),
+            ),
+            array(
+                new ActiviteInformation(ActiviteInformation::SEANCE_INFORMATION),
+                new ActiviteInformation(ActiviteInformation::OUTIL_WEB),
+                new ActiviteRepit(ActiviteRepit::REPIT_GROUPE)
             ));
 
         $proj4 = new Projet(
@@ -84,6 +103,11 @@ class ProjetController extends Controller
                 new Period('2017-04-01', '2017-09-30', 'previsions'),
                 new Period('2017-10-01', '2018-03-31', 'previsions'),
                 new Period('2018-04-01', '2018-09-30', 'previsions'),
+            ),
+            array(
+                new ActiviteInformation(ActiviteInformation::OUTIL_INFO_DOC),
+                new ActiviteRepit(ActiviteRepit::REPIT_INDIVIDUEL),
+                new ActiviteRepit(ActiviteRepit::REPIT_ACCESSOIRE)
             ));
 
         return array(

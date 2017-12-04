@@ -17,18 +17,17 @@ function Projets(list) {
 		// update document to reflect new selection
 		for(var proj in this.list) {
 			// fetch selected project from list
-			if (this.list[proj].id == projetId) {
-				var projet = this.list[proj];
+			if (projets.list[proj].id == projetId) {
+				var projet = projets.list[proj];
 				
 				// fill in project data
 				$('#id-txt-resume').val(projet.resume);
 
-				// delegate period-related processing
-				projets.periodes = new Periodes(projet.periodes);
-
+				// display project dates
+				$('#id-txt-dates').val(formatPeriodes(projet.periodes));
 				// delegate tabs related stuff
 				$.get(projet.links.previsions, function(data) {
-					projets.previsions = new Previsions(data, projets);
+					projets.previsions = new Previsions(data, projet.periodes, projet.activites);
 				});
 			}
 		}

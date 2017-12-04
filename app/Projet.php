@@ -9,15 +9,17 @@ class Projet
     public $nom;
     public $resume;
     public $periodes;
+    public $activites;
     public $links;
 
-    public function __construct($id, $idOrganisme, $nom, $resume, $periodes)
+    public function __construct($id, $idOrganisme, $nom, $resume, $periodes, $activites)
     {
         $this->id = $id;
         $this->idOrganisme = $idOrganisme;
         $this->nom = $nom;
         $this->resume = $resume;
         $this->periodes = $periodes;
+        $this->activites = $activites;
 
         // REST best practice
         $urlBase = "/api/organismes/".$idOrganisme."/projets/".$this->id;

@@ -2,6 +2,7 @@
 
 @section('titre', 'Page d\'accueil')
 @push('scripts')
+    <script src="{{ asset('js/api/activites.js') }}"></script>
     <script src="{{ asset('js/api/previsions.js') }}"></script>
     <script src="{{ asset('js/api/periodes.js') }}"></script>
     <script src="{{ asset('js/api/regions.js') }}"></script>

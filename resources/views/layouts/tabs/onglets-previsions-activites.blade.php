@@ -1,9 +1,9 @@
 <div class="tabs">
     <ul class="tab-links">
-        <li class="interne active"><a href="#tab-activite-1">Activité 1-Information</a></li>
-        <li class="interne"><a href="#tab-activite-2">Activité 2-Formation</a></li>
-        <li class="interne"><a href="#tab-activite-3">Activité 3-Formation</a></li>
-        <li class="interne"><a href="#tab-activite-4">Activité 4-Répit</a></li>
+        <li id="tab-1" class="interne active"><a href="#tab-activite-1">Activité 1-Information</a></li>
+        <li id="tab-2" class="interne"><a href="#tab-activite-2">Activité 2-Formation</a></li>
+        <li id="tab-3" class="interne"><a href="#tab-activite-3">Activité 3-Formation</a></li>
+        <li id="tab-4" class="interne"><a href="#tab-activite-4">Activité 4-Répit</a></li>
     </ul>
 
     <div class="tab-content interne">

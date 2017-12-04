@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Log;
 
 class Previsions
 {
+    public $periode;
+    public $activite;
+
     public $nbPaUniques;
     public $nbParticipants;
     public $nbOutilsAutres;
@@ -39,10 +42,12 @@ class Previsions
     /**
      * construct an arbitrary Previsions object for testing purposes
      */
-    public function __construct()
+    public function __construct($periode, $activite)
     {
+        $this->periode = $periode;
+        $this->activite = $activite;
+
         $this->initialize($this);
-        Log::info('just initialized '.print_r($this, true));
     }
 
     public function initialize($previsions)
