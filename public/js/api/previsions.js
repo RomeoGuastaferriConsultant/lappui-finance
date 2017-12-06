@@ -70,7 +70,7 @@ function Previsions(list, projet) {
 		previsions.displayPrevisions(aTraiter);
 	}
 
-	this.initTabs = function(projet) {
+	this.displayTabs = function(projet) {
 		// display and/or hide activity tabs
 		var nbTabs = 4;
 		var nbActivities = projet.activites.length;
@@ -86,10 +86,6 @@ function Previsions(list, projet) {
 				$('#tab-' + i).hide();
 			}
 		}
-	}
-	
-	this.updateTabs = function(projet) {
-		
 	}
 	
 	this.initSelection = function(projet) {
@@ -120,28 +116,45 @@ function Previsions(list, projet) {
 	}
 	
 	this.updateSelection = function(projet) {
-		// update select options
 		$("#id-sel-periode > option").each(function(index) {
 			var periode = projet.periodes[index];
 			
-			// transformer periode en string
-			var text = formatDates(periode.dateFrom, periode.dateTo);
-			
-			// show it
-			$(this).text(text);
+			if (periode) {
+				// transformer periode en string
+				var text = formatDates(periode.dateFrom, periode.dateTo);
+				
+				// show it
+				$(this).text(text);
+			}
+			else {
+				console.log('...OOPS!! projet: ' + JSON.stringify(projet));
+			}
 		});
 	}
 	
 	/** refresh display (for example, after language change event) */
 	this.refresh = function() {
-		// update select box contents
-		this.updateSelection(regions.organismes.projets.current);
+		if (regions)
+			if (regions.organismes)
+				if (regions.organismes.projets)
+					if (regions.organismes.projets.current) {
+						// update select box contents
+						this.updateSelection(regions.organismes.projets.current);
+						// and also tab headers
+						this.displayTabs(regions.organismes.projets.current);
+					}
 	}
 
 	this.init = function() {
-		var projet = regions.organismes.projets.current;
-		this.initTabs(projet);
-		this.initSelection(projet);
+		if (regions)
+			if (regions.organismes)
+				if (regions.organismes.projets)
+					if (regions.organismes.projets.current) {
+						// initialize select box contents
+						this.initSelection(regions.organismes.projets.current);
+						// display tab headers
+						this.displayTabs(regions.organismes.projets.current);
+					}
 	}
 	
 	this.init();
