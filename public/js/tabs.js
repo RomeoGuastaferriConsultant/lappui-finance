@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
     
 	// register to process language change events
 	$("html").on("change", function() {
-		updateDocLang('organisme.json');
-		updateDocLang('previsions.json');
+		locale.updateDocLang('organisme.json');
+		locale.updateDocLang('previsions.json');
 	});
 });

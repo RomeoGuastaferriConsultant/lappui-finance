@@ -20,7 +20,7 @@
             @yield('contenu')
         </div>
         <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
-        <script src="{{ asset('js/global.js') }}"></script>
+        <script src="{{ asset('js/localization.js') }}"></script>
         <script src="{{ asset('js/banniere.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/tabs.js') }}"></script>

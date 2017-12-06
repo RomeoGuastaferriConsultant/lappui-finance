@@ -3,7 +3,7 @@ function Activite(activite)
 	this.activite = activite;
 	
 	this.text = function() {
-		if (getHtmlLang() == 'en') {
+		if (locale.getLang() == 'en') {
 			return this.enText(this.activite.type);
 		}
 		else {

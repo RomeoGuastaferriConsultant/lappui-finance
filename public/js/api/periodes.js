@@ -6,12 +6,12 @@
  */
 function formatDate(date) {
 	// add 12 hours to dates to circumvent a javascript date issue
-	return new Date(date + 'T12:00:00').toLocaleDateString(getHtmlLang());
+	return new Date(date + 'T12:00:00').toLocaleDateString(locale.getLang());
 }
 
 /** formats a date interval */
 function formatDates(dateFrom, dateTo) {
-	var to = getHtmlLang() == 'en' ? ' to ' : ' au ';
+	var to = locale.getLang() == 'en' ? ' to ' : ' au ';
 	
 	// add 12 hours to dates to circumvent a javascript date issue
 	return formatDate(dateFrom)
@@ -41,7 +41,7 @@ Date.prototype.toLocaleDateString = function(locale) {
 			 + this.getFullYear();
 	}
 	else if (locale == 'en') {
-		return this.month[this.getMonth()] + ' ' 
+		return this.months[this.getMonth()] + ' ' 
 			 + this.getDate() + ' '
 			 + this.getFullYear();
 	}

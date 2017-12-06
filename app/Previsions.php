@@ -10,8 +10,8 @@ class Previsions
     public $activite;
 
     public $nbPaUniques;
-    public $nbParticipants;
-    public $nbOutilsAutres;
+//     public $nbParticipants;
+//     public $nbOutilsAutres;
     public $nbSeanceInd;
     public $nbSeanceGrp;
     public $nbHresInterv;
@@ -53,8 +53,8 @@ class Previsions
     public function initialize($previsions)
     {
         $previsions->nbPaUniques = rand(0, 200);
-        $previsions->nbParticipants = rand(0, 200);
-        $previsions->nbOutilsAutres = rand(0, 200);
+//         $previsions->nbParticipants = rand(0, 200);
+//         $previsions->nbOutilsAutres = rand(0, 200);
         $previsions->nbSeanceInd = rand(0, 200);
         $previsions->nbSeanceGrp = rand(0, 200);
         $previsions->nbHresInterv = rand(0, 200);

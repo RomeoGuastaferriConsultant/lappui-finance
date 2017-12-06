@@ -3,12 +3,11 @@
  * @param list list of project forecasts, as returned by REST api
  * @returns nothing directly... meant to be instantiated with new
  */
-function Previsions(list, periodes, activites) {
+function Previsions(list, projet) {
 	/** liste de previsions */
 	this.list = list;
-	/** les periodes sur lesquelles s'étendent ces prédictions */
-	this.periodes = periodes;
-	this.activites = activites;
+	/** projet auquel sont associées ces prévisions */
+	this.projet = projet;
 	
 	/** helpful alias to be used from within callbacks ('this' can be confusing) */
 	var previsions = this;
@@ -16,10 +15,45 @@ function Previsions(list, periodes, activites) {
 	/** HTML select element for current period */
 	this.htmlSelect = $("#id-sel-periode");
 
+	/** display forecast information in appropriate tab */
+	this.displayPrevision = function(prevision, index) {
+
+		// string that should prefix ids of target input elements
+		var prefix = "id-pre" + index + "-";
+		
+		// loop through all input fields in this tab
+		$(".tab-prevision-"+index).each(function() {
+			
+			// get element id
+			var id = $(this).attr('id');
+			if (id.startsWith(prefix)) {
+				// extract prefix to get property name
+				var prop = id.substr(prefix.length);
+				
+				// does this property exist on prevision ?
+				var value = prevision[prop];
+				if (value) {
+					// update document field
+					$("#"+id).val(value).show();
+				}
+				else {
+					// hide field row for which there is no forecast value
+					var closest = $("#"+id).closest("tr").hide();
+				}
+			}
+		});
+	}
+
+	this.displayPrevisions = function(previsions) {
+		for (var i = 1; i <= previsions.length; i++){
+			this.displayPrevision(previsions[i-1], i);
+		}
+	}
+	
 	/** specified period has been selected */
 	this.onSelect = function(index) {
 		// fill in project data
-		var newPeriode = this.periodes[index];
+		var newPeriode = regions.organismes.projets.current.periodes[index];
 
 		// ramasser toutes les prévisions à traiter pour la période courante
 		// une pour chaque activité
@@ -33,19 +67,19 @@ function Previsions(list, periodes, activites) {
 				aTraiter.push(prevision);
 			}
 		}		
-		displayPrevisions(aTraiter);
+		previsions.displayPrevisions(aTraiter);
 	}
 
-	this.initTabs = function() {
+	this.initTabs = function(projet) {
 		// display and/or hide activity tabs
 		var nbTabs = 4;
-		var nbActivities = this.activites.length;
+		var nbActivities = projet.activites.length;
 		for (var i = 1; i <= nbTabs; i++) {
 			if (i <= nbActivities) {
-				// show tab i
-				$('#tab-' + i).show();
 				// refresh title
-				$('#tab-' + i + ' a').text(i + ' - ' + new Activite(this.activites[i-1]).text());
+				$('#tab-' + i + ' a').text(i + ' - ' + new Activite(projet.activites[i-1]).text());
+				// show tab
+				$('#tab-' + i).show();
 			}
 			else {
 				// hide tab i
@@ -54,15 +88,19 @@ function Previsions(list, periodes, activites) {
 		}
 	}
 	
-	this.initSelection = function() {
-		// ensure listbox is empty before init
+	this.updateTabs = function(projet) {
+		
+	}
+	
+	this.initSelection = function(projet) {
+		// start with empty listbox
 		this.htmlSelect.empty();
 		// ...and also remove any previously attached event handler
 		this.htmlSelect.off();
 		
 		// add appropriate select options
-		for (var i = 0; i < this.periodes.length; i++) {
-			var periode = this.periodes[i];
+		for (var i = 0; i < projet.periodes.length; i++) {
+			var periode = projet.periodes[i];
 			
 			// transformer periode en string
 			var text = formatDates(periode.dateFrom, periode.dateTo);
@@ -74,29 +112,53 @@ function Previsions(list, periodes, activites) {
 		// attach event handler
 		this.htmlSelect.change(function(data) {
 			// reflect new selection in document
-			previsions.onSelect($("#id-sel-periode option:selected").val());
+			previsions.onSelect($("#id-sel-periode option:selected").index());
 		});
 
-		// is there a first entry to select by default ?
-		if (this.list.length) {
-			// current selection = first entry by default
-			this.onSelect(0);
-		}
+		// keep initial selection
+		this.onSelect(0);
 	}
 	
+	this.updateSelection = function(projet) {
+		// update select options
+		$("#id-sel-periode > option").each(function(index) {
+			var periode = projet.periodes[index];
+			
+			// transformer periode en string
+			var text = formatDates(periode.dateFrom, periode.dateTo);
+			
+			// show it
+			$(this).text(text);
+		});
+	}
+	
+	/** refresh display (for example, after language change event) */
+	this.refresh = function() {
+		// update select box contents
+		this.updateSelection(regions.organismes.projets.current);
+	}
+
 	this.init = function() {
-		this.initTabs();
-		this.initSelection();
+		var projet = regions.organismes.projets.current;
+		this.initTabs(projet);
+		this.initSelection(projet);
 	}
 	
 	this.init();
 }
 
-function displayPrevisions(previsions) {
-	for (var i = 0; i < previsions.length; i++){
-		displayPrevision(previsions[i]);
-	}
-}
-
-function displayPrevision(prevision) {
-}
+/** 
+ * code to execute upon document load 
+ */
+$(document).ready(function(){
+	// register to process language change events
+	$("html").on("change", function() {
+		if (regions)
+			if (regions.organismes)
+				if (regions.organismes.projets)
+					if (regions.organismes.projets.current)
+						if (regions.organismes.projets.current.previsions)
+							// redisplay tabs and select box
+							regions.organismes.projets.current.previsions.refresh();
+	});
+});

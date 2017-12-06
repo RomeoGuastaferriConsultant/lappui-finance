@@ -45,7 +45,7 @@ function adjustVisibilities() {
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {updateDocLang('authentication.json');});
+	$("html").on("change", function() {locale.updateDocLang('authentication.json');});
 	// ...and role change events
 	$("#role").on("change", adjustVisibilities)
 	// ...and region change events

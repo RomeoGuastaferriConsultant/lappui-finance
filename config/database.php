@@ -1,11 +1,21 @@
 <?php
 
 // extract db connection parameters from AWS Beanstalk Server if available
+
 define('DB_HOSTNAME', $_SERVER['RDS_HOSTNAME'] ?: env('DB_HOST',     '127.0.0.1'));
 define('DB_DATABASE', $_SERVER['RDS_DB_NAME' ] ?: env('DB_DATABASE', 'lappui'));
 define('DB_USERNAME', $_SERVER['RDS_USERNAME'] ?: env('DB_USERNAME', 'user'));
 define('DB_PASSWORD', $_SERVER['RDS_PASSWORD'] ?: env('DB_PASSWORD' ,'password'));
 define('DB_PORT', env('DB_PORT' ,'3306'));
+
+// function debug_to_console( $data ) {
+//     print_r($data);
+// }
+// debug_to_console('DB_HOSTNAME:'.DB_HOSTNAME);
+// debug_to_console('DB_DATABASE: '.DB_DATABASE);
+// debug_to_console('DB_USERNAME: '.DB_USERNAME);
+// debug_to_console('DB_PORT: '.DB_PORT);
+// debug_to_console('DB_PASSWORD: '.DB_PASSWORD);
 
 return [
 

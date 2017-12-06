@@ -5,16 +5,16 @@
     		<td style="text-align: center;"><span id="id-lbl-prevu-pre{{$tabnum}}"></span></td>
     	</tr>
     	<tr>
-    		<td style="direction:rtl;"><label id="id-lbl-pa-pre{{$tabnum}}" for="id-txt-pa-pre{{$tabnum}}"></label></td>
-    		<td><input id="id-txt-pa-pre{{$tabnum}}" type="text" size="3"></td>
+    		<td style="direction:rtl;"><label id="id-lbl-pa-pre{{$tabnum}}" for="id-pre{{$tabnum}}-nbPaUniques"></label></td>
+    		<td><input id="id-pre{{$tabnum}}-nbPaUniques" type="text" class="tab-prevision-1" size="3"></td>
     	</tr>
     	<tr>
-    		<td style="direction:rtl;"><label id="id-lbl-rejoints-pre{{$tabnum}}" for="id-txt-rejoints-pre{{$tabnum}}"></label></td>
-    		<td><input id="id-txt-rejoints-pre{{$tabnum}}" type="text" size="3"></td>
+    		<td style="direction:rtl;"><label id="id-lbl-rejoints-pre{{$tabnum}}" for="id-pre{{$tabnum}}-nbParticipants"></label></td>
+    		<td><input id="id-pre{{$tabnum}}-nbParticipants" type="text" class="tab-prevision-1" size="3"></td>
     	</tr>
     	<tr>
-    		<td style="direction:rtl;"><label id="id-lbl-outils-pre{{$tabnum}}" for="id-txt-outils-pre{{$tabnum}}"></label></td>
-    		<td><input id="id-txt-outils-pre{{$tabnum}}" type="text" size="3"></td>
+    		<td style="direction:rtl;"><label id="id-lbl-outils-pre{{$tabnum}}" for="id-pre{{$tabnum}}-nbOutilsAutres}"></label></td>
+    		<td><input id="id-pre{{$tabnum}}-nbOutilsAutres" type="text" class="tab-prevision-1" size="3"></td>
     	</tr>
     	<tr>
     		<td colspan="2"><span id="id-lbl-seances-pre{{$tabnum}}" style="font-weight: 700;"></span></td>

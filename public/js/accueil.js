@@ -6,7 +6,10 @@ var regions;
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {updateDocLang('home.json');});
+	$("html").on("change", function() {
+		// update labels, etc
+		locale.updateDocLang('home.json');
+	});
 
 	// simulate 1st language change event
 	// to load initial static content 

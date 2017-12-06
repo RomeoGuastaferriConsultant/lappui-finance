@@ -9,25 +9,29 @@ function Projets(list) {
 	/** HTML select element */
 	this.htmlSelect = $("#id-sel-projet");
 	
+	/** currently selected project */
+	this.current;
+
 	/** helpful alias to be used from within callbacks ('this' can be confusing) */
 	var projets = this;
-
+	
 	/** specified project has been selected */
 	this.onSelect = function(projetId) {
 		// update document to reflect new selection
 		for(var proj in this.list) {
 			// fetch selected project from list
 			if (projets.list[proj].id == projetId) {
-				var projet = projets.list[proj];
+				this.current = projets.list[proj];
 				
 				// fill in project data
-				$('#id-txt-resume').val(projet.resume);
+				$('#id-txt-resume').val(this.current.resume);
 
 				// display project dates
-				$('#id-txt-dates').val(formatPeriodes(projet.periodes));
+				$('#id-txt-dates').val(formatPeriodes(this.current.periodes));
+				
 				// delegate tabs related stuff
-				$.get(projet.links.previsions, function(data) {
-					projets.previsions = new Previsions(data, projet.periodes, projet.activites);
+				$.get(this.current.links.previsions, function(data) {
+					regions.organismes.projets.current.previsions = new Previsions(data, this.current);
 				});
 			}
 		}
@@ -56,3 +60,19 @@ function Projets(list) {
 	}
 }
 
+/** 
+ * code to execute upon document load 
+ */
+$(document).ready(function(){
+	// register to process language change events
+	$("html").on("change", function() {
+		if (regions)
+			if (regions.organismes)
+				if (regions.organismes.projets)
+					if (regions.organismes.projets.current)
+					{
+						// update project dates
+						$('#id-txt-dates').val(formatPeriodes(regions.organismes.projets.current.periodes));
+					}
+	});
+});
