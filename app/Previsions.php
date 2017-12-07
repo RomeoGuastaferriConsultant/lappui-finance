@@ -9,20 +9,20 @@ class Previsions
     public $periode;
     public $activite;
 
-    public $nbPaUniques;
-    public $nbParticipants;
-    public $nbOutilsAutres;
-    public $nbSeanceInd;
-    public $nbSeanceGrp;
-    public $nbHresInterv;
-    public $pctJourSemaine;
-    public $pctSoirSemaine;
-    public $pctNuitSemaine;
-    public $pctJourWeekend;
-    public $pctSoirWeekend;
-    public $pctNuitWeekend;
+//    public $nbPaUniques;
+//     public $nbParticipants;
+//     public $nbOutilsAutres;
+//     public $nbSeanceInd;
+//     public $nbSeanceGrp;
+//     public $nbHresInterv;
+//     public $pctJourSemaine;
+//     public $pctSoirSemaine;
+//     public $pctNuitSemaine;
+//     public $pctJourWeekend;
+//     public $pctSoirWeekend;
+//     public $pctNuitWeekend;
 
-    public $territoires = array(
+    protected $territoires = array(
         'Agglomération de Longueuil',
         'Beauharnois-Salaberry',
         'Haut-Richelieu',
@@ -50,20 +50,105 @@ class Previsions
         $this->initialize($this);
     }
 
+    /** define which properties are exposed for each activity type */
     public function initialize($previsions)
     {
-        $previsions->nbPaUniques = rand(0, 200);
-        $previsions->nbParticipants = rand(0, 200);
-        $previsions->nbOutilsAutres = rand(0, 200);
-        $previsions->nbSeanceInd = rand(0, 200);
-        $previsions->nbSeanceGrp = rand(0, 200);
-        $previsions->nbHresInterv = rand(0, 200);
-        $previsions->pctJourSemaine = rand(0, 100);
-        $previsions->pctSoirSemaine = 100 - $previsions->pctJourSemaine;
-        $previsions->pctNuitSemaine = rand(0, 50);
-        $previsions->pctJourWeekend = rand(0, 100);
-        $previsions->pctSoirWeekend = 100 - $previsions->pctJourWeekend;
-        $previsions->pctNuitWeekend = rand(0, 50);
+        switch($previsions->activite->type)
+        {
+            case ActiviteInformation::CAFE_RENCONTRE :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbSeanceGrp = rand(0, 24);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            case ActiviteInformation::CONFERENCE :
+                $previsions->nbParticipants = rand(0, 200);
+                $previsions->nbSeanceGrp = rand(0, 24);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            case ActiviteInformation::SEANCE_INFORMATION :
+                $previsions->nbPaUniques = rand(0, 50);
+                $previsions->nbParticipants = rand(0, 200);
+                $previsions->nbSeanceGrp = rand(0, 24);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            case ActiviteInformation::SENSIBILISATION :
+                $previsions->nbParticipants = rand(0, 200);
+                $previsions->nbSeanceGrp = rand(0, 24);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            case ActiviteInformation::OUTIL_INFO_DOC :
+            case ActiviteInformation::OUTIL_WEB :
+                $previsions->nbOutilsAutres = rand(0, 200);
+                break;
+
+            case ActiviteFormation::FORMATION_INDIVIDUELLE :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbOutilsAutres = rand(0, 200);
+                $previsions->nbSeanceInd = 2 * $previsions->nbPaUniques;
+                $previsions->nbHres = 3 * $previsions->nbSeanceInd;
+                break;
+
+            case ActiviteFormation::FORMATION_GROUPE :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbOutilsAutres = rand(0, 200);
+                $previsions->nbSeanceGrp = rand(0, 20);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            case ActiviteSoutien::SOUTIEN_INDIVIDUEL :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbSeanceInd = 3 * $previsions->nbPaUniques;
+                $previsions->nbHres = 3 * $previsions->nbSeanceInd;
+                break;
+
+            case ActiviteSoutien::GROUPE_SOUTIEN :
+            case ActiviteSoutien::GROUPE_ENTRAIDE :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbSeanceGrp = rand(0, 24);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            case ActiviteRepit::REPIT_INDIVIDUEL :
+            case ActiviteRepit::REPIT_ACCESSOIRE :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbPaNouveaux = rand(0, $previsions->nbPaUniques / 5);
+                $previsions->nbSeanceInd = 2 * $previsions->nbPaUniques;
+                $previsions->nbHres = 3 * $previsions->nbSeanceInd;
+                break;
+
+            case ActiviteRepit::REPIT_GROUPE :
+                $previsions->nbPaUniques = rand(0, 200);
+                $previsions->nbPaNouveaux = rand(0, $previsions->nbPaUniques / 5);
+                $previsions->nbSeanceGrp = rand(0, 24);
+                $previsions->nbHres = 3 * $previsions->nbSeanceGrp;
+                break;
+
+            default :
+                // we should never get here
+                assert(false);
+                break;
+        }
+
+        // the rest of these properties are shared by all activity types
+        if ($previsions->activite->volet == Activite::REPIT) {
+            // on doit rajouter la nuit aux prévisions de répit
+            $previsions->pctNuitSemaine = rand(0, 20);
+            $previsions->pctJourSemaine = rand(0, 100 - $previsions->pctNuitSemaine);
+            $previsions->pctSoirSemaine = 100 - $previsions->pctJourSemaine - $previsions->pctNuitSemaine;
+            $previsions->pctNuitWeekend = rand(0, 20);
+            $previsions->pctJourWeekend = rand(0, 100 - $previsions->pctNuitWeekend);
+            $previsions->pctSoirWeekend = 100 - $previsions->pctJourWeekend - $previsions->pctNuitWeekend;
+        }
+        else {
+            $previsions->pctJourSemaine = rand(0, 100);
+            $previsions->pctSoirSemaine = 100 - $previsions->pctJourSemaine;
+            $previsions->pctJourWeekend = rand(0, 100);
+            $previsions->pctSoirWeekend = 100 - $previsions->pctJourWeekend;
+        }
         $previsions->territoires = $this->assignerTerritoires();
     }
 

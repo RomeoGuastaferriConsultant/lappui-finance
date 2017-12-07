@@ -5,13 +5,15 @@ namespace App;
 class ActiviteFormation extends Activite
 {
     // types
-    const ACTIVITE_ATELIER = 20;
+    const FORMATION_INDIVIDUELLE = 20;
+    const FORMATION_GROUPE = 21;
 
     public function __construct($type)
     {
         parent::__construct(Activite::FORMATION);
 
-        assert($type == ActiviteFormation::ACTIVITE_ATELIER);
+        assert($type >= ActiviteFormation::FORMATION_INDIVIDUELLE);
+        assert($type <= ActiviteFormation::FORMATION_GROUPE);
         $this->type = $type;
     }
 }

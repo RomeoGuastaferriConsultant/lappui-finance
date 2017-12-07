@@ -22,6 +22,7 @@ function Previsions(list, projet) {
 		var prefix = "id-pre" + index + "-";
 		
 		// loop through all input fields in this tab
+		$(".tab-prevision-"+index).show();
 		$(".tab-prevision-"+index).each(function() {
 			
 			// get element id
@@ -32,13 +33,16 @@ function Previsions(list, projet) {
 				
 				// does this property exist on prevision ?
 				var value = prevision[prop];
-				if (value) {
+				if (value != undefined) {
 					// update document field
-					$("#"+id).val(value).show();
+					$("#"+id).val(value);
+
+					// make sure it shows
+					$("#"+id).closest("tr").show();
 				}
 				else {
 					// hide field row for which there is no forecast value
-					var closest = $("#"+id).closest("tr").hide();
+					$("#"+id).closest("tr").hide();
 				}
 			}
 		});
@@ -117,17 +121,14 @@ function Previsions(list, projet) {
 	
 	this.updateSelection = function(projet) {
 		$("#id-sel-periode > option").each(function(index) {
-			var periode = projet.periodes[index];
-			
-			if (periode) {
+			if (index < projet.periodes.length) {
+				var periode = projet.periodes[index];
+
 				// transformer periode en string
 				var text = formatDates(periode.dateFrom, periode.dateTo);
 				
 				// show it
 				$(this).text(text);
-			}
-			else {
-				console.log('...OOPS!! projet: ' + JSON.stringify(projet));
 			}
 		});
 	}

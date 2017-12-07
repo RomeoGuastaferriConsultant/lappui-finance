@@ -19,7 +19,8 @@ function Activite(activite)
 		case 13 : return ('Activité de sensibilisation');
 		case 14 : return ('Outils d\'information');
 		case 15 : return ('Outil web');
-		case 20 : return ('Activité atelier');
+		case 20 : return ('Formation individuelle');
+		case 21 : return ('Formation de groupe');
 		case 30 : return ('Soutien individuel');
 		case 31 : return ('Groupe de soutien');
 		case 32 : return ('Groupe d\'entraide');
@@ -38,7 +39,8 @@ function Activite(activite)
 		case 13 : return ('Awareness Activity');
 		case 14 : return ('Information Tools');
 		case 15 : return ('Web Tools');
-		case 20 : return ('Workshop');
+		case 20 : return ('Individual Training');
+		case 21 : return ('Group Training');
 		case 30 : return ('Individual Support');
 		case 31 : return ('Support Group');
 		case 32 : return ('Self-Help Group');

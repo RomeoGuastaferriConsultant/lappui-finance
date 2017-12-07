@@ -54,7 +54,7 @@ class ProjetController extends Controller
                 new Period('2016-10-01', '2017-03-31', 'previsions'),
             ),
             array(
-                new ActiviteFormation(ActiviteFormation::ACTIVITE_ATELIER),
+                new ActiviteFormation(ActiviteFormation::FORMATION_GROUPE),
                 new ActiviteInformation(ActiviteInformation::CAFE_RENCONTRE),
                 new ActiviteInformation(ActiviteInformation::SENSIBILISATION),
                 new ActiviteInformation(ActiviteInformation::CONFERENCE)
@@ -89,6 +89,7 @@ class ProjetController extends Controller
             ),
             array(
                 new ActiviteInformation(ActiviteInformation::SEANCE_INFORMATION),
+                new ActiviteFormation(ActiviteFormation::FORMATION_INDIVIDUELLE),
                 new ActiviteInformation(ActiviteInformation::OUTIL_WEB),
                 new ActiviteRepit(ActiviteRepit::REPIT_GROUPE)
             ));

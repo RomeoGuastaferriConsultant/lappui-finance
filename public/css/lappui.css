@@ -30,6 +30,16 @@ label {
 	font-family: "Helvetica", "Arial", sans-serif;
 }
 
+/* auto-filled input fields */
+.tab-prevision-1, .tab-prevision-2, .tab-prevision-3, .tab-prevision-4 {
+	background: white;
+} 
+
+/* input totals */
+.total {
+	background: rgb(255, 255, 204);
+}
+
 #id-lbl-bienvenue {
 	margin-left: 50px;
 	margin-top: 50px;

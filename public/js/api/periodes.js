@@ -11,12 +11,7 @@ function formatDate(date) {
 
 /** formats a date interval */
 function formatDates(dateFrom, dateTo) {
-	var to = locale.getLang() == 'en' ? ' to ' : ' au ';
-	
-	// add 12 hours to dates to circumvent a javascript date issue
-	return formatDate(dateFrom)
-	     + to
-	     + formatDate(dateTo);
+	return formatDate(dateFrom) + ' - ' + formatDate(dateTo);
 }
 
 /** formats a periode (array of date intervals) */
