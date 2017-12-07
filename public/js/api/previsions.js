@@ -22,8 +22,8 @@ function Previsions(list, projet) {
 		var prefix = "id-pre" + index + "-";
 		
 		// loop through all input fields in this tab
-		$(".tab-prevision-"+index).show();
-		$(".tab-prevision-"+index).each(function() {
+		$(".tab-previsions-"+index).show();
+		$(".tab-previsions-"+index).each(function() {
 			
 			// get element id
 			var id = $(this).attr('id');
@@ -46,6 +46,45 @@ function Previsions(list, projet) {
 				}
 			}
 		});
+		
+		// update the totals fields
+		var totalSemaine = 0;
+
+		var pctJourSemaine = prevision['pctJourSemaine'];
+		if (pctJourSemaine != undefined)
+			totalSemaine += pctJourSemaine;
+
+		var pctSoirSemaine = prevision['pctSoirSemaine'];
+		if (pctSoirSemaine != undefined)
+			totalSemaine += pctSoirSemaine;
+
+		var pctNuitSemaine = prevision['pctNuitSemaine'];
+		if (pctNuitSemaine != undefined)
+			totalSemaine += pctNuitSemaine;
+
+		// update week total
+		$("#" + prefix + "pctTotSemaine").val(totalSemaine);
+		
+		// total pour le weekend
+		var totalWeekend = 0;
+
+		var pctJourWeekend = prevision['pctJourWeekend'];
+		if (pctJourWeekend != undefined)
+			totalWeekend += pctJourWeekend;
+
+		var pctSoirWeekend = prevision['pctSoirWeekend'];
+		if (pctSoirWeekend != undefined)
+			totalWeekend += pctSoirWeekend;
+
+		var pctNuitWeekend = prevision['pctNuitWeekend'];
+		if (pctNuitWeekend != undefined)
+			totalWeekend += pctNuitWeekend;
+		
+		// update week total
+		$("#" + prefix + "pctTotWeekend").val(totalWeekend);
+
+		// update cumulative total
+		$("#" + prefix + "pctTotCumul").val(totalSemaine + totalWeekend);
 	}
 
 	this.displayPrevisions = function(previsions) {

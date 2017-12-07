@@ -136,18 +136,23 @@ class Previsions
         // the rest of these properties are shared by all activity types
         if ($previsions->activite->volet == Activite::REPIT) {
             // on doit rajouter la nuit aux prévisions de répit
-            $previsions->pctNuitSemaine = rand(0, 20);
-            $previsions->pctJourSemaine = rand(0, 100 - $previsions->pctNuitSemaine);
-            $previsions->pctSoirSemaine = 100 - $previsions->pctJourSemaine - $previsions->pctNuitSemaine;
-            $previsions->pctNuitWeekend = rand(0, 20);
-            $previsions->pctJourWeekend = rand(0, 100 - $previsions->pctNuitWeekend);
-            $previsions->pctSoirWeekend = 100 - $previsions->pctJourWeekend - $previsions->pctNuitWeekend;
+            $pctSemaine = rand(50, 100);
+            $pctWeekend = 100 - $pctSemaine;
+            $previsions->pctNuitSemaine = rand(0, $pctSemaine/3);
+            $previsions->pctJourSemaine = rand(0, $pctSemaine - $previsions->pctNuitSemaine);
+            $previsions->pctSoirSemaine = $pctSemaine - $previsions->pctJourSemaine - $previsions->pctNuitSemaine;
+
+            $previsions->pctNuitWeekend = rand(0, $pctWeekend/3);
+            $previsions->pctJourWeekend = rand(0, $pctWeekend - $previsions->pctNuitWeekend);
+            $previsions->pctSoirWeekend = $pctWeekend - $previsions->pctJourWeekend - $previsions->pctNuitWeekend;
         }
         else {
-            $previsions->pctJourSemaine = rand(0, 100);
-            $previsions->pctSoirSemaine = 100 - $previsions->pctJourSemaine;
-            $previsions->pctJourWeekend = rand(0, 100);
-            $previsions->pctSoirWeekend = 100 - $previsions->pctJourWeekend;
+            $pctSemaine = rand(60, 100);
+            $pctWeekend = 100 - $pctSemaine;
+            $previsions->pctSoirSemaine = rand(0, $pctSemaine/3);
+            $previsions->pctJourSemaine = $pctSemaine - $previsions->pctSoirSemaine;
+            $previsions->pctSoirWeekend = rand(0, $pctWeekend/3);
+            $previsions->pctJourWeekend = $pctWeekend - $previsions->pctSoirWeekend;
         }
         $previsions->territoires = $this->assignerTerritoires();
     }

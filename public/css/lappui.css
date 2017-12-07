@@ -31,13 +31,16 @@ label {
 }
 
 /* auto-filled input fields */
-.tab-prevision-1, .tab-prevision-2, .tab-prevision-3, .tab-prevision-4 {
+.tab-previsions-1, .tab-previsions-2, .tab-previsions-3, .tab-previsions-4, 
+.tab-resultats-1, .tab-resultats-2, .tab-resultats-3, .tab-resultats-4  {
 	background: white;
+	text-align: right;
 } 
 
 /* input totals */
 .total {
 	background: rgb(255, 255, 204);
+    text-align: right;
 }
 
 #id-lbl-bienvenue {
