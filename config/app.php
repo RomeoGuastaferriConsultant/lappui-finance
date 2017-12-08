@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost:8000'),
+    'url' => env('APP_URL', 'http://romeo-env.us-east-1.elasticbeanstalk.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:wZnbyqsFT7ss3H9a+DPveOluHbODSTnz9TfBd9vX2SY='),
 
     'cipher' => 'AES-256-CBC',
 
@@ -126,7 +126,7 @@ return [
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     /*
-    |--------------------------------------------------------------------------
+    |-------------------------------------------------------------------base64:wZnbyqsFT7ss3H9a+DPveOluHbODSTnz9TfBd9vX2SY=-------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
