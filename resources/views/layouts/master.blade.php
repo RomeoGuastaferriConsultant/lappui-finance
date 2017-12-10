@@ -9,6 +9,7 @@
         <title>L'Appui-Finances - @yield('titre')</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/tooltips.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/lappui.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/tabs.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32">
@@ -21,7 +22,9 @@
         </div>
         <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
         <script src="{{ asset('js/localization.js') }}"></script>
+        <script src="{{ asset('js/tooltips.js') }}"></script>
         <script src="{{ asset('js/banniere.js') }}"></script>
+        <script src="{{ asset('js/forms.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/tabs.js') }}"></script>
         @stack('scripts')

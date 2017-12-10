@@ -1,0 +1,60 @@
+// inspired from: https://css-tricks.com/bubble-point-tooltips-with-css3-jquery/
+var tooltips = function(list) {
+    var $tooltip,
+    $body = $('body'),
+    $el;
+
+    return list.each(function(i, el) {
+		
+	      $el = $(el).attr("data-tooltip", i);
+
+	      // Make DIV and append to page 
+	      var $tooltip = $('<div class="tooltip" data-tooltip="' + i + '">' + $el.attr('title') + '<div class="arrow"></div></div>').appendTo("body");
+
+	      // Position right away, so first appearance is smooth
+	      var linkPosition = $el.position();
+    	  var horizontalOffset = $tooltip.width()/2 - 30;
+
+	      $tooltip.css({
+	        top: linkPosition.top - $tooltip.outerHeight() - 25,
+	        left: linkPosition.left - horizontalOffset
+	      });
+
+	      $el
+	      // Get rid of yellow box popup
+	      .removeAttr("title")
+
+	      // Mouseenter
+	      .hover(function() {
+
+	        $el = $(this);
+
+	        $tooltip = $('div[data-tooltip=' + $el.data('tooltip') + ']');
+
+	        // Reposition tooltip, in case of page movement e.g. screen resize                        
+	        var linkPosition = $el.position();
+
+	        $tooltip.css({
+	          top: linkPosition.top - $tooltip.outerHeight() - 25,
+	          left: linkPosition.left - horizontalOffset
+	        });
+
+	        // Adding class handles animation through CSS
+	        $tooltip.addClass("active");
+
+	        // Mouseleave
+	      }, function() {
+
+	        $el = $(this);
+
+	        // Temporary class for same-direction fadeout
+	        $tooltip = $('div[data-tooltip=' + $el.data('tooltip') + ']').addClass("out");
+
+	        // Remove all classes
+	        setTimeout(function() {
+	          $tooltip.removeClass("active").removeClass("out");
+	          }, 300);
+
+	        });
+	});
+}

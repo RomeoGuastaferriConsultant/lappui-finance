@@ -83,11 +83,11 @@
               alt="Notre canal YouTube">
         <area shape="rect"
               coords="129,10,168,45"
-              href="javascript:resizeText(-1);"
+              href="javascript:resizeText(-2);"
               alt="Agrandir le texte">
         <area shape="rect"
               coords="174,10,214,45"
-              href="javascript:resizeText(+1);"
+              href="javascript:resizeText(+2);"
               alt="Réduire le texte">
         <area shape="rect"
               coords="235,10,275,45"

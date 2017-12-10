@@ -76,6 +76,10 @@ function Localization() {
 		$("img")    .each(function(index, element) {locale.setImageLocale(element, data);});
 
 		$(":button").each(function(index, element) {locale.setButtonLocale(element, data);});
+		
+		// update tooltips (implemented via 'title' attribute)
+		console.log('about to process tooltips... ?');
+		$("[title]").each(function(index, element) {locale.setTitleLocale(element, data)});
 	}
 
 	this.setElementLocale = function(element, data) {
@@ -97,6 +101,15 @@ function Localization() {
 		var newVal = this.getNewLocalizedElementValue(element, data);
 		if (newVal) {
 			$(element).val(newVal);
+		}
+	}
+
+	this.setTitleLocale = function(element, data) {
+		console.log('setting Title locale. title: ' + element.title);
+		var newVal = data[element.title];//this.getNewLocalizedElementValue(element, data);
+		if (newVal) {
+			console.log('setting newVal:' + newVal);
+			$(element).attr('title', newVal);
 		}
 	}
 

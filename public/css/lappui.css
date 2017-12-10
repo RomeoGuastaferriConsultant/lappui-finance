@@ -2,6 +2,7 @@
 
 body {
     color: rgb(0, 84, 108);
+    font-size: 14px;
 }
 
 hr {
@@ -17,6 +18,10 @@ label {
     margin-left: 10px;
 }
 
+/* size number input elements */
+input[type=number]{
+    width: 50px;
+} 
 .contenu {
     margin-left: 100px;
     margin-right: 100px;

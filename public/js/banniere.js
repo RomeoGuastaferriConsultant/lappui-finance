@@ -8,12 +8,16 @@ $(document).ready(function(){
 // fonction pour agrandir et réduire le texte
 //
 /**
-* source: https://davidwalsh.name/change-text-size-onclick-with-javascript
+* inspiration: https://davidwalsh.name/change-text-size-onclick-with-javascript
 */
-function resizeText(multiplier) {
-	if (document.body.style.fontSize == "") {
-	 document.body.style.fontSize = "1.0em";
+function resizeText(increment) {
+	var fontSize = $('body').css('fontSize');
+	var pixels = 14; // default
+	if (fontSize) {
+		if (fontSize.endsWith('px')) {
+			pixels = parseFloat(fontSize);
+		}
 	}
-	document.body.style.fontSize = parseFloat(document.body.style.fontSize) 
-		+ (multiplier * 0.2) + "em";
+	var newSize = (pixels + increment) + 'px';
+	$('body').css('fontSize', newSize);
 }

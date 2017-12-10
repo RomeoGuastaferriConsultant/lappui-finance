@@ -15,36 +15,61 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbPaUniques"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbPaUniques"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-nbPaNouveaux-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbPaNouveaux"></label>
+    			<img src="{{ asset('img/question-mark.png') }}"
+    			   title="id-tooltip-nbPaNouveaux"
+    			  height="20" width="20">&nbsp;
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbPaNouveaux"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbPaNouveaux"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-nbParticipants-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbParticipants"></label>
+    			<img src="{{ asset('img/question-mark.png') }}"
+    			   title="id-tooltip-nbParticipants"
+    			  height="20" width="20">&nbsp;
     		</td>
     		<td><input id="id-pre{{$tabnum}}-nbParticipants"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbParticipants"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-nbOutilsAutres-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbOutilsAutres}"></label>
+    			<img  src="{{ asset('img/question-mark.png') }}"
+    			     title="id-tooltip-nbOutilsAutres"
+    			   height="20" width="20">&nbsp;
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbOutilsAutres"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbOutilsAutres"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
 
@@ -62,7 +87,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbSeanceInd"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbSeanceInd"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+   					class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
     	<tr>
@@ -72,17 +101,28 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbSeanceGrp"
-    			     type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbSeanceGrp"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    			     class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-nbHres-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbHres"></label>
+    			<img  src="{{ asset('img/question-mark.png') }}"
+    			    title="id-tooltip-nbHres"
+    			   height="20" width="20">&nbsp;
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbHres"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbHres"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}" size="3">
     		</td>
     	</tr>
     	<tr>
@@ -92,7 +132,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-nbHresInterv"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3">
+    				 name="nbHresInterv"
+    				 type="number" min="0" max="999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}">
     		</td>
     	</tr>
 
@@ -121,7 +165,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctJourSemaine"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3"> %
+    				 name="pctJourSemaine"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
     	<tr>
@@ -131,7 +179,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctSoirSemaine"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3"> %
+    				 name="pctSoirSemaine"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
     	<tr>
@@ -141,7 +193,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctNuitSemaine"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3"> %
+    				 name="pctNuitSemaine"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
 
@@ -153,7 +209,8 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotSemaine"
-    				 type="text" class="total" size="3"> %
+    				 name="pctJourSemaine"
+    				 type="text" class="total" disabled size="3"> %
     		</td>
     	</tr>
 
@@ -180,7 +237,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctJourWeekend"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3"> %
+    				 name="pctJourWeekend"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
     	<tr>
@@ -190,7 +251,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctSoirWeekend"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3"> %
+    				 name="pctSoirWeekend"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
     	<tr>
@@ -200,7 +265,11 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctNuitWeekend"
-    				 type="text" class="tab-previsions-{{$tabnum}}" size="3"> %
+    				 name="pctNuitWeekend"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
 
@@ -212,7 +281,7 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotWeekend"
-    				 type="text" class="total" size="3"> %
+    				 type="text" class="total" disabled size="3"> %
     		</td>
     	</tr>
 

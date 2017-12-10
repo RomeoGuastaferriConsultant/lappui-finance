@@ -24,5 +24,9 @@
     "id-lbl-pcTotCumul-pre" : "semaine + week-end",
     "id-lbl-fin-pre" : "Week-end",
     "id-btn-terr-pre" : "Territoires ciblés...",
-    "id-btn-save-pre" : "Sauvegarder"
+    "id-btn-save-pre" : "Sauvegarder",
+    "id-tooltip-nbHres" : "Heure directes données: <br>Le nombre d'heures données sans considérer le nombre de personnes dans la salle.<p>Exemple: une conférence de 2 heures donne 2 heures.<p>Les heures directes n'incluent pas les heures de coordination, de préparation et de suivi.",
+    "id-tooltip-nbParticipants" : "Certaines activités d'information ne vise pas uniquement des proches aidants et visent la population en général dans une perspective de prévention. Par exemple, des conférences offertes au grand public. Pour ce type d'activité, inscrire le nombre de personnes ciblées.",
+    "id-tooltip-nbOutilsAutres" : "Nombre d'outils diffusés.",
+    "id-tooltip-nbPaNouveaux" : "Houston, we've got a problem."
 }

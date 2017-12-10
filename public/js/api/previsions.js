@@ -91,6 +91,8 @@ function Previsions(list, projet) {
 		for (var i = 1; i <= previsions.length; i++){
 			this.displayPrevision(previsions[i-1], i);
 		}
+		// initialize tooltips
+		tooltips($("[title]"));
 	}
 	
 	/** specified period has been selected */
