@@ -73,6 +73,59 @@
     		</td>
     	</tr>
 
+    	{{-- nature de l'intervention --}}
+    	<tr>
+    		<td style="text-align:right;" colspan="2">
+    			<label id="id-lbl-natureInterv-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-natureInterv"></label>
+    			<img  src="{{ asset('img/question-mark.png') }}"
+    			     data-tooltip-id="id-tooltip-natureInterv-{{$tabnum}}"
+    			   height="20" width="20">&nbsp;
+    			<select id="id-pre{{$tabnum}}-natureInterv"
+    				 name="natureInterv"
+    				class="tab-previsions-{{$tabnum}}">
+    				<option value="0">Présence / Surveillance</option>
+    				<option value="1">Stimulation</option>
+    			</select>
+    			<span style="visibility:hidden;">&nbsp;%</span>
+    		</td>
+    	</tr>
+
+    	{{-- urgence/ponctuel --}}
+    	<tr>
+    		<td style="text-align:right;">
+    			<label id="id-lbl-pctUrgence-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctUrgence"></label>
+    			<img  src="{{ asset('img/question-mark.png') }}"
+    			     data-tooltip-id="id-tooltip-pctUrgence-{{$tabnum}}"
+    			   height="20" width="20">&nbsp;
+    		</td>
+    		<td>
+    			<input id="id-pre{{$tabnum}}-pctUrgence"
+    				 name="pctUrgence"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
+    		</td>
+    	</tr>
+    	<tr>
+    		<td style="text-align:right;">
+    			<label id="id-lbl-pctPonctuel-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctPonctuel"></label>
+    			<img  src="{{ asset('img/question-mark.png') }}"
+    			     data-tooltip-id="id-tooltip-pctPonctuel-{{$tabnum}}"
+    			   height="20" width="20">&nbsp;
+    		</td>
+    		<td>
+    			<input id="id-pre{{$tabnum}}-pctPonctuel"
+    				 name="pctPonctuel"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}">%
+    	</tr>
+
     	{{-- titre:  Séances et heures d'intervention --}}
     	<tr>
     		<td colspan="2">
@@ -119,7 +172,7 @@
     		<td>
     			<input id="id-pre{{$tabnum}}-nbHres"
     				 name="nbHres"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-previsions-{{$tabnum}}" size="3">

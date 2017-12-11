@@ -1,8 +1,8 @@
-var elements = [];
+var values = [];
 
 function onFocus(element) {
 	// record last known value
-	elements[element.id] = element.value;
+	values[element.id] = element.value;
 }
 
 /**
@@ -14,12 +14,12 @@ function onNumberChange(element) {
 	if (!containsValidNumber(element)) {
 		// possibly illegal input
 		// seek record of last legal input
-		var lastValue = elements[element.id];
+		var lastValue = values[element.id];
 		if (lastValue)
 			element.value = lastValue;
 	}
 	// record current legal value
-	elements[element.id] = element.value;
+	values[element.id] = element.value;
 }
 
 function containsValidNumber(element) {

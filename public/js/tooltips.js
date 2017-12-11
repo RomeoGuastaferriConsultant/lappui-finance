@@ -3,13 +3,23 @@ var tooltips = function(list) {
     var $tooltip,
     $body = $('body'),
     $el;
-
+    
+    //console.log('tooltips called: ' + list);
+    
     return list.each(function(i, el) {
 		
 	      $el = $(el).attr("data-tooltip", i);
 
+	      // fetch tooltip content
+	      var content = $el.attr('title');
+	      if (!content) {
+	    	  // nothing to process
+	    	  // console.log('tooltip: nothing to process - bye bye!');
+	    	  return;
+	      }
+	      
 	      // Make DIV and append to page 
-	      var $tooltip = $('<div class="tooltip" data-tooltip="' + i + '">' + $el.attr('title') + '<div class="arrow"></div></div>').appendTo("body");
+	      var $tooltip = $('<div class="tooltip" data-tooltip="' + i + '">' + content + '<div class="arrow"></div></div>').appendTo("body");
 
 	      // Position right away, so first appearance is smooth
 	      var linkPosition = $el.position();
@@ -57,6 +67,8 @@ var tooltips = function(list) {
 
 	        });
 	});
+    
+    // remove marker
 }
 
 var tooltipsRemove = function(list) {

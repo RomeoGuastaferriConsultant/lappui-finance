@@ -145,6 +145,11 @@ class Previsions
             $previsions->pctNuitWeekend = rand(0, $pctWeekend/3);
             $previsions->pctJourWeekend = rand(0, $pctWeekend - $previsions->pctNuitWeekend);
             $previsions->pctSoirWeekend = $pctWeekend - $previsions->pctJourWeekend - $previsions->pctNuitWeekend;
+
+            // a few other common fields
+            $previsions->pctUrgence = rand(0,20);
+            $previsions->pctPonctuel = rand(0,80);
+            $previsions->natureInterv = rand(0,1);
         }
         else {
             $pctSemaine = rand(60, 100);

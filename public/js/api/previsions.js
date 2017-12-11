@@ -174,8 +174,8 @@ function Previsions(list, projet) {
 		});
 	}
 	
-	/** refresh display (for example, after language change event) */
-	this.refresh = function() {
+	// html onchange event seems to be triggered a lot...
+	this.updateLanguage = function() {
 		if (regions)
 			if (regions.organismes)
 				if (regions.organismes.projets)
@@ -184,22 +184,22 @@ function Previsions(list, projet) {
 						this.updateSelection(regions.organismes.projets.current);
 						// and also tab headers
 						this.displayTabs(regions.organismes.projets.current);
-						// and the tooltips
-						this.updateTooltips();
 					}
+		// update the tooltips
+		this.updateTooltips();
 	}
 	
 	this.updateTooltips = function() {
 		// clean up current situation
 		tooltipsRemove($("[data-tooltip-id]"));
 		// reset titles
-		locale.updateDocLang('previsions.json'); 
+		locale.updateDocLang('previsions-tooltips.json'); 
 
 		// wait for titles to finish being updated...
 		setTimeout(function() {
 			// ...then rebuild the tooltips
 			tooltips($("[data-tooltip-id]"));
-		}, 750);
+		}, 700);
 	}
 	
 	this.init = function() {
@@ -232,7 +232,7 @@ $(document).ready(function(){
 				if (regions.organismes.projets) {
 					if (regions.organismes.projets.current)
 						if (regions.organismes.projets.current.previsions) {
-							regions.organismes.projets.current.previsions.refresh();
+							regions.organismes.projets.current.previsions.updateLanguage();
 						}
 				}
 			}
