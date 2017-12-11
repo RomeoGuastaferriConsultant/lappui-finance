@@ -92,7 +92,7 @@ function Previsions(list, projet) {
 			this.displayPrevision(previsions[i-1], i);
 		}
 		// initialize tooltips
-		tooltips($("[title]"));
+//		this.updateTooltips();
 	}
 	
 	/** specified period has been selected */
@@ -184,9 +184,24 @@ function Previsions(list, projet) {
 						this.updateSelection(regions.organismes.projets.current);
 						// and also tab headers
 						this.displayTabs(regions.organismes.projets.current);
+						// and the tooltips
+						this.updateTooltips();
 					}
 	}
+	
+	this.updateTooltips = function() {
+		// clean up current situation
+		tooltipsRemove($("[data-tooltip-id]"));
+		// reset titles
+		locale.updateDocLang('previsions.json'); 
 
+		// wait for titles to finish being updated...
+		setTimeout(function() {
+			// ...then rebuild the tooltips
+			tooltips($("[data-tooltip-id]"));
+		}, 750);
+	}
+	
 	this.init = function() {
 		if (regions)
 			if (regions.organismes)
@@ -196,6 +211,8 @@ function Previsions(list, projet) {
 						this.initSelection(regions.organismes.projets.current);
 						// display tab headers
 						this.displayTabs(regions.organismes.projets.current);
+						// initialize the tooltips
+						this.updateTooltips();
 					}
 	}
 	
@@ -208,12 +225,16 @@ function Previsions(list, projet) {
 $(document).ready(function(){
 	// register to process language change events
 	$("html").on("change", function() {
+		// update labels, redisplay tabs and select box
+		//locale.updateDocLang('previsions.json');
 		if (regions)
-			if (regions.organismes)
-				if (regions.organismes.projets)
+			if (regions.organismes) {
+				if (regions.organismes.projets) {
 					if (regions.organismes.projets.current)
-						if (regions.organismes.projets.current.previsions)
-							// redisplay tabs and select box
+						if (regions.organismes.projets.current.previsions) {
 							regions.organismes.projets.current.previsions.refresh();
+						}
+				}
+			}
 	});
 });

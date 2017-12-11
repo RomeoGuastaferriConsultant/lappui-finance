@@ -78,8 +78,7 @@ function Localization() {
 		$(":button").each(function(index, element) {locale.setButtonLocale(element, data);});
 		
 		// update tooltips (implemented via 'title' attribute)
-		console.log('about to process tooltips... ?');
-		$("[title]").each(function(index, element) {locale.setTitleLocale(element, data)});
+		$("[data-tooltip-id]").each(function(index, element) {locale.setTitleLocale(element, data)});
 	}
 
 	this.setElementLocale = function(element, data) {
@@ -105,10 +104,16 @@ function Localization() {
 	}
 
 	this.setTitleLocale = function(element, data) {
-		console.log('setting Title locale. title: ' + element.title);
-		var newVal = data[element.title];//this.getNewLocalizedElementValue(element, data);
+		// remove distinctive suffix from tooltip id
+		var rawId = $(element).attr('data-tooltip-id');
+		var tooltipId = rawId.substr(0, rawId.length-2);
+		var newVal = data[tooltipId];
 		if (newVal) {
-			console.log('setting newVal:' + newVal);
+			// content defined as string array ?
+			if (Array.isArray(newVal)) {
+				// return concatenation of all strings, separated by <br> line breaks
+				newVal = newVal.join("<br>");
+			}
 			$(element).attr('title', newVal);
 		}
 	}

@@ -27,7 +27,7 @@
     			<label id="id-lbl-nbPaNouveaux-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbPaNouveaux"></label>
     			<img src="{{ asset('img/question-mark.png') }}"
-    			   title="id-tooltip-nbPaNouveaux"
+    			    data-tooltip-id="id-tooltip-nbPaNouveaux-{{$tabnum}}"
     			  height="20" width="20">&nbsp;
     		</td>
     		<td>
@@ -44,7 +44,7 @@
     			<label id="id-lbl-nbParticipants-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbParticipants"></label>
     			<img src="{{ asset('img/question-mark.png') }}"
-    			   title="id-tooltip-nbParticipants"
+    			    data-tooltip-id="id-tooltip-nbParticipants-{{$tabnum}}"
     			  height="20" width="20">&nbsp;
     		</td>
     		<td><input id="id-pre{{$tabnum}}-nbParticipants"
@@ -60,7 +60,7 @@
     			<label id="id-lbl-nbOutilsAutres-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbOutilsAutres}"></label>
     			<img  src="{{ asset('img/question-mark.png') }}"
-    			     title="id-tooltip-nbOutilsAutres"
+    			     data-tooltip-id="id-tooltip-nbOutilsAutres-{{$tabnum}}"
     			   height="20" width="20">&nbsp;
     		</td>
     		<td>
@@ -113,7 +113,7 @@
     			<label id="id-lbl-nbHres-pre{{$tabnum}}"
     				  for="id-pre{{$tabnum}}-nbHres"></label>
     			<img  src="{{ asset('img/question-mark.png') }}"
-    			    title="id-tooltip-nbHres"
+    			     data-tooltip-id="id-tooltip-nbHres-{{$tabnum}}"
     			   height="20" width="20">&nbsp;
     		</td>
     		<td>

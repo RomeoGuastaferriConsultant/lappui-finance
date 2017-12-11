@@ -16,7 +16,7 @@ var tooltips = function(list) {
     	  var horizontalOffset = $tooltip.width()/2 - 30;
 
 	      $tooltip.css({
-	        top: linkPosition.top - $tooltip.outerHeight() - 25,
+	        top: linkPosition.top - $tooltip.outerHeight() - 18,
 	        left: linkPosition.left - horizontalOffset
 	      });
 
@@ -35,7 +35,7 @@ var tooltips = function(list) {
 	        var linkPosition = $el.position();
 
 	        $tooltip.css({
-	          top: linkPosition.top - $tooltip.outerHeight() - 25,
+	          top: linkPosition.top - $tooltip.outerHeight() - 18,
 	          left: linkPosition.left - horizontalOffset
 	        });
 
@@ -56,5 +56,19 @@ var tooltips = function(list) {
 	          }, 300);
 
 	        });
+	});
+}
+
+var tooltipsRemove = function(list) {
+    var $el;
+	// first remove all current tooltip divs
+	$('div[data-tooltip]').remove();
+
+    return list.each(function(i, el) {
+    	// remove data-tooltip attribute
+    	$el = $(el).removeAttr("data-tooltip");
+    	
+    	// remove event handlers
+    	$el.off();
 	});
 }
