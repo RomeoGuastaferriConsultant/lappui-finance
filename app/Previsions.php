@@ -22,7 +22,7 @@ class Previsions
 //     public $pctSoirWeekend;
 //     public $pctNuitWeekend;
 
-    protected $territoires = array(
+    public $territoires = array(
         'Agglomération de Longueuil',
         'Beauharnois-Salaberry',
         'Haut-Richelieu',
@@ -160,6 +160,7 @@ class Previsions
             $previsions->pctJourWeekend = $pctWeekend - $previsions->pctSoirWeekend;
         }
         $previsions->territoires = $this->assignerTerritoires();
+        Log::info('returning '.print_r($previsions->territoires, true));
     }
 
     protected function assignerTerritoires()
@@ -167,13 +168,17 @@ class Previsions
         $result = $this->getCopy($this->territoires);
 
         // we'll remove a few elements to make it interesting
-        $removeCount = rand(1, 10);
+        $removeCount = rand(8, 12);
         while ($removeCount-- > 0)
         {
             // remove random element
-            unset($result[rand(0, sizeOf($result)-1)]);
-        }
+            $index = rand(0, sizeOf($result)-1);
+            // key associated with element to remove
+            $key = array_keys($result)[$index];
 
+            // remove element
+            unset($result[$key]);
+        }
         return $result;
     }
 

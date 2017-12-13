@@ -85,14 +85,46 @@ function Previsions(list, projet) {
 
 		// update cumulative total
 		$("#" + prefix + "pctTotCumul").val(totalSemaine + totalWeekend);
+		
+		// update territoires ciblés
+		this.displayTerritoiresCibles(prevision, index);
+	}
+	
+	this.displayTerritoiresCibles = function(prevision, index) {
+		// start by cleaning up what's already there in current index
+		$('.territoires-pre' + index).remove();
+
+		if (prevision.territoires) {
+			// point d'insertion
+			var insertion = $('#id-tr-territoires-cibles-pre' + index);
+
+			for (var terr in prevision.territoires) {
+				// build new tr to insert
+				var tr = "<tr class='territoires-pre" + index + "'>"
+					   +    "<td style='text-align:right;'>"
+					   +       "<label id='id-lbl-terr" + terr + "-pre" + index + "' for='id-chk-terr" + terr + "-pre" + index + "'>" 
+					   +          prevision.territoires[terr] 
+					   +       "</label>"
+					   +    "</td>"
+					   +    "<td style='text-align:center;'>"
+					   +       "<input id='id-chk-terr" + terr + "-pre" + index + "' type='checkbox' checked='true'>"
+					   +    "</td>"
+					   + "</tr>";
+
+				tr = $(tr);
+				// insert tr
+				tr.insertAfter(insertion);
+				
+				// prepare for next loop
+				insertion = tr;
+			}
+		}
 	}
 
 	this.displayPrevisions = function(previsions) {
 		for (var i = 1; i <= previsions.length; i++){
 			this.displayPrevision(previsions[i-1], i);
 		}
-		// initialize tooltips
-//		this.updateTooltips();
 	}
 	
 	/** specified period has been selected */
@@ -106,6 +138,9 @@ function Previsions(list, projet) {
 		for(var i = 0; i < this.list.length; i++) {
 			var prevision = this.list[i];
 			
+			if (prevision.periode == undefined) {
+				console.log('prevision:' + JSON.stringify(prevision));
+			}
 			if (prevision.periode.dateFrom == newPeriode.dateFrom
 			    && prevision.periode.dateTo == newPeriode.dateTo) {
 				// need to display this one

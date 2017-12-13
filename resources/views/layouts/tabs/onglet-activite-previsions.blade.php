@@ -362,18 +362,18 @@
 
 		{{-- territoires ciblés --}}
 
-    	<tr>
+    	<tr id="id-tr-territoires-cibles-pre{{$tabnum}}">
     		<td colspan="2"><input id="id-btn-terr-pre{{$tabnum}}" type="button" value="Territoires ciblés..."></td>
     	</tr>
-    	<tr>
+    	<tr class="territoires-pre{{$tabnum}}">
     		<td style="text-align:right;"><label id="id-lbl-terr1-pre{{$tabnum}}" for="id-chk-terr1-pre{{$tabnum}}">Agglomération de Longueuil</label></td>
     		<td style="text-align: center;"><input id="id-chk-terr1-pre{{$tabnum}}" type="checkbox" checked="true"></td>
     	</tr>
-    	<tr>
+    	<tr class="territoires-pre{{$tabnum}}">
     		<td style="text-align:right;"><label id="id-lbl-terr2-pre{{$tabnum}}" for="id-chk-terr2-pre{{$tabnum}}">Beauharnois-Salaberry</label></td>
     		<td style="text-align: center;"><input id="id-chk-terr2-pre{{$tabnum}}" type="checkbox" checked="true"></td>
     	</tr>
-    	<tr>
+    	<tr class="territoires-pre{{$tabnum}}">
     		<td style="text-align:right;"><label id="id-lbl-terr3-pre{{$tabnum}}" for="id-chk-terr3-pre{{$tabnum}}">Haut Richelieu</label></td>
     		<td style="text-align: center;"><input id="id-chk-terr3-pre{{$tabnum}}" type="checkbox" checked="true"></td>
     	</tr>
