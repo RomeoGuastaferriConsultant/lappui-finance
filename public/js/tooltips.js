@@ -7,19 +7,23 @@ var tooltips = function(list) {
     //console.log('tooltips called: ' + list);
     
     return list.each(function(i, el) {
-		
-	      $el = $(el).attr("data-tooltip", i);
-
+		  
+    	  $el = $(el);
 	      // fetch tooltip content
 	      var content = $el.attr('title');
 	      if (!content) {
-	    	  // nothing to process
-	    	  // console.log('tooltip: nothing to process - bye bye!');
-	    	  return;
+	    	  // nothing to process (or it has already been done)
+	    	  return true;
 	      }
+
+	      // make sure DIV not already there
+	      // need this ??
+	      $('div[data-tooltip-id=' + $el.data('tooltip-id') + ']').remove();
 	      
 	      // Make DIV and append to page 
-	      var $tooltip = $('<div class="tooltip" data-tooltip="' + i + '">' + content + '<div class="arrow"></div></div>').appendTo("body");
+	      var $tooltip = $('<div class="tooltip" data-tooltip-id="' 
+	    		       + $el.data('tooltip-id') + '">' 
+	    		       + content + '<div class="arrow"></div></div>').appendTo("body");
 
 	      // Position right away, so first appearance is smooth
 	      var linkPosition = $el.position();
@@ -39,7 +43,7 @@ var tooltips = function(list) {
 
 	        $el = $(this);
 
-	        $tooltip = $('div[data-tooltip=' + $el.data('tooltip') + ']');
+	        $tooltip = $('div[data-tooltip-id=' + $el.data('tooltip-id') + ']');
 
 	        // Reposition tooltip, in case of page movement e.g. screen resize                        
 	        var linkPosition = $el.position();
@@ -58,7 +62,7 @@ var tooltips = function(list) {
 	        $el = $(this);
 
 	        // Temporary class for same-direction fadeout
-	        $tooltip = $('div[data-tooltip=' + $el.data('tooltip') + ']').addClass("out");
+	        $tooltip = $('div[data-tooltip-id=' + $el.data('tooltip-id') + ']').addClass("out");
 
 	        // Remove all classes
 	        setTimeout(function() {
@@ -66,21 +70,5 @@ var tooltips = function(list) {
 	          }, 300);
 
 	        });
-	});
-    
-    // remove marker
-}
-
-var tooltipsRemove = function(list) {
-    var $el;
-	// first remove all current tooltip divs
-	$('div[data-tooltip]').remove();
-
-    return list.each(function(i, el) {
-    	// remove data-tooltip attribute
-    	$el = $(el).removeAttr("data-tooltip");
-    	
-    	// remove event handlers
-    	$el.off();
 	});
 }

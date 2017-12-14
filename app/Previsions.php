@@ -160,7 +160,6 @@ class Previsions
             $previsions->pctJourWeekend = $pctWeekend - $previsions->pctSoirWeekend;
         }
         $previsions->territoires = $this->assignerTerritoires();
-        Log::info('returning '.print_r($previsions->territoires, true));
     }
 
     protected function assignerTerritoires()

@@ -11,14 +11,14 @@ $(document).ready(function(){
 		locale.updateDocLang('home.json');
 	});
 
-	// simulate 1st language change event
-	// to load initial static content 
-	$("html").trigger("change");
-	
 	// initialize regions select box
 	$.get('api/regions', function(data) {
 		regions = new Regions(data)
 	});
+	
+	// simulate 1st language change event
+	// to load initial static content 
+//	$("html").trigger("change");
 	
 	// hide 'home' menu option (we're already there)
 	$('#id-itm-accueil').hide()

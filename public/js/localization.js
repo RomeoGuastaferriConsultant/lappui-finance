@@ -12,23 +12,40 @@ function Localization() {
 	}
 	
 	this.setLang = function(lang) {
+		// first examine current value
+		var oldval = $("html").attr("lang");
+		
+		// set new value
 		$("html").attr("lang", lang);
+		
+		// is this really a new value ?
+		if (oldval != lang) {
+			// inform server of new lang choice
+			var messanger = $('#id-frm-lang');
+			// messanger (if present) would be a hidden input field
+			if (messanger) {
+				messanger.val(lang);
+			}
+			// trigger language change event
+			$("html").trigger("change");
+		}
 	}
 	
 	/** Toggle document language between french and english */
 	this.toggleLanguage = function() {
-
-		// toggle language
 		this.setLang(this.getLang() == "fr" ? "en" : "fr");
-		
-		// trigger language change event
-		$("html").trigger("change");
 	}
 	
 	this.updateDocLang = function(jsonFile) {
 		// fetch language file on server via AJAX
 		// then use contents to update doc language
-		$.get(this.getLangPath(jsonFile), this.setLanguage);
+		$.get(this.getLangPath(jsonFile), this.updateDocument);
+	}
+	
+	this.updateTooltipsLang = function(jsonFile) {
+		// fetch language file on server via AJAX
+		// then use contents to update tooltip texts
+		$.get(this.getLangPath(jsonFile), this.updateTooltips);
 	}
 	
 	/**
@@ -37,19 +54,21 @@ function Localization() {
 	 * returned data is used to populate various locale-sensitive
 	 * HTML elements in the current document.
 	 */
-	this.setLanguage = function(data) {
+	this.updateDocument = function(data) {
 		// fetch current language
 		var lang = locale.getLang();
 		
-		// inform server of new lang
-		var messanger = $('#id-frm-lang');
-		// messanger (if present) would be a hidden input field
-		if (messanger) {
-			messanger.val(lang);
-		}
-		
 		// update various document elements
-		locale.updateDocumentLocale(lang, data);
+		locale.updateElements(lang, data);
+	}
+
+	this.updateTooltips = function(data) {
+		// update title contents
+		$("[data-tooltip-id]").each(function(index, element) {
+			locale.setTitleLocale(element, data);
+		});
+		// transform them into tooltips
+		tooltips($("[data-tooltip-id]"));
 	}
 
 	/** 
@@ -67,7 +86,7 @@ function Localization() {
 			.concat(pathname);
 	} 
 
-	this.updateDocumentLocale = function(lang, data) {
+	this.updateElements = function(lang, data) {
 		$("h2")     .each(function(index, element) {locale.setElementLocale(element, data);});
 		$("span")   .each(function(index, element) {locale.setElementLocale(element, data);});
 		$("label")  .each(function(index, element) {locale.setElementLocale(element, data);});
@@ -76,11 +95,8 @@ function Localization() {
 		$("img")    .each(function(index, element) {locale.setImageLocale(element, data);});
 
 		$(":button").each(function(index, element) {locale.setButtonLocale(element, data);});
-		
-		// update tooltips (implemented via 'title' attribute)
-		$("[data-tooltip-id]").each(function(index, element) {locale.setTitleLocale(element, data)});
 	}
-
+	
 	this.setElementLocale = function(element, data) {
 		var newVal = this.getNewLocalizedElementValue(element, data);
 		if (newVal) {

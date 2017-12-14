@@ -48,6 +48,20 @@ function Previsions(list, projet) {
 		});
 		
 		// update the totals fields
+		this.displayTotalFields(prevision, prefix);
+		
+		// update territoires ciblés
+		this.displayTerritoiresCibles(prevision, index);
+	}
+	
+	this.displayPrevisions = function(previsions) {
+		for (var i = 1; i <= previsions.length; i++){
+			this.displayPrevision(previsions[i-1], i);
+		}
+	}
+	
+	this.displayTotalFields = function(prevision, prefix) {
+		// update the totals fields
 		var totalSemaine = 0;
 
 		var pctJourSemaine = prevision['pctJourSemaine'];
@@ -84,12 +98,9 @@ function Previsions(list, projet) {
 		$("#" + prefix + "pctTotWeekend").val(totalWeekend);
 
 		// update cumulative total
-		$("#" + prefix + "pctTotCumul").val(totalSemaine + totalWeekend);
-		
-		// update territoires ciblés
-		this.displayTerritoiresCibles(prevision, index);
+		$("#" + prefix + "pctTotCumul").val(totalSemaine + totalWeekend);		
 	}
-	
+
 	this.displayTerritoiresCibles = function(prevision, index) {
 		// start by cleaning up what's already there in current index
 		$('.territoires-pre' + index).remove();
@@ -118,12 +129,6 @@ function Previsions(list, projet) {
 				// prepare for next loop
 				insertion = tr;
 			}
-		}
-	}
-
-	this.displayPrevisions = function(previsions) {
-		for (var i = 1; i <= previsions.length; i++){
-			this.displayPrevision(previsions[i-1], i);
 		}
 	}
 	
@@ -209,8 +214,12 @@ function Previsions(list, projet) {
 		});
 	}
 	
-	// html onchange event seems to be triggered a lot...
 	this.updateLanguage = function() {
+		// update labels and form controls
+		locale.updateDocLang('previsions.json');
+		// update tooltips
+		locale.updateTooltipsLang('previsions-tooltips.json');
+
 		if (regions)
 			if (regions.organismes)
 				if (regions.organismes.projets)
@@ -220,38 +229,18 @@ function Previsions(list, projet) {
 						// and also tab headers
 						this.displayTabs(regions.organismes.projets.current);
 					}
-		// update the tooltips
-		this.updateTooltips();
 	}
 	
-	this.updateTooltips = function() {
-		// clean up current situation
-		tooltipsRemove($("[data-tooltip-id]"));
-		// reset titles
-		locale.updateDocLang('previsions-tooltips.json'); 
+	// initialization
+	if (regions)
+		if (regions.organismes)
+			if (regions.organismes.projets)
+				if (regions.organismes.projets.current) {
+					// initialize select box contents
+					this.initSelection(regions.organismes.projets.current);
+				}
 
-		// wait for titles to finish being updated...
-		setTimeout(function() {
-			// ...then rebuild the tooltips
-			tooltips($("[data-tooltip-id]"));
-		}, 700);
-	}
-	
-	this.init = function() {
-		if (regions)
-			if (regions.organismes)
-				if (regions.organismes.projets)
-					if (regions.organismes.projets.current) {
-						// initialize select box contents
-						this.initSelection(regions.organismes.projets.current);
-						// display tab headers
-						this.displayTabs(regions.organismes.projets.current);
-						// initialize the tooltips
-						this.updateTooltips();
-					}
-	}
-	
-	this.init();
+	this.updateLanguage();
 }
 
 /** 
@@ -260,8 +249,6 @@ function Previsions(list, projet) {
 $(document).ready(function(){
 	// register to process language change events
 	$("html").on("change", function() {
-		// update labels, redisplay tabs and select box
-		//locale.updateDocLang('previsions.json');
 		if (regions)
 			if (regions.organismes) {
 				if (regions.organismes.projets) {

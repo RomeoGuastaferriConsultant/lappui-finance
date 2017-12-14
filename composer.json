@@ -8,13 +8,14 @@
 	"license" : "MIT",
 	"type" : "project",
 	"require" : {
-		"php" : ">=7.0.0",
-		"fideloper/proxy" : "~3.3",
-		"guzzlehttp/guzzle" : "^6.3",
-		"laravel/framework" : "5.5.*",
-		"laravel/tinker" : "~1.0",
-		"laravelcollective/html" : "^5.3.0",
-		"aws/aws-sdk-php" : "~3.0"
+		"php": ">=7.0.0",
+		"aws/aws-sdk-php": "~3.0",
+		"fideloper/proxy": "~3.3",
+		"guzzlehttp/guzzle": "^6.3",
+		"laravel/framework": "5.5.*",
+		"laravel/tinker": "~1.0",
+		"laravelcollective/html": "^5.3.0",
+		"shin1x1/laravel-force-https-url-scheme": "^1.1"
 	},
 	"require-dev" : {
 		"barryvdh/laravel-ide-helper" : "^2.4",

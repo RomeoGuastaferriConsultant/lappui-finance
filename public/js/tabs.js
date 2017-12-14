@@ -15,10 +15,4 @@ jQuery(document).ready(function() {
 
         e.preventDefault();
     });
-    
-	// register to process language change events
-	$("html").on("change", function() {
-		locale.updateDocLang('organisme.json');
-		locale.updateDocLang('previsions.json');
-	});
 });
