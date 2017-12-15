@@ -26,7 +26,7 @@
                         <input id="id-frm-lang" name="lang" type="hidden">
 
                         <div class="form-group{{ $errors->has('courriel') ? ' has-error' : '' }}">
-                            <label id="id-lbl-courriel" for="courriel" class="col-md-4 control-label"></label>
+                            <label id="id-lbl-email" for="courriel" class="col-md-4 control-label"></label>
 
                             <div class="col-md-6">
                                 <input id="motpasse" type="email" class="form-control" name="motpasse" value="{{ old('motpasse') }}" required>

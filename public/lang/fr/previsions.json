@@ -1,5 +1,8 @@
 {
-    "id-lbl-tab-previsions" : "Prévisions",
+    "id-lbl-tab-previsions" : "Projections",
+    "id-lbl-tab-resultats" : "Résultats",
+    "id-lbl-tab-budgets" : "Budgets",
+    "id-lbl-tab-rapports" : "Rapports",
     "id-lbl-periode-pre" : "Période",
     "id-lbl-prevu-pre" : "projeté",
     "id-lbl-nbPaUniques-pre" : "Nombre de proches aidants d'ainés visés",

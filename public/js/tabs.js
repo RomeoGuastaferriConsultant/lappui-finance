@@ -4,6 +4,11 @@ jQuery(document).ready(function() {
     jQuery('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = jQuery(this).attr('href');
         
+        if (currentAttrValue == "#tab-budgets" || currentAttrValue == "#tab-rapports") {
+        	// pas encore implanté
+        	return;
+        }
+        
         // Show/Hide Tabs
         jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
  

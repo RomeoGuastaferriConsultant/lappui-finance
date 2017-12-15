@@ -9,19 +9,6 @@ class Previsions
     public $periode;
     public $activite;
 
-//    public $nbPaUniques;
-//     public $nbParticipants;
-//     public $nbOutilsAutres;
-//     public $nbSeanceInd;
-//     public $nbSeanceGrp;
-//     public $nbHresInterv;
-//     public $pctJourSemaine;
-//     public $pctSoirSemaine;
-//     public $pctNuitSemaine;
-//     public $pctJourWeekend;
-//     public $pctSoirWeekend;
-//     public $pctNuitWeekend;
-
     public $territoires = array(
         'Agglomération de Longueuil',
         'Beauharnois-Salaberry',
@@ -133,6 +120,14 @@ class Previsions
                 break;
         }
 
+        // plages horaire et périodes
+        $this->initializePlagesHorairesPeriodes($previsions);
+
+        // territoires
+        $previsions->territoires = $this->assignerTerritoires();
+    }
+
+    protected function initializePlagesHorairesPeriodes($previsions) {
         // the rest of these properties are shared by all activity types
         if ($previsions->activite->volet == Activite::REPIT) {
             // on doit rajouter la nuit aux prévisions de répit
@@ -159,7 +154,6 @@ class Previsions
             $previsions->pctSoirWeekend = rand(0, $pctWeekend/3);
             $previsions->pctJourWeekend = $pctWeekend - $previsions->pctSoirWeekend;
         }
-        $previsions->territoires = $this->assignerTerritoires();
     }
 
     protected function assignerTerritoires()

@@ -21,3 +21,5 @@ Route::get('/regions/{regionId}/organismes', 'OrganismeController@getAll');
 Route::get('/organismes/{organismeId}/projets', 'ProjetController@getAll');
 
 Route::get('/organismes/{organismeId}/projets/{projetId}/previsions', 'PrevisionsController@getAll');
+
+Route::get('/organismes/{organismeId}/projets/{projetId}/resultats', 'ResultatsController@getAll');

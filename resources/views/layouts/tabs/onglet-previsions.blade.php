@@ -11,5 +11,3 @@
 </table>
 <p>
 @include('layouts.tabs.onglets-previsions-activites')
-
-

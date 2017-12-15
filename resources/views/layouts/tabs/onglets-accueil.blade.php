@@ -2,9 +2,9 @@
     <ul class="tab-links">
         <li class="active"><a href="#tab-organisme"><span id="id-lbl-tab-organisme"></span></a></li>
         <li><a href="#tab-previsions"><span id="id-lbl-tab-previsions"></span></a></li>
-        <li><a href="#tab-tab-resultats">Résultats</a></li>
-        <li><a href="#tab-budgets">Budgets</a></li>
-        <li><a href="#tab-rapports">Rapports</a></li>
+        <li><a href="#tab-tab-resultats"><span id="id-lbl-tab-resultats"></a></li>
+        <li><a href="#tab-budgets"><span id="id-lbl-tab-budgets"></a></li>
+        <li><a href="#tab-rapports"><span id="id-lbl-tab-rapports"></a></li>
     </ul>
 
     <div class="tab-content">

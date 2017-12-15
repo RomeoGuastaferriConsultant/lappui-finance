@@ -3,7 +3,11 @@
 @section('titre', 'Page d\'accueil')
 @push('scripts')
     <script src="{{ asset('js/api/activites.js') }}"></script>
-    <script src="{{ asset('js/api/previsions.js') }}"></script>
+    <script src="{{ asset('js/controllers/PercentageController.js') }}"></script>
+    <script src="{{ asset('js/controllers/ProjectionsActiviteController.js') }}"></script>
+    <script src="{{ asset('js/controllers/ProjectionsController.js') }}"></script>
+    <script src="{{ asset('js/controllers/ResultatsActiviteController.js') }}"></script>
+    <script src="{{ asset('js/controllers/ResultatsController.js') }}"></script>
     <script src="{{ asset('js/api/periodes.js') }}"></script>
     <script src="{{ asset('js/api/regions.js') }}"></script>
     <script src="{{ asset('js/api/organismes.js') }}"></script>

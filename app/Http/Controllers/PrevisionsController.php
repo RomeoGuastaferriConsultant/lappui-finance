@@ -6,10 +6,6 @@ use App\Previsions;
 
 class PrevisionsController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     /**
      *
      */
@@ -26,10 +22,14 @@ class PrevisionsController extends Controller
         {
             for ($activite = 0; $activite < $nbActivites; $activite++)
             {
-                array_push($result, new Previsions($projet->periodes[$periode], $projet->activites[$activite]));
+                array_push($result, $this->createPrevisions($projet->periodes[$periode], $projet->activites[$activite]));
             }
         }
         return response()->json($result);
+    }
+
+    protected function createPrevisions($periode, $activite) {
+        return new Previsions($periode, $activite);
     }
 
     protected function findAssociative($array, $myKey)

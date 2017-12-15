@@ -94,7 +94,10 @@ function Localization() {
 		
 		$("img")    .each(function(index, element) {locale.setImageLocale(element, data);});
 
-		$(":button").each(function(index, element) {locale.setButtonLocale(element, data);});
+		// input type button
+		$(":button").each(function(index, element) {locale.setInputButtonLocale(element, data);});
+		// real button (used by login.blade.php)
+		$("button" ).each(function(index, element) {locale.setButtonLocale(element, data);});
 	}
 	
 	this.setElementLocale = function(element, data) {
@@ -112,10 +115,17 @@ function Localization() {
 		}
 	}
 
-	this.setButtonLocale = function(element, data) {
+	this.setInputButtonLocale = function(element, data) {
 		var newVal = this.getNewLocalizedElementValue(element, data);
 		if (newVal) {
 			$(element).val(newVal);
+		}
+	}
+
+	this.setButtonLocale = function(element, data) {
+		var newVal = this.getNewLocalizedElementValue(element, data);
+		if (newVal) {
+			$(element).text(newVal);
 		}
 	}
 

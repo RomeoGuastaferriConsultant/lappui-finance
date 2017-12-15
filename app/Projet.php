@@ -21,11 +21,13 @@ class Projet
         $this->periodes = $periodes;
         $this->activites = $activites;
 
-        // REST best practice
-        $urlBase = "/api/organismes/".$idOrganisme."/projets/".$this->id;
-        $urlPrev = $urlBase."/previsions";
+        // provide REST links : best practice
+        $urlBase  = "/api/organismes/".$idOrganisme."/projets/".$this->id;
+        $urlPrev  = $urlBase."/previsions";
+        $urlResul = $urlBase."/resultats";
         $this->links = array(
-            "previsions" => $urlPrev
+            "previsions" => $urlPrev,
+            "resultats" => $urlResul
         );
     }
 }

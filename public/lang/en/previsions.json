@@ -1,5 +1,8 @@
 {
-    "id-lbl-tab-previsions" : "Forecasts",
+    "id-lbl-tab-previsions" : "Projections",
+    "id-lbl-tab-resultats" : "Results",
+    "id-lbl-tab-budgets" : "Budgets",
+    "id-lbl-tab-rapports" : "Reports",
     "id-lbl-periode-pre" : "Period",
     "id-lbl-prevu-pre" : "projected",
     "id-lbl-nbPaUniques-pre" : "Number of distinct caregivers targetted",

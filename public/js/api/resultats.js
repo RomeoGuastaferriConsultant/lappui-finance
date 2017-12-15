@@ -1,12 +1,12 @@
 /**
- * Pseudo-class that encapsulates project forecast-related processing logic.
+ * Pseudo-class that encapsulates project results-related processing logic.
  * @param list list of project forecasts, as returned by REST api
  * @returns nothing directly... meant to be instantiated with new
  */
-function Previsions(list, projet) {
+function Resultats(list, projet) {
 	/** liste de previsions */
 	this.list = list;
-	/** projet auquel sont associées ces prévisions */
+	/** projet auquel sont associées ces resultats */
 	this.projet = projet;
 	
 	/** helpful alias to be used from within callbacks ('this' can be confusing) */
