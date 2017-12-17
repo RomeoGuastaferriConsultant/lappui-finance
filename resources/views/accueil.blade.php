@@ -3,7 +3,8 @@
 @section('titre', 'Page d\'accueil')
 @push('scripts')
     <script src="{{ asset('js/api/activites.js') }}"></script>
-    <script src="{{ asset('js/controllers/PercentageController.js') }}"></script>
+    <script src="{{ asset('js/controllers/SummationController.js') }}"></script>
+    <script src="{{ asset('js/controllers/WeeklyDistributionController.js') }}"></script>
     <script src="{{ asset('js/controllers/ProjectionsActiviteController.js') }}"></script>
     <script src="{{ asset('js/controllers/ProjectionsController.js') }}"></script>
     <script src="{{ asset('js/controllers/ResultatsActiviteController.js') }}"></script>

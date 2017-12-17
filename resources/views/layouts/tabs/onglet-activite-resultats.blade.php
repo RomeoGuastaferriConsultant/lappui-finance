@@ -251,7 +251,7 @@
     				 name="nbHresInterv"
     				 type="text" size="4" disabled
     				class="tab-resultats-{{$tabnum}}">
-    		</td>tot
+    		</td>
     		<td>
     			<input id="id-res{{$tabnum}}-nbHresInterv"
     				 type="number" min="0" max="9999"
@@ -367,10 +367,8 @@
     		</td>
     		<td>
     			<input id="id-res{{$tabnum}}-totTotSemaine"
-    				 type="number" min="0" max="9999"
-    			  onfocus="onFocus(this);"
-    			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}">
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}} total">
     		</td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
@@ -475,10 +473,8 @@
     		</td>
     		<td>
     			<input id="id-res{{$tabnum}}-totTotWeekend"
-    				 type="number" min="0" max="9999"
-    			  onfocus="onFocus(this);"
-    			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}">
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}} total">
     		</td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
@@ -502,10 +498,8 @@
     		</td>
     		<td>
     			<input id="id-res{{$tabnum}}-totTotCumul"
-    				 type="number" min="0" max="9999"
-    			  onfocus="onFocus(this);"
-    			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}">
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}} total">
     		</td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
@@ -519,7 +513,9 @@
 		<!-- territoires ciblés -->
 
     	<tr>
-    		<td colspan="2"><span id="id-lbl-terr-res{{$tabnum}}" style="font-weight:bold;"></span>:</td>
+    		<td colspan="2" style="text-align:center;">
+    			<span id="id-lbl-terr-res{{$tabnum}}" style="font-weight:bold;"></span>:
+    		</td>
     	</tr>
 
         <!-- spacer & anchor for insertions by controller -->

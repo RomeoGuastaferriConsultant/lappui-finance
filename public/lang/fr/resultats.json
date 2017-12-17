@@ -1,5 +1,5 @@
 {
-    "id-lbl-tab-resultats" : "Résultats",
+    "id-lbl-tab-resultats" : "Reddition",
     "id-lbl-periode-res" : "Période",
     "id-btn-reddition" : "Reddition...",
     "id-btn-save-proj" : "Sauvegarder",
@@ -21,14 +21,14 @@
     "id-lbl-pctJourSemaine-res" : "Nombre d'interventions de jour",
     "id-lbl-pctSoirSemaine-res" : "Nombre d'interventions de soir",
     "id-lbl-pctNuitSemaine-res" : "Nombre d'interventions de nuit",
-    "id-lbl-pctTotSemaine-res" : "Nombre total d'interventions en semaine",
+    "id-lbl-pctTotSemaine-res" : "Total semaine",
     "id-lbl-sem-res" : "Semaine",
     "id-lbl-pctJourWeekend-res" : "Nombre d'interventions de jour",
     "id-lbl-pctSoirWeekend-res" : "Nombre d'interventions de soir",
     "id-lbl-pctNuitWeekend-res" : "Nombre d'interventions de nuit",
-    "id-lbl-pcTotWeekend-res" : "Nombre total d'interventions de week-end",
+    "id-lbl-pcTotWeekend-res" : "Total week-end",
     "id-lbl-pcTotCumul-res" : "Total semaine + week-end",
     "id-lbl-fin-res" : "Week-end",
-    "id-lbl-terr-res" : "Territoires sur lesquels l'activité s'est tenue",
+    "id-lbl-terr-res" : "Participation par territoire",
     "id-btn-save-res" : "Sauvegarder"
 }

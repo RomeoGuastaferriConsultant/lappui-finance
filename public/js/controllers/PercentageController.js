@@ -15,15 +15,6 @@ function PercentageController(p1, p2, p3, p4, p5, p6, p7, p8) {
 			total : $('#' + p8)
 		};
 
-	this.trace = function(id) {
-		console.log('tracing element ' + $('#'+id).attr('id'));
-	}
-	console.log('p1=' + p1 + 'p2=' + p2 + 'p3=' + p3 + 'p4=' + p4 + 'p5=' + p5 + 'p6=' + p6 + 'p7=' + p7 + 'p8=' + p8);
-	console.log('***tracing element ' + $('#id-proj21-totJourSemaine').attr('id'));
-
-	console.log('about to trace ' + p1);
-	this.trace(p1);
-	
 	var registerPercentageHandlers = function (element, controller) {
 		if (element) {
 			// remove all previous event handlers
@@ -62,11 +53,9 @@ function PercentageController(p1, p2, p3, p4, p5, p6, p7, p8) {
 		var strValue = 0;
 		if (element) {
 			strValue = element.val();
-			console.log('strValue:' + strValue);
 			if (element.attr('id').startsWith('id-proj2')) {
 				// element value includes trailing '%'; remove it
 				strValue = strValue.substr(0, strValue.length - 1);
-				console.log('constructed value:' + strValue + ' for element ' + $(element).attr('id'));
 			}
 		}
 		return parseInt(strValue);
@@ -75,29 +64,30 @@ function PercentageController(p1, p2, p3, p4, p5, p6, p7, p8) {
 	this.initTotals = function() {
 		// semaine
 		var totSemaine = 0;
-		if (this.semaine.jour)
-			totSemaine += getIntVal(this.semaine.jour);
-		if (this.semaine.soir)
-			totSemaine += getIntVal(this.semaine.soir);
-		if (this.semaine.nuit && !isNaN(this.semaine.nuit))
-			totSemaine += getIntVal(this.semaine.nuit);
+		totSemaine += getIntVal(this.semaine.jour);
+		totSemaine += getIntVal(this.semaine.soir);
+		totSemaine += getIntVal(this.semaine.nuit);
 
 		// update & show
+		var strTotal = totSemaine;
 		this.semaine.total.val(totSemaine);
 		this.semaine.total.closest('tr').show();
 		
 		// weekend
 		var totWeekend = 0;
-		if (this.weekend.jour)
-			totWeekend += getIntVal(this.weekend.jour);
-		if (this.weekend.soir)
-			totWeekend += getIntVal(this.weekend.soir);
-		if (this.weekend.nuit && !isNaN(this.weekend.nuit))
-			totWeekend += getIntVal(this.weekend.nuit);
+		totWeekend += getIntVal(this.weekend.jour);
+		totWeekend += getIntVal(this.weekend.soir);
+		totWeekend += getIntVal(this.weekend.nuit);
 		
 		// update & show
-		this.weekend.total.val(totWeekend );
+		this.weekend.total.val(totWeekend);
 		this.weekend.total.closest('tr').show();
+		
+		// '%' needs to be appended to projected fields
+		if (this.semaine.jour.attr('id').startsWith('id-proj2')) {
+			this.semaine.total.val(this.semaine.total.val() + '%');
+			this.weekend.total.val(this.weekend.total.val() + '%');
+		}
 	}
 
 	// init

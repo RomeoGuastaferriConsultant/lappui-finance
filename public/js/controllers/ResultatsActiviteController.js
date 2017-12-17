@@ -27,18 +27,20 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 		$(cssClass).closest("tr").hide();
 		
 		// display projections data elements
-		var idprefix = "id-proj2" + this.index + "-";
-		this.refreshFields(cssClass, idprefix, this.projections);
-		this.displayTotals(this.projections, idprefix + 'pct');
+		var idprefix1 = "id-proj2" + this.index + "-";
+		this.refreshFields(cssClass, idprefix1, this.projections);
 
 		// display results data elements
-		idprefix = "id-res" + this.index + "-";
-		this.refreshFields(cssClass, idprefix, this.resultats);
-		this.displayTotals(this.resultats, idprefix + 'tot');
+		idprefix2 = "id-res" + this.index + "-";
+		this.refreshFields(cssClass, idprefix2, this.resultats);
+		
+		// set summation controllers to display correct totals
+		setSummationControllers(this.projections, idprefix1 + 'pct');
+		setSummationControllers(this.resultats,   idprefix2 + 'tot');
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(this.resultats, this.index);
-}
+	}
 	
 	this.refreshFields = function(cssClass, idprefix, values) {
 		// loop through every potential field to fill in
@@ -71,22 +73,73 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 			// make sure it shows
 			$("#"+id).closest("tr").show();
 		}
+		else{
+			// no value to display in this field: reset
+			$(id).val(0);
+		}
+	}
+	
+	var isVisible = function(id) {
+		// a bit awkward, but JQuery's .is(':visible') does NOT seem to work
+		var tr = $("#"+id).closest("tr");
+		var invisible = tr.css('display').startsWith('none');
+		return !invisible;
 	}
 
-	this.displayTotals= function(values, prefix) {
-		// create percentage control moderator
-		var controller = new PercentageController(
-				prefix + "JourSemaine",
-				prefix + "SoirSemaine",
-				prefix + "NuitSemaine",
-				prefix + "TotSemaine",
-				prefix + "JourWeekend",
-				prefix + "SoirWeekend",
-				prefix + "NuitWeekend",
-				prefix + "TotWeekend"
+	var setSummationControllers = function(values, prefix) {
+
+		// weekdays & weekend summation controllers
+		var weekdayController = getWeekdaySummationController(values, prefix); 
+		var weekendController = getWeekendSummationController(values, prefix);
+		
+		// ... and lastly, cumulative totals
+		var cumulativeController = new SummationController(
+				prefix + "TotCumul",
+				prefix + "TotWeekend",
+				prefix + "TotSemaine"
 			);
 	}
 
+	var getWeekdaySummationController = function(values, prefix) {
+		// le champ nuit est visible ?
+		if (isVisible(prefix + 'NuitSemaine')) {
+			// le champ nuit est visible: on en tient compte
+			return new SummationController(
+					prefix + "TotSemaine",
+					prefix + "JourSemaine",
+					prefix + "SoirSemaine",
+					prefix + "NuitSemaine"
+				);
+		}
+		else {
+			return new SummationController(
+					prefix + "TotSemaine",
+					prefix + "JourSemaine",
+					prefix + "SoirSemaine"
+				);
+		}
+	}
+	
+	var getWeekendSummationController = function(values, prefix) {
+		// le champ nuit est visible ?
+		if (isVisible(prefix + 'NuitWeekend')) {
+			// le champ nuit est visible: on en tient compte
+			return new SummationController(
+					prefix + "TotWeekend",
+					prefix + "JourWeekend",
+					prefix + "SoirWeekend",
+					prefix + "NuitWeekend"
+				);
+		}
+		else {
+			return new SummationController(
+					prefix + "TotWeekend",
+					prefix + "JourWeekend",
+					prefix + "SoirWeekend"
+				);
+		}
+	}
+	
 	this.displayTerritoiresCibles = function(values, index) {
 		// start by cleaning up what's already there in current index
 		$('.territoires-res' + index).remove();
@@ -98,13 +151,10 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 			for (var terr in values["territoires"]) {
 				// build new tr to insert
 				var tr = "<tr class='territoires-res" + index + "'>"
-					   +    "<td style='text-align:right;'>"
+					   +    "<td colspan='2' style='text-align:right;'>"
 					   +       "<label id='id-lbl-terr" + terr + "-res" + index + "' for='id-chk-terr" + terr + "-res" + index + "'>" 
 					   +          values.territoires[terr] 
 					   +       "</label>"
-					   +    "</td>"
-					   +    "<td style='text-align:center;'>"
-					   +       "<input id='id-chk-terr" + terr + "-res" + index + "' type='checkbox' checked='true' disabled>"
 					   +    "</td>"
 					   +    "<td>"
 					   +       "<input id='id-res" + index + "-terr" + terr + "' " 

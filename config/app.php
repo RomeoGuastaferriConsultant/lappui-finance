@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'lappui-finances'),
+    'name' => env('APP_NAME', 'lappui-financier'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://www.lappui-test.ca'),
+    'url' => env('APP_URL', 'https://www.lappui-financier.net'),
 
     /*
     |--------------------------------------------------------------------------
