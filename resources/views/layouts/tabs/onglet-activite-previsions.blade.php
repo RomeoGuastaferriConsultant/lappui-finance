@@ -2,7 +2,8 @@
     <table>
     	<tr>
     		<td></td>
-    		<td style="text-align: left;"><span id="id-lbl-prevu-pre{{$tabnum}}"></span>
+    		<td style="text-align: left;">
+    			<span id="id-lbl-prevu-pre{{$tabnum}}" style="font-style: italic;"></span>
     		</td>
     	</tr>
 
@@ -16,7 +17,7 @@
     		<td>
     			<input id="id-pre{{$tabnum}}-nbPaUniques"
     				 name="nbPaUniques"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-previsions-{{$tabnum}}">
@@ -33,7 +34,7 @@
     		<td>
     			<input id="id-pre{{$tabnum}}-nbPaNouveaux"
     				 name="nbPaNouveaux"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-previsions-{{$tabnum}}">
@@ -49,7 +50,7 @@
     		</td>
     		<td><input id="id-pre{{$tabnum}}-nbParticipants"
     				 name="nbParticipants"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-previsions-{{$tabnum}}">
@@ -66,7 +67,7 @@
     		<td>
     			<input id="id-pre{{$tabnum}}-nbOutilsAutres"
     				 name="nbOutilsAutres"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-previsions-{{$tabnum}}">
@@ -186,7 +187,7 @@
     		<td>
     			<input id="id-pre{{$tabnum}}-nbHresInterv"
     				 name="nbHresInterv"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-previsions-{{$tabnum}}">
@@ -356,7 +357,7 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotCumul"
-    				 type="text" class="total" size="3" disabled> %
+    				 type="text" class="total" size="3" readonly> %
     		</td>
     	</tr>
 
@@ -381,10 +382,6 @@
     	<tr class="territoires-pre{{$tabnum}}">
     		<td style="text-align:right;"><label id="id-lbl-terr3-pre{{$tabnum}}" for="id-chk-terr3-pre{{$tabnum}}">Haut Richelieu</label></td>
     		<td style="text-align: center;"><input id="id-chk-terr3-pre{{$tabnum}}" type="checkbox" checked="true"></td>
-    	</tr>
-    	<tr><td colspan="2">&nbsp;</td></tr>
-    	<tr>
-    		<td colspan="2" style="text-align:right;"><input id="id-btn-save-pre{{$tabnum}}" type="button" disabled value="Sauvegarder"></td>
     	</tr>
     </table>
 </form>

@@ -5,5 +5,6 @@
     "id-lbl-telephone-org" : "Phone",
     "id-lbl-courriel-org" : "E-Mail",
     "id-lbl-contact-org" : "Contact",
-    "id-btn-details-org" : "Details..."
+    "id-btn-details-org" : "Details...",
+    "id-lbl-tab-activite" : "Activity"
 }

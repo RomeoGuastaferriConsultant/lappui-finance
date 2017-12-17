@@ -7,7 +7,7 @@ body {
 
 hr {
 	margin-top: 0px;
-	color: rgb(225,225,225);
+	color: rgb(245,245,245);
 	border-width:1px;
 	border-style:solid;
 }
@@ -20,8 +20,28 @@ label {
 
 /* size number input elements */
 input[type=number]{
-    width: 50px;
-} 
+    width: 53px;
+}
+
+/* disabled input fields */
+input[type=text]:disabled {
+	background-color: rgb(232, 232, 232);
+}
+
+/* targetting projected fields in results tab */
+input[type=text]:disabled {
+	font-style: italic;
+}
+
+td {
+	vertical-align: middle;
+}
+
+/* les textareas dans les tabs Résultats */
+.notes {
+	height: 27px;
+}
+
 .contenu {
     margin-left: 100px;
     margin-right: 100px;
@@ -43,7 +63,7 @@ input[type=number]{
 } 
 
 /* input totals */
-.total {
+.total, input.total[type=text]:disabled {
 	background: rgb(255, 255, 204);
     text-align: right;
 }

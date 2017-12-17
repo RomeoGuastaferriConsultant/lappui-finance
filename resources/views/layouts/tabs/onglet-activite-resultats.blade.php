@@ -2,11 +2,18 @@
     <table>
     	<tr>
     		<td></td>
-    		<td style="text-align: left;"><span id="id-lbl-prevu-res{{$tabnum}}"></span>
+    		<td style="text-align: left;">
+    			<span id="id-lbl-prevu-res{{$tabnum}}" style="font-style: italic;"></span>
+    		</td>
+    		<td style="text-align: center;">
+    			<span id="id-lbl-reel-res{{$tabnum}}" style="font-style: italic; font-weight: bold;"></span>
+    		</td>
+    		<td>
+    			<span style="font-style: italic;">&nbsp;&nbsp;Notes</span>
     		</td>
     	</tr>
 
-    	{{-- tous les champs editables de l'onglet resultats --}}
+    	<!-- tous les champs editables de l'onglet resultats -->
 
     	<tr>
     		<td style="text-align:right;">
@@ -14,12 +21,19 @@
     				  for="id-res{{$tabnum}}-nbPaUniques"></label>
     		</td>
     		<td>
+    			<input id="id-proj2{{$tabnum}}-nbPaUniques"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}" style="font-style: italic;">
+    		</td>
+    		<td>
     			<input id="id-res{{$tabnum}}-nbPaUniques"
-    				 name="nbPaUniques"
-    				 type="number" min="0" max="999"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -31,12 +45,20 @@
     			  height="20" width="20">&nbsp;
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-nbPaNouveaux"
+    			<input id="id-proj2{{$tabnum}}-nbPaNouveaux"
     				 name="nbPaNouveaux"
-    				 type="number" min="0" max="999"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbPaNouveaux"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -47,12 +69,20 @@
     			    data-tooltip-id="id-tooltip-nbParticipants-{{$tabnum}}"
     			  height="20" width="20">&nbsp;
     		</td>
-    		<td><input id="id-res{{$tabnum}}-nbParticipants"
+    		<td><input id="id-proj2{{$tabnum}}-nbParticipants"
     				 name="nbParticipants"
-    				 type="number" min="0" max="999"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbParticipants"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -64,34 +94,25 @@
     			   height="20" width="20">&nbsp;
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-nbOutilsAutres"
+    			<input id="id-proj2{{$tabnum}}-nbOutilsAutres"
     				 name="nbOutilsAutres"
-    				 type="number" min="0" max="999"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbOutilsAutres"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    	</tr>
-
-    	{{-- nature de l'intervention --}}
-    	<tr>
-    		<td style="text-align:right;" colspan="2">
-    			<label id="id-lbl-natureInterv-res{{$tabnum}}"
-    				  for="id-res{{$tabnum}}-natureInterv"></label>
-    			<img  src="{{ asset('img/question-mark.png') }}"
-    			     data-tooltip-id="id-tooltip-natureInterv-{{$tabnum}}"
-    			   height="20" width="20">&nbsp;
-    			<select id="id-res{{$tabnum}}-natureInterv"
-    				 name="natureInterv"
-    				class="tab-resultats-{{$tabnum}}">
-    				<option value="0">Présence / Surveillance</option>
-    				<option value="1">Stimulation</option>
-    			</select>
-    			<span style="visibility:hidden;">&nbsp;%</span>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
-    	{{-- urgence/ponctuel --}}
+    	<!-- urgence / ponctuel -->
+
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctUrgence-res{{$tabnum}}"
@@ -101,12 +122,20 @@
     			   height="20" width="20">&nbsp;
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctUrgence"
+    			<input id="id-proj2{{$tabnum}}-pctUrgence"
     				 name="pctUrgence"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totUrgence"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -118,15 +147,25 @@
     			   height="20" width="20">&nbsp;
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctPonctuel"
+    			<input id="id-proj2{{$tabnum}}-pctPonctuel"
     				 name="pctPonctuel"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totPonctuel"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}">%
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
+    		</td>
     	</tr>
 
-    	{{-- titre:  Séances et heures d'intervention --}}
+    	<!-- titre:  Séances et heures d'intervention -->
+
     	<tr>
     		<td colspan="2">
     			<span id="id-lbl-seances-res{{$tabnum}}" style="font-weight: 700;"></span>
@@ -139,12 +178,20 @@
     				  for="id-res{{$tabnum}}-nbSeanceInd"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-nbSeanceInd"
+    			<input id="id-proj2{{$tabnum}}-nbSeanceInd"
     				 name="nbSeanceInd"
-    				 type="number" min="0" max="999"
+    				 type="text" size="4" disabled
+   					class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbSeanceInd"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-   					class="tab-resultats-{{$tabnum}}">
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -153,12 +200,20 @@
     				  for="id-res{{$tabnum}}-nbSeanceGrp"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-nbSeanceGrp"
+    			<input id="id-proj2{{$tabnum}}-nbSeanceGrp"
     				 name="nbSeanceGrp"
-    				 type="number" min="0" max="999"
+    				 type="text" size="4" disabled
+    			     class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbSeanceGrp"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    			     class="tab-resultats-{{$tabnum}}">
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -170,12 +225,20 @@
     			   height="20" width="20">&nbsp;
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-nbHres"
+    			<input id="id-proj2{{$tabnum}}-nbHres"
     				 name="nbHres"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}" size="3">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbHres"
     				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}" size="3">
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -184,45 +247,65 @@
     				  for="id-res{{$tabnum}}-nbHresInterv"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-nbHresInterv"
+    			<input id="id-proj2{{$tabnum}}-nbHresInterv"
     				 name="nbHresInterv"
-    				 type="number" min="0" max="999"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>tot
+    		<td>
+    			<input id="id-res{{$tabnum}}-nbHresInterv"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
+    		</td>
     	</tr>
 
-    	{{-- titre: par plage horaire et période --}}
+		<!-- titre: par plage horaire et période -->
+
     	<tr>
     		<td style="text-align: center;">
     			<span id="id-lbl-plage-per-res" style="font-weight: 700;"></span>...</td>
-    		<td></td>
+    		<td colspan="3"></td>
     	</tr>
 
-		{{-- pourcentages de semaine --}}
+		<!-- pourcentages de semaine -->
+
     	<tr>
     		<td colspan="2" style="text-align:right;">
     			<span id="id-lbl-sem-res{{$tabnum}}"
     			   style="margin-right:20px; font-style: italic;"></span>
     		</td>
+    		<td colspan="2"></td>
     	</tr>
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
+
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctJourSemaine-res{{$tabnum}}"
     				  for="id-res{{$tabnum}}-pctJourSemaine"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctJourSemaine"
+    			<input id="id-proj2{{$tabnum}}-pctJourSemaine"
     				 name="pctJourSemaine"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totJourSemaine"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -231,12 +314,20 @@
     				  for="id-res{{$tabnum}}-pctSoirSemaine"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctSoirSemaine"
+    			<input id="id-proj2{{$tabnum}}-pctSoirSemaine"
     				 name="pctSoirSemaine"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totSoirSemaine"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -245,72 +336,106 @@
     				  for="id-res{{$tabnum}}-pctNuitSemaine"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctNuitSemaine"
+    			<input id="id-proj2{{$tabnum}}-pctNuitSemaine"
     				 name="pctNuitSemaine"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totNuitSemaine"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
-    	{{-- total semaine --}}
+		<!-- total semaine -->
+
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctTotSemaine-res{{$tabnum}}"
     				   for="id-res{{$tabnum}}-pctTotSemaine"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctTotSemaine"
-    				 type="number" min="0" max="100"
+    			<input id="id-proj2{{$tabnum}}-pctTotSemaine"
+    				 type="text" size="4" disabled
+    				 class="total">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totTotSemaine"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				 class="total"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
-    	<tr> {{-- spacing --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
 
-		{{-- pourcentages de week-end --}}
+		<!-- pourcentages de week-end -->
+
     	<tr>
     		<td colspan="2" style="text-align:right;">
     			<span id="id-lbl-fin-res{{$tabnum}}"
     			   style="margin-right:20px; font-style: italic;"></span>
     		</td>
     	</tr>
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
+
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctJourWeekend-res{{$tabnum}}"
     				  for="id-res{{$tabnum}}-pctJourWeekend"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctJourWeekend"
+    			<input id="id-proj2{{$tabnum}}-pctJourWeekend"
     				 name="pctJourWeekend"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totJourWeekend"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctSoirWeekend-res{{$tabnum}}"
-    			      for="id-res{{$tabnum}}-pctSoirWeekend"></label>
+    			      for="id-proj2{{$tabnum}}-pctSoirWeekend"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctSoirWeekend"
+    			<input id="id-proj2{{$tabnum}}-pctSoirWeekend"
     				 name="pctSoirWeekend"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totSoirWeekend"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
     	<tr>
@@ -319,60 +444,88 @@
     				  for="id-res{{$tabnum}}-pctNuitWeekend"></label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctNuitWeekend"
+    			<input id="id-proj2{{$tabnum}}-pctNuitWeekend"
     				 name="pctNuitWeekend"
-    				 type="number" min="0" max="100"
+    				 type="text" size="4" disabled
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totNuitWeekend"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-resultats-{{$tabnum}}"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
-    	{{-- total weekend --}}
+		<!-- total week-end -->
+
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pcTotWeekend-res{{$tabnum}}"
     				  for="id-res{{$tabnum}}-pctTotWeekend">total</label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctTotWeekend"
-    				 type="number" min="0" max="100"
+    			<input id="id-proj2{{$tabnum}}-pctTotWeekend"
+    				 type="text" size="4" disabled
+    				 class="total">
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totTotWeekend"
+    				 type="number" min="0" max="9999"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				 class="total"> %
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
 
-    	{{-- total combiné --}}
+		<!-- total combiné -->
+
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pcTotCumul-res{{$tabnum}}"
     				  for="id-res{{$tabnum}}-pctTotCumul">total</label>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-pctTotCumul"
-    				 type="text" class="total" size="3" disabled> %
+    			<input id="id-proj2{{$tabnum}}-pctTotCumul"
+    				 type="text" class="total" size="3" readonly>
+    		</td>
+    		<td>
+    			<input id="id-res{{$tabnum}}-totTotCumul"
+    				 type="number" min="0" max="9999"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-resultats-{{$tabnum}}">
+    		</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
 
-		{{-- territoires ciblés --}}
+		<!-- territoires ciblés -->
 
-    	<tr id="id-tr-territoires-cibles-res{{$tabnum}}">
-    		<td colspan="2"><input id="id-btn-terr-res{{$tabnum}}" type="button" value="Territoires ciblés..."></td>
-    	</tr>
-    	<tr><td colspan="2">&nbsp;</td></tr>
     	<tr>
-    		<td colspan="2" style="text-align:right;"><input id="id-btn-save-res{{$tabnum}}" type="button" disabled value="Sauvegarder"></td>
+    		<td colspan="2"><span id="id-lbl-terr-res{{$tabnum}}" style="font-weight:bold;"></span>:</td>
     	</tr>
+
+        <!-- spacer & anchor for insertions by controller -->
+    	<tr id="id-tr-territoires-cibles-res{{$tabnum}}">
+    		<td colspan="4">&nbsp;</td>
+    	</tr>
+
     </table>
 </form>

@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home',    'HomeController@index');
 Route::get('/accueil', 'HomeController@index')->name('accueil');
 
+/* redirect domain-level requests to default view */
+Route::get('/', 'HomeController@index');
+
 Route::get('register', function() {return view('auth.register');})
 ->name('register')
 ->middleware('can:create,App\User');

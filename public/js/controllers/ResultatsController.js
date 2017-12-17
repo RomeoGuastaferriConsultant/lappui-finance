@@ -49,15 +49,18 @@ function ResultatsController(projections, resultats) {
 		var nbTabs = 4;
 		var nbActivities = projet.activites.length;
 		for (var i = 1; i <= nbTabs; i++) {
+			// build tab id
+			var tabId = '#tab-' + i + '-res';
+			
 			if (i <= nbActivities) {
 				// refresh title
-				$('#tab-' + i + ' a').text(i + ' - ' + new Activite(projet.activites[i-1]).text());
+				$(tabId + ' a').text(i + ' - ' + new Activite(projet.activites[i-1]).text());
 				// show tab
-				$('#tab-' + i).show();
+				$(tabId).show();
 			}
 			else {
 				// hide tab i
-				$('#tab-' + i).hide();
+				$(tabId).hide();
 			}
 		}
 	}
@@ -106,8 +109,6 @@ function ResultatsController(projections, resultats) {
 	this.updateLanguage = function() {
 		// update labels and form controls
 		locale.updateDocLang('resultats.json');
-		// update tooltips
-//		locale.updateTooltipsLang('resultats-tooltips.json');
 
 		if (regions)
 			if (regions.organismes)

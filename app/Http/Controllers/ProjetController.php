@@ -63,17 +63,18 @@ class ProjetController extends Controller
         $proj2 = new Projet(
             '2',
             '1',
-            'On s\'informe en région',
-            'Pellentesque fermentum euismod sapien, sit amet lobortis purus dignissim pulvinar. '
-                .'Proin pharetra volutpat erat id pulvinar. ',
+            'Projet de Soutien et Répit',
+            'Sed laoreet diam quis arcu laoreet faucibus. In ante nisi, dictum eget cursus in, '
+            .'dapibus eu erat. Duis malesuada nunc dui, tincidunt euismod ex fermentum sit amet. ',
             array(
                 new Period('2017-04-01', '2017-09-30', 'previsions'),
                 new Period('2017-10-01', '2018-03-31', 'previsions'),
+                new Period('2018-04-01', '2018-09-30', 'previsions'),
             ),
             array(
-                new ActiviteSoutien(ActiviteSoutien::SOUTIEN_INDIVIDUEL),
-                new ActiviteSoutien(ActiviteSoutien::GROUPE_SOUTIEN),
-                new ActiviteSoutien(ActiviteSoutien::GROUPE_ENTRAIDE)
+                new ActiviteInformation(ActiviteInformation::OUTIL_INFO_DOC),
+                new ActiviteRepit(ActiviteRepit::REPIT_INDIVIDUEL),
+                new ActiviteRepit(ActiviteRepit::REPIT_ACCESSOIRE)
             ));
 
         $proj3 = new Projet(
@@ -97,18 +98,17 @@ class ProjetController extends Controller
         $proj4 = new Projet(
             '4',
             '2',
-            'Projet de Soutien et Répit',
-            'Sed laoreet diam quis arcu laoreet faucibus. In ante nisi, dictum eget cursus in, '
-                .'dapibus eu erat. Duis malesuada nunc dui, tincidunt euismod ex fermentum sit amet. ',
+            'On s\'informe en région',
+            'Pellentesque fermentum euismod sapien, sit amet lobortis purus dignissim pulvinar. '
+            .'Proin pharetra volutpat erat id pulvinar. ',
             array(
                 new Period('2017-04-01', '2017-09-30', 'previsions'),
                 new Period('2017-10-01', '2018-03-31', 'previsions'),
-                new Period('2018-04-01', '2018-09-30', 'previsions'),
             ),
             array(
-                new ActiviteInformation(ActiviteInformation::OUTIL_INFO_DOC),
-                new ActiviteRepit(ActiviteRepit::REPIT_INDIVIDUEL),
-                new ActiviteRepit(ActiviteRepit::REPIT_ACCESSOIRE)
+                new ActiviteSoutien(ActiviteSoutien::SOUTIEN_INDIVIDUEL),
+                new ActiviteSoutien(ActiviteSoutien::GROUPE_SOUTIEN),
+                new ActiviteSoutien(ActiviteSoutien::GROUPE_ENTRAIDE)
             ));
 
         return array(

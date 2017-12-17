@@ -6,6 +6,8 @@
         <select id="id-sel-periode-res">
           <option>1 avril 2017 - 31 mars 2018</option>
         </select>
+        <button id="id-btn-save-proj"></button>
+        <button id="id-btn-reddition"></button>
       </td>
    </tr>
 </table>

@@ -85,25 +85,25 @@ function ProjectionsActiviteController(previsions, tabindex) {
 		$("#" + prefix + "pctTotCumul").val(totalSemaine + totalWeekend);		
 		
 		// create percentage control moderator
-		var percentages = new PercentageController(
-				prefix + "pctJourSemaine",
-				prefix + "pctSoirSemaine",
-				prefix + "pctNuitSemaine",
-				prefix + "pctTotSemaine",
-				prefix + "pctJourWeekend",
-				prefix + "pctSoirWeekend",
-				prefix + "pctNuitWeekend",
-				prefix + "pctTotWeekend"
-			);
-		// let it manage input control changes
-		this.registerPercentageHandlers(prefix + 'pctJourSemaine',  percentages);
-		this.registerPercentageHandlers(prefix + 'pctSoirSemaine',  percentages);
-		this.registerPercentageHandlers(prefix + 'pctNuitSemaine',  percentages);
-		this.registerPercentageHandlers(prefix + 'pctTotalSemaine', percentages);
-		this.registerPercentageHandlers(prefix + 'pctJourWeekend',  percentages);
-		this.registerPercentageHandlers(prefix + 'pctSoirWeekend',  percentages);
-		this.registerPercentageHandlers(prefix + 'pctNuitWeekend',  percentages);
-		this.registerPercentageHandlers(prefix + 'pctTotalWeekend', percentages);
+//		var percentages = new PercentageController(
+//				prefix + "pctJourSemaine",
+//				prefix + "pctSoirSemaine",
+//				prefix + "pctNuitSemaine",
+//				prefix + "pctTotSemaine",
+//				prefix + "pctJourWeekend",
+//				prefix + "pctSoirWeekend",
+//				prefix + "pctNuitWeekend",
+//				prefix + "pctTotWeekend"
+//			);
+//		// let it manage input control changes
+//		this.registerPercentageHandlers(prefix + 'pctJourSemaine',  percentages);
+//		this.registerPercentageHandlers(prefix + 'pctSoirSemaine',  percentages);
+//		this.registerPercentageHandlers(prefix + 'pctNuitSemaine',  percentages);
+//		this.registerPercentageHandlers(prefix + 'pctTotalSemaine', percentages);
+//		this.registerPercentageHandlers(prefix + 'pctJourWeekend',  percentages);
+//		this.registerPercentageHandlers(prefix + 'pctSoirWeekend',  percentages);
+//		this.registerPercentageHandlers(prefix + 'pctNuitWeekend',  percentages);
+//		this.registerPercentageHandlers(prefix + 'pctTotalWeekend', percentages);
 	}
 	
 	
@@ -131,7 +131,7 @@ function ProjectionsActiviteController(previsions, tabindex) {
 					   +       "</label>"
 					   +    "</td>"
 					   +    "<td style='text-align:center;'>"
-					   +       "<input id='id-chk-terr" + terr + "-pre" + index + "' type='checkbox' checked='true'>"
+					   +       "<input id='id-chk-terr" + terr + "-pre" + index + "' type='checkbox' checked='true' disabled>"
 					   +    "</td>"
 					   + "</tr>";
 
