@@ -103,9 +103,9 @@ function ProjectionsController(list) {
 	
 	this.updateLanguage = function() {
 		// update labels and form controls
-		locale.updateDocLang('previsions.json');
+		document.controllers.localization.updateDocLang('previsions.json');
 		// update tooltips
-		locale.updateTooltipsLang('previsions-tooltips.json');
+		document.controllers.localization.updateTooltipsLang('previsions-tooltips.json');
 
 		if (regions)
 			if (regions.organismes)
@@ -135,7 +135,7 @@ function ProjectionsController(list) {
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {
+	document.controllers.localization.addEventHandler(function() {
 		if (regions)
 			if (regions.organismes) {
 				if (regions.organismes.projets) {

@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {locale.updateDocLang('banniere.json');});
+	document.controllers.localization.addEventHandler(function() {
+		document.controllers.localization.updateDocLang('banniere.json');
+	});
 });
 
 

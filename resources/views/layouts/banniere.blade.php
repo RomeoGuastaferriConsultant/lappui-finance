@@ -91,6 +91,6 @@
               alt="Réduire le texte">
         <area shape="rect"
               coords="235,10,275,45"
-              href="javascript:locale.toggleLanguage();"
+              href="javascript:document.controllers.localization.toggleLanguage();"
               alt="traduire en anglais">
     </map>

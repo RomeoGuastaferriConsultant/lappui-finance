@@ -45,7 +45,10 @@ function adjustVisibilities() {
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {locale.updateDocLang('authentication.json');});
+	document.controllers.localization.addEventHandler(function() {
+		document.controllers.localization.updateDocLang('authentication.json');
+	});
+
 	// ...and role change events
 	$("#role").on("change", adjustVisibilities)
 	// ...and region change events
@@ -53,7 +56,7 @@ $(document).ready(function(){
 
 	// simulate 1st language change event
 	// to load initial static content 
-	$("html").trigger("change");
+	document.controllers.localization.trigger();
 
 	// hide 'register' option from user menu
 	$('#id-itm-register').hide()

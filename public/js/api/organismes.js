@@ -69,10 +69,6 @@ function Organismes(regionId, list) {
 		// user's organization should be found in hidden form field
 		this.onSelect($('#id-frm-organisme').val());
 	}
-
-	// trigger 1st language change event
-	// to load initial static content 
-	$("html").trigger("change");
 }
 
 /** 
@@ -80,7 +76,7 @@ function Organismes(regionId, list) {
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {
-		locale.updateDocLang('organisme.json');
+	document.controllers.localization.addEventHandler(function() {
+		document.controllers.localization.updateDocLang('organisme.json');
 	});
 });

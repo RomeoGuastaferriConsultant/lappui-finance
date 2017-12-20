@@ -6,7 +6,7 @@
  */
 function formatDate(date) {
 	// add 12 hours to dates to circumvent a javascript date issue
-	return new Date(date + 'T12:00:00').toLocaleDateString(locale.getLang());
+	return new Date(date + 'T12:00:00').toLocaleDateString(document.controllers.localization.getLang());
 }
 
 /** formats a date interval */

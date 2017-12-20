@@ -72,7 +72,7 @@ function Projets(list) {
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {
+	document.controllers.localization.addEventHandler(function() {
 		if (regions)
 			if (regions.organismes)
 				if (regions.organismes.projets)

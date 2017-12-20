@@ -108,7 +108,7 @@ function ResultatsController(projections, resultats) {
 	
 	this.updateLanguage = function() {
 		// update labels and form controls
-		locale.updateDocLang('resultats.json');
+		document.controllers.localization.updateDocLang('resultats.json');
 
 		if (regions)
 			if (regions.organismes)
@@ -138,7 +138,7 @@ function ResultatsController(projections, resultats) {
  */
 $(document).ready(function(){
 	// register to process language change events
-	$("html").on("change", function() {
+	document.controllers.localization.addEventHandler(function() {
 		if (regions)
 			if (regions.organismes) {
 				if (regions.organismes.projets) {

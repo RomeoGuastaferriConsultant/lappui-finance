@@ -21,7 +21,7 @@
             @yield('contenu')
         </div>
         <script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
-        <script src="{{ asset('js/localization.js') }}"></script>
+        <script src="{{ asset('js/controllers/LocalizationController.js') }}"></script>
         <script src="{{ asset('js/tooltips.js') }}"></script>
         <script src="{{ asset('js/banniere.js') }}"></script>
         <script src="{{ asset('js/forms.js') }}"></script>
