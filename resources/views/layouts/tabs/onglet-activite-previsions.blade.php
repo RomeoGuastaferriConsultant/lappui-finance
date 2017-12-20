@@ -253,7 +253,7 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotCumul"
-    				 type="text" class="total" size="3" value="100" readonly> %
+    				 type="text" class="total" size="4" value="100%" readonly>
     		</td>
     	</tr>
 
@@ -332,7 +332,8 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotJourSoirSemaine"
-    				 type="text" class="total" size="3" value="100" readonly> %
+    				 type="text" class="total tab-previsions-{{$tabnum}}"
+    				 size="4" value="100%" readonly>
     		</td>
     	</tr>
 
@@ -344,7 +345,8 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotJourSoirNuitSemaine"
-    				 type="text" class="total" size="3" value="100" readonly> %
+    				 type="text" class="total tab-previsions-{{$tabnum}}"
+    				 size="4" value="100%" readonly>
     		</td>
     	</tr>
 
@@ -415,7 +417,8 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotJourSoirWeekend"
-    				 type="text" class="total" size="3" value="100" readonly> %
+    				 type="text" class="total tab-previsions-{{$tabnum}}"
+    				 size="4" value="100%" readonly>
     		</td>
     	</tr>
 
@@ -427,7 +430,8 @@
     		</td>
     		<td>
     			<input id="id-pre{{$tabnum}}-pctTotJourSoirNuitWeekend"
-    				 type="text" class="total" size="3" value="100" readonly> %
+    				 type="text" class="total tab-previsions-{{$tabnum}}"
+    				 size="4" value="100%" readonly>
     		</td>
     	</tr>
 

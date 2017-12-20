@@ -2,13 +2,15 @@
     <table>
     	<tr>
     		<td colspan="2" style="text-align: right;">
-    			<span id="id-lbl-prevu-res{{$tabnum}}" style="font-style: italic; color:gray;"></span>&nbsp;
+    			<span id="id-lbl-prevu-res{{$tabnum}}" class="column-title"
+    			   style="font-style: italic; color:gray;"></span>&nbsp;
     		</td>
     		<td style="text-align: center;">
-    			<span id="id-lbl-reel-res{{$tabnum}}" style="font-style: italic; font-weight: bold;"></span>
+    			<span id="id-lbl-reel-res{{$tabnum}}" class="column-title"
+    			   style="font-style: italic; font-weight: bold;"></span>
     		</td>
     		<td>
-    			<span style="font-style: italic;">&nbsp;&nbsp;Notes</span>
+    			<span style="font-style: italic;" class="column-title">&nbsp;&nbsp;Notes</span>
     		</td>
     	</tr>
 
@@ -369,7 +371,7 @@
     		</td>
     		<td>
     			<span class="percent">
-    				&nbsp;= <span id="id-res{{$tabnum}}-totCumul-pct">100</span>%
+    				&nbsp;= <span id="id-res{{$tabnum}}-totCumul-pct">100%</span>
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="54"></textarea>
     		</td>
@@ -488,7 +490,7 @@
     				 type="text" class="total" size="4" value="100%" readonly>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-totJourSoirSemaine"
+    			<input id="id-res{{$tabnum}}-totJourSoirSemaine" class="tab-resultats-{{$tabnum}}"
     				 type="text" size="4" disabled
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
@@ -513,7 +515,7 @@
     				 type="text" class="total" size="4" value="100%" readonly>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-totJourSoirNuitSemaine"
+    			<input id="id-res{{$tabnum}}-totJourSoirNuitSemaine" class="tab-resultats-{{$tabnum}}"
     				 type="text" size="4" disabled
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);" class="total">
@@ -599,7 +601,7 @@
     				  for="id-res{{$tabnum}}-pctNuitWeekend"></label>
     		</td>
     		<td>
-    			<input id="id-proj2{{$tabnum}}-totNuitWeekend"
+    			<input id="id-proj2{{$tabnum}}-pctNuitWeekend"
     				 name="pctNuitWeekend"
     				 type="text" size="4" disabled
     				class="tab-resultats-{{$tabnum}}">
@@ -630,7 +632,7 @@
     				 type="text" class="total" size="4" value="100%" readonly>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-totJourSoirWeekend"
+    			<input id="id-res{{$tabnum}}-totJourSoirWeekend" class="tab-resultats-{{$tabnum}}"
     				 type="text" size="4" disabled
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
@@ -655,7 +657,7 @@
     				 type="text" class="total" size="4" value="100%" readonly>
     		</td>
     		<td>
-    			<input id="id-res{{$tabnum}}-totJourSoirNuitWeekend"
+    			<input id="id-res{{$tabnum}}-totJourSoirNuitWeekend" class="tab-resultats-{{$tabnum}}"
     				 type="text" size="4" disabled
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);" class="total">

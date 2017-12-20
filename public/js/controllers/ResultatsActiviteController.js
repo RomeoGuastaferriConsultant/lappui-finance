@@ -28,21 +28,35 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 		
 		// display projections data elements
 		var idprefix1 = "id-proj2" + this.index + "-";
-		this.refreshFields(cssClass, idprefix1, this.projections);
+		displayFields(cssClass, idprefix1, this.projections);
 
 		// display results data elements
 		idprefix2 = "id-res" + this.index + "-";
-		this.refreshFields(cssClass, idprefix2, this.resultats);
+		displayFields(cssClass, idprefix2, this.resultats);
 		
+		// show correct totals line
+		if (this.resultats.activite.volet == 3) {
+			// les activités de répit incluent la période de nuit
+			displayField(idprefix2 + 'totJourSoirNuitSemaine', '');
+			displayField(idprefix2 + 'totJourSoirNuitWeekend', '');
+		}
+		else {
+			// les autres activités incluent le jour et la nuit uniquement
+			displayField(idprefix2 + 'totJourSoirSemaine', '');
+			displayField(idprefix2 + 'totJourSoirWeekend', '');
+		}
+
+		// 3 = repit
+		var includeNights = this.resultats.activite.volet == 3;
+
 		// set summation controllers to display correct totals
-//		setSummationControllers(this.projections, idprefix1 + 'pct');
-//		setSummationControllers(this.resultats,   idprefix2 + 'tot');
+		setSummationControllers(this.resultats, idprefix2, includeNights);
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(this.resultats, this.index);
 	}
 	
-	this.refreshFields = function(cssClass, idprefix, values) {
+	var displayFields = function(cssClass, idprefix, values) {
 		// loop through every potential field to fill in
 		$(cssClass).each(function() {
 			
@@ -53,12 +67,12 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 				var prop = id.substr(idprefix.length);
 				
 				// update fields
-				controller.refreshField(id, values[prop]);
+				displayField(id, values[prop]);
 			}
 		});
 	}
 	
-	this.refreshField = function(id, value) {
+	var displayField = function(id, value) {
 		if (value != undefined) {
 			// are we dealing with a percentage field ?
 			if (id.includes('pct')) {
@@ -79,63 +93,56 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 		}
 	}
 	
-	var isVisible = function(id) {
-		// a bit awkward, but JQuery's .is(':visible') does NOT seem to work
-		var tr = $("#"+id).closest("tr");
-		var invisible = tr.css('display').startsWith('none');
-		return !invisible;
-	}
-
-	var setSummationControllers = function(values, prefix) {
+	var setSummationControllers = function(values, prefix, includeNights) {
 
 		// weekdays & weekend summation controllers
-		var weekdayController = getWeekdaySummationController(values, prefix); 
-		var weekendController = getWeekendSummationController(values, prefix);
+		var weekdayController = getWeekdaySummationController(values, prefix, includeNights); 
+		var weekendController = getWeekendSummationController(values, prefix, includeNights);
 		
 		// ... and lastly, cumulative totals
 		var cumulativeController = new SummationController(
-				prefix + "TotCumul",
-				prefix + "TotWeekend",
-				prefix + "TotSemaine"
+				prefix + "totCumul",
+				prefix + "totWeekend",
+				prefix + "totSemaine"
 			);
 	}
 
-	var getWeekdaySummationController = function(values, prefix) {
+	var getWeekdaySummationController = function(values, prefix, includeNights) {
 		// le champ nuit est visible ?
-		if (isVisible(prefix + 'NuitSemaine')) {
+		if (includeNights) {
 			// le champ nuit est visible: on en tient compte
 			return new SummationController(
-					prefix + "TotSemaine",
-					prefix + "JourSemaine",
-					prefix + "SoirSemaine",
-					prefix + "NuitSemaine"
+					prefix + "totJourSoirNuitSemaine",
+					prefix + "totJourSemaine",
+					prefix + "totSoirSemaine",
+					prefix + "totNuitSemaine"
 				);
 		}
 		else {
 			return new SummationController(
-					prefix + "TotSemaine",
-					prefix + "JourSemaine",
-					prefix + "SoirSemaine"
+					prefix + "totJourSoirSemaine",
+					prefix + "totJourSemaine",
+					prefix + "totSoirSemaine"
 				);
 		}
 	}
 	
-	var getWeekendSummationController = function(values, prefix) {
+	var getWeekendSummationController = function(values, prefix, includeNights) {
 		// le champ nuit est visible ?
-		if (isVisible(prefix + 'NuitWeekend')) {
+		if (includeNights) {
 			// le champ nuit est visible: on en tient compte
 			return new SummationController(
-					prefix + "TotWeekend",
-					prefix + "JourWeekend",
-					prefix + "SoirWeekend",
-					prefix + "NuitWeekend"
+					prefix + "totJourSoirNuitWeekend",
+					prefix + "totJourWeekend",
+					prefix + "totSoirWeekend",
+					prefix + "totNuitWeekend"
 				);
 		}
 		else {
 			return new SummationController(
-					prefix + "TotWeekend",
-					prefix + "JourWeekend",
-					prefix + "SoirWeekend"
+					prefix + "totJourSoirWeekend",
+					prefix + "totJourWeekend",
+					prefix + "totSoirWeekend"
 				);
 		}
 	}

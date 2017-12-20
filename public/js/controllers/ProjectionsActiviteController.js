@@ -3,17 +3,20 @@ function ProjectionsActiviteController(previsions, tabindex) {
 	this.previsions = previsions
 	this.index = tabindex;
 	
-//	console.log('ProjectionsActiviteController tab ' + tabindex + ', previsions: ' + JSON.stringify(previsions));
-	
 	/** display forecast information in appropriate tab */
 	this.display = function() {
 
+		// css class of fields to display
+		var cssClass = ".tab-previsions-" + this.index;
+		
 		// string that should prefix ids of target input elements
 		var prefix = "id-pre" + this.index + "-";
 		
+		// hide all the fields to begin with: only show on-demand
+		$(cssClass).closest('tr').hide();
+
 		// loop through all input fields in this tab
-		$(".tab-previsions-"+this.index).show();
-		$(".tab-previsions-"+this.index).each(function() {
+		$(cssClass).each(function() {
 			
 			// get element id
 			var id = $(this).attr('id');
@@ -21,31 +24,62 @@ function ProjectionsActiviteController(previsions, tabindex) {
 				// extract prefix to get property name
 				var prop = id.substr(prefix.length);
 				
-				// does this property exist on prevision ?
-				var value = previsions[prop];
-				if (value != undefined) {
-					// update document field
-					$("#"+id).val(value);
-
-					// make sure it shows
-					$("#"+id).closest("tr").show();
-				}
-				else {
-					// hide field row for which there is no forecast value
-					$("#"+id).closest("tr").hide();
-					// reset value
-					$("#"+id).val(0);
-				}
+				// display it
+				displayField(id, previsions[prop]);
 			}
 		});
 		
-		// set summation controllers to display correct totals
-		//this.setSummationController(this.previsions, prefix + 'pct');
+		// show correct totals line
+		if (previsions.activite.volet == 3) {
+			// les activités de répit incluent la période de nuit
+			displayField(prefix + 'pctTotJourSoirNuitSemaine', '100%');
+			displayField(prefix + 'pctTotJourSoirNuitWeekend', '100%');
+		}
+		else {
+			// les autres activités incluent le jour et la nuit uniquement
+			displayField(prefix + 'pctTotJourSoirSemaine', '100%');
+			displayField(prefix + 'pctTotJourSoirWeekend', '100%');
+		}
+		
+		// set controllers to display correct totals
+		var periodPercentages = new PercentageFieldsController(prefix + 'pctSemaine', prefix + 'pctWeekend');
+		if (previsions.activite.volet == 3) {
+			// les activités de répit incluent la période de nuit
+			var weekPercentages    = new PercentageFieldsController(prefix + 'pctJourSemaine', prefix + 'pctSoirSemaine', prefix + 'pctNuitSemaine');
+			var weekendPercentages = new PercentageFieldsController(prefix + 'pctJourWeekend', prefix + 'pctSoirWeekend', prefix + 'pctNuitWeekend');
+		}
+		else {
+			// les autres activités incluent le jour et la nuit uniquement
+			var weekPercentages    = new PercentageFieldsController(prefix + 'pctJourSemaine', prefix + 'pctSoirSemaine');
+			var weekendPercentages = new PercentageFieldsController(prefix + 'pctJourWeekend', prefix + 'pctSoirWeekend');
+		}
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(previsions, this.index);
 	}
 
+	var displayField = function(id, value) {
+		if (value != undefined) {
+			// update document field
+			$("#"+id).val(value);
+
+			// make sure it shows
+			showLine(id);
+		}
+		else {
+			// reset value to clean up things
+			$("#"+id).val(0);
+		}
+	}
+	
+	var showLine = function(id) {
+		$("#"+id).closest("tr").show();
+	}
+	
+	var hideLine = function(id) {
+		$("#"+id).closest("tr").hide();
+	}
+	
 //	this.setSummationController = function(values, prefix) {
 //		// create summation controller for weekdays values
 //		var weekdayController = new SummationController(

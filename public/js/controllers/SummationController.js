@@ -17,27 +17,22 @@ function SummationController(total, add1, add2, add3) {
 	this.operands = [
 		$('#' + add1), 
 		$('#' + add2)];
-	
+	// optional 3rd parameter
 	if (add3) { 
 		this.operands.push($('#' + add3));
 	}
 	
-	/** do we need to deal with '%' embedded within field values ? */
-	this.percentAware = total.startsWith('id-proj2');
-
+	var controller = this;
+	
 	var getIntVal = function(element) {
 		var strValue = 0;
 		if (element) {
 			strValue = element.val();
-			if (element.attr('id').startsWith('id-proj2')) {
-				// element value includes trailing '%'; remove it
-				strValue = strValue.substr(0, strValue.length - 1);
-			}
 		}
 		return parseInt(strValue);
 	}
 	
-	this.initTotals = function() {
+	this.updateTotals = function() {
 		var sum = 0;
 		sum += getIntVal(this.operands[0]);
 		sum += getIntVal(this.operands[1]);
@@ -48,14 +43,17 @@ function SummationController(total, add1, add2, add3) {
 		// update & show
 		this.summation.val(sum);
 		this.summation.closest('tr').show();
-		
-		// '%' needs to be appended to projected fields
-		if (this.percentAware) {
-			this.summation.val(this.summation.val() + '%');
-		}
+	}
+	
+	this.attachEventHandlers = function() {
+		this.operands.forEach(function(item) {
+			item.off().on("input", function() {
+				controller.updateTotals();
+			});
+		});
 	}
 
 	// init
-	
-	this.initTotals();
+	this.updateTotals();
+	this.attachEventHandlers();
 }
