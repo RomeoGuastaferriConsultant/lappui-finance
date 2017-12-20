@@ -18,6 +18,10 @@ label {
     margin-left: 10px;
 }
 
+input[id^=id-proj2] {
+    color: gray;
+}
+
 /* size number input elements */
 input[type=number]{
     width: 53px;
@@ -42,6 +46,19 @@ td {
 	height: 27px;
 }
 
+/* correction of weird display for percentages */
+.percent {
+    display: inline-block;
+    color: gray;
+}
+span.percent {
+	margin-bottom: 3px;
+	font-size: 12px;
+}
+textarea.percent {
+	margin-bottom: -5px;
+}
+
 .contenu {
     margin-left: 100px;
     margin-right: 100px;
@@ -60,11 +77,18 @@ td {
 .tab-resultats-1, .tab-resultats-2, .tab-resultats-3, .tab-resultats-4  {
 	background: white;
 	text-align: right;
-} 
+}
+
+.column-title {
+	font-style: italic;
+	font-weight: bold;
+	display: inline-block;
+	margin-bottom: 5px;
+}
 
 /* input totals */
 .total, input.total[type=text]:disabled {
-	background: rgb(255, 255, 204);
+	background: rgb(232, 232, 232); /* rgb(255, 255, 204); */
     text-align: right;
 }
 

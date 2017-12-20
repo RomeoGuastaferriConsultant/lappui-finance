@@ -14,34 +14,34 @@ class Resultats extends Previsions
         parent::__construct($periode, $activite);
     }
 
-    protected function initializePlagesHorairesPeriodes($previsions) {
+    protected function initializePlagesHorairesPeriodes($resultats) {
         // the rest of these properties are shared by all activity types
-        if ($previsions->activite->volet == Activite::REPIT) {
+        if ($resultats->activite->volet == Activite::REPIT) {
             // on doit rajouter la nuit aux prévisions de répit
-            $previsions->totNuitSemaine = rand(3, 20);
-            $previsions->totJourSemaine = rand(15, 80);
-            $previsions->totSoirSemaine = rand(6, 40);
+            $resultats->totNuitSemaine = rand(3, 20);
+            $resultats->totJourSemaine = rand(15, 80);
+            $resultats->totSoirSemaine = rand(6, 40);
 
-            $previsions->totNuitWeekend = rand(3, 20);
-            $previsions->totJourWeekend = rand(15, 80);
-            $previsions->totSoirWeekend = rand(6, 40);
+            $resultats->totNuitWeekend = rand(3, 20);
+            $resultats->totJourWeekend = rand(15, 80);
+            $resultats->totSoirWeekend = rand(6, 40);
 
-            $total  = $previsions->totJourSemaine
-                    + $previsions->totSoirSemaine
-                    + $previsions->totNuitSemaine
-                    + $previsions->totJourWeekend
-                    + $previsions->totSoirWeekend
-                    + $previsions->totNuitWeekend;
+            $resultats->totSemaine = $resultats->totJourSemaine + $resultats->totSoirSemaine + $resultats->totNuitSemaine;
+            $resultats->totWeekend = $resultats->totJourWeekend + $resultats->totSoirWeekend + $resultats->totNuitWeekend;
+
+            $total  = $resultats->totSemaine + $resultats->totWeekend;
 
             // a few other common fields
-            $previsions->totUrgence = (int) ($total * rand(0,20)/100);
-            $previsions->totPonctuel = $total - $previsions->totUrgence;
+            $resultats->totUrgence = (int) ($total * rand(0,20)/100);
+            $resultats->totPonctuel = $total - $resultats->totUrgence;
         }
         else {
-            $previsions->totJourSemaine = rand(15, 80);
-            $previsions->totSoirSemaine = rand(6, 40);
-            $previsions->totJourWeekend = rand(15, 80);
-            $previsions->totSoirWeekend = rand(6, 40);
+            $resultats->totJourSemaine = rand(15, 80);
+            $resultats->totSoirSemaine = rand(6, 40);
+            $resultats->totJourWeekend = rand(15, 80);
+            $resultats->totSoirWeekend = rand(6, 40);
+            $resultats->totSemaine = $resultats->totJourSemaine + $resultats->totSoirSemaine;
+            $resultats->totWeekend = $resultats->totJourWeekend + $resultats->totSoirWeekend;
         }
     }
 }

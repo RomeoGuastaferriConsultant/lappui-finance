@@ -46,5 +46,17 @@
                             "Le <i>répit ponctuel</i> est un répit planifié, mais non-récurrent"],
     "id-tooltip-pctPonctuel" : ["Le <i>répit d'urgence</i> est un répit non-planifié.", 
                             "",
-                            "Le <i>répit ponctuel</i> est un répit planifié, mais non-récurrent"]
+                            "Le <i>répit ponctuel</i> est un répit planifié, mais non-récurrent"],
+    "id-tooltip-nbSemaine" : ["Ce champ n'est pas modifiable directement.",
+                              "",
+                              "Il représente le total du nombre d'activités qui ont eu lieu en semaine",
+                              "durant le jour, le soir et/ou durant la nuit (le cas échéant).",
+                              "",
+                              "Ces trois valeurs pourront être ajustées à la section suivante."],
+    "id-tooltip-nbWeekend" : ["Ce champ n'est pas modifiable directement.",
+                              "",
+                              "Il représente le total du nombre d'activités qui ont eu lieu le <i>week-end</i>",
+                              "durant le jour, le soir et/ou durant la nuit (le cas échéant).",
+                              "",
+                              "Ces trois valeurs pourront être ajustées à la section suivante."]
 }

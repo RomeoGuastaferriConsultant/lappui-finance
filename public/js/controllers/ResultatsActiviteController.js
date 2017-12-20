@@ -35,8 +35,8 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 		this.refreshFields(cssClass, idprefix2, this.resultats);
 		
 		// set summation controllers to display correct totals
-		setSummationControllers(this.projections, idprefix1 + 'pct');
-		setSummationControllers(this.resultats,   idprefix2 + 'tot');
+//		setSummationControllers(this.projections, idprefix1 + 'pct');
+//		setSummationControllers(this.resultats,   idprefix2 + 'tot');
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(this.resultats, this.index);

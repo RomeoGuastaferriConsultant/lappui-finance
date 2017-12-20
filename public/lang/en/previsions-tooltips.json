@@ -46,5 +46,17 @@
                             "A <i>punctual respite</i> is planned, but non-recurrent."],
     "id-tooltip-pctPonctuel" : ["An <i>emergency respite</i> is an unplanned respite.", 
                             "",
-                            "A <i>punctual respite</i> is planned, but non-recurrent."]
+                            "A <i>punctual respite</i> is planned, but non-recurrent."],
+    "id-tooltip-nbSemaine" : ["This field is not directly editable.",
+                              "",
+                              "It represents the sum of all activities which took place during the week",
+                              "whether they be daytime, evening or night-time activities (if applicable).",
+                              "",
+                              "You will be allowed to adjust any and all of these figures in the next section."],
+    "id-tooltip-nbWeekend" : ["This field is not directly editable.",
+                              "",
+                              "It represents the sum of all <i>weekend</i> activities - including daytime,",
+                              "evening, and also night-time activities (if applicable).",
+                              "",
+                              "You will be allowed to adjust any and all of these figures in the next section."]
 }

@@ -3,11 +3,11 @@
     	<tr>
     		<td></td>
     		<td style="text-align: left;">
-    			<span id="id-lbl-prevu-pre{{$tabnum}}" style="font-style: italic;"></span>
+    			<span id="id-lbl-projete-pre{{$tabnum}}" class="column-title"></span>
     		</td>
     	</tr>
 
-    	{{-- tous les champs editables de l'onglet previsions --}}
+    	<!-- tous les champs editables de l'onglet previsions -->
 
     	<tr>
     		<td style="text-align:right;">
@@ -74,7 +74,7 @@
     		</td>
     	</tr>
 
-    	{{-- nature de l'intervention --}}
+    	<!-- nature de l'intervention -->
     	<tr>
     		<td style="text-align:right;" colspan="2">
     			<label id="id-lbl-natureInterv-pre{{$tabnum}}"
@@ -83,7 +83,7 @@
     			     data-tooltip-id="id-tooltip-natureInterv-{{$tabnum}}"
     			   height="20" width="20">&nbsp;
     			<select id="id-pre{{$tabnum}}-natureInterv"
-    				 name="natureInterv"
+    				 name="natureInterv" style="margin-top:5px;"
     				class="tab-previsions-{{$tabnum}}">
     				<option value="0">Présence / Surveillance</option>
     				<option value="1">Stimulation</option>
@@ -92,7 +92,7 @@
     		</td>
     	</tr>
 
-    	{{-- urgence/ponctuel --}}
+    	<!-- urgence/ponctuel -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctUrgence-pre{{$tabnum}}"
@@ -107,7 +107,7 @@
     				 type="number" min="0" max="100"
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);"
-    				class="tab-previsions-{{$tabnum}}"> %
+    				class="tab-previsions-{{$tabnum}}">%
     		</td>
     	</tr>
     	<tr>
@@ -127,11 +127,15 @@
     				class="tab-previsions-{{$tabnum}}">%
     	</tr>
 
-    	{{-- titre:  Séances et heures d'intervention --}}
+    	<!-- titre:  Séances et heures d'intervention -->
+
     	<tr>
     		<td colspan="2">
     			<span id="id-lbl-seances-pre{{$tabnum}}" style="font-weight: 700;"></span>
     		</td>
+    	</tr>
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
 
     	<tr>
@@ -194,24 +198,85 @@
     		</td>
     	</tr>
 
-    	{{-- titre: par plage horaire et période --}}
+    	<!-- selon période de la semaine -->
+
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
+    	</tr>
     	<tr>
-    		<td style="text-align: center;">
-    			<span id="id-lbl-plage-per-pre" style="font-weight: 700;"></span>...</td>
-    		<td></td>
+    		<td style="text-align: center">
+    			...<span id="id-lbl-plage-per-pre" style="font-weight: 700;"></span>:</td>
+    		<td colspan="3"></td>
+    	</tr>
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
 
-		{{-- pourcentages de semaine --}}
+    	<!-- proportion semaine -->
+
     	<tr>
-    		<td colspan="2" style="text-align:right;">
-    			<span id="id-lbl-sem-pre{{$tabnum}}"
-    			   style="margin-right:20px; font-style: italic;"></span>
+    		<td style="text-align:right;">
+    			<label id="id-lbl-pctSemaine-pre{{$tabnum}}"
+    				   for="id-pre{{$tabnum}}-pctSemaine"></label>
+    		</td>
+    		<td>
+    			<input id="id-pre{{$tabnum}}-pctSemaine"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+
+    	<!-- proportion weekend -->
+
+    	<tr>
+    		<td style="text-align:right;">
+    			<label id="id-lbl-pctWeekend-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctWeekend"></label>
+    		</td>
+    		<td>
+    			<input id="id-pre{{$tabnum}}-pctWeekend"
+    				 type="number" min="0" max="100"
+    			  onfocus="onFocus(this);"
+    			  oninput="onNumberChange(this);"
+    				class="tab-previsions-{{$tabnum}}"> %
+    		</td>
     	</tr>
+
+    	<!-- total combiné -->
+
+    	<tr>
+    		<td style="text-align:right;">
+    			<label id="id-lbl-pctCumul-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctTotCumul">total</label>
+    		</td>
+    		<td>
+    			<input id="id-pre{{$tabnum}}-pctTotCumul"
+    				 type="text" class="total" size="3" value="100" readonly> %
+    		</td>
+    	</tr>
+
+		<!-- par plage horaire -->
+
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
+    	</tr>
+    	<tr>
+    		<td colspan="3" style="text-align:center;">
+    			...<span id="id-lbl-plageHoraire-pre{{$tabnum}}" style="font-weight: bold;"></span>:
+    		</td>
+    	</tr>
+
+		<!-- semaine -->
+    	<tr>
+    		<td></td>
+    		<td style="text-align:left;">
+    			<span id="id-lbl-semaine-pre{{$tabnum}}" class="column-title"></span>
+    		</td>
+    	</tr>
+
+		<!-- jour semaine -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctJourSemaine-pre{{$tabnum}}"
@@ -226,6 +291,8 @@
     				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
+
+		<!-- soir semaine -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctSoirSemaine-pre{{$tabnum}}"
@@ -240,6 +307,8 @@
     				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
+
+		<!-- nuit semaine -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctNuitSemaine-pre{{$tabnum}}"
@@ -255,37 +324,42 @@
     		</td>
     	</tr>
 
-    	{{-- total semaine --}}
+    	<!-- total semaine : jour + soir -->
     	<tr>
     		<td style="text-align:right;">
-    			<label id="id-lbl-pctTotSemaine-pre{{$tabnum}}"
-    				   for="id-pre{{$tabnum}}-pctTotSemaine"></label>
+    			<label id="id-lbl-pctTotJourSoirSemaine-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctTotJourSoirSemaine"></label>
     		</td>
     		<td>
-    			<input id="id-pre{{$tabnum}}-pctTotSemaine"
-    				 type="number" min="0" max="100"
-    			  onfocus="onFocus(this);"
-    			  oninput="onNumberChange(this);"
-    				 class="total"> %
+    			<input id="id-pre{{$tabnum}}-pctTotJourSoirSemaine"
+    				 type="text" class="total" size="3" value="100" readonly> %
     		</td>
     	</tr>
 
-    	<tr> {{-- spacing --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
-    	</tr>
-
-		{{-- pourcentages de week-end --}}
+    	<!-- total semaine : jour + soir + nuit -->
     	<tr>
-    		<td colspan="2" style="text-align:right;">
-    			<span id="id-lbl-fin-pre{{$tabnum}}"
-    			   style="margin-right:20px; font-style: italic;"></span>
+    		<td style="text-align:right;">
+    			<label id="id-lbl-pctTotJourSoirNuitSemaine-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctTotJourSoirNuitSemaine"></label>
+    		</td>
+    		<td>
+    			<input id="id-pre{{$tabnum}}-pctTotJourSoirNuitSemaine"
+    				 type="text" class="total" size="3" value="100" readonly> %
     		</td>
     	</tr>
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+
+		<!-- weekend -->
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
+    	<tr>
+    		<td></td>
+    		<td style="text-align:left;">
+    			<span id="id-lbl-weekend-pre{{$tabnum}}" class="column-title"></span>
+    		</td>
+    	</tr>
+
+		<!-- jour weekend -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctJourWeekend-pre{{$tabnum}}"
@@ -300,6 +374,8 @@
     				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
+
+		<!-- soir weekend -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctSoirWeekend-pre{{$tabnum}}"
@@ -314,6 +390,8 @@
     				class="tab-previsions-{{$tabnum}}"> %
     		</td>
     	</tr>
+
+		<!-- nuit weekend -->
     	<tr>
     		<td style="text-align:right;">
     			<label id="id-lbl-pctNuitWeekend-pre{{$tabnum}}"
@@ -329,44 +407,35 @@
     		</td>
     	</tr>
 
-    	{{-- total weekend --}}
+    	<!-- total weekend : jour + soir -->
     	<tr>
     		<td style="text-align:right;">
-    			<label id="id-lbl-pcTotWeekend-pre{{$tabnum}}"
-    				  for="id-pre{{$tabnum}}-pctTotWeekend">total</label>
+    			<label id="id-lbl-pctTotJourSoirWeekend-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctTotJourSoirWeekend"></label>
     		</td>
     		<td>
-    			<input id="id-pre{{$tabnum}}-pctTotWeekend"
-    				 type="number" min="0" max="100"
-    			  onfocus="onFocus(this);"
-    			  oninput="onNumberChange(this);"
-    				 class="total"> %
+    			<input id="id-pre{{$tabnum}}-pctTotJourSoirWeekend"
+    				 type="text" class="total" size="3" value="100" readonly> %
     		</td>
     	</tr>
 
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
-    	</tr>
-
-    	{{-- total combiné --}}
+    	<!-- total weekend : jour + soir + nuit -->
     	<tr>
     		<td style="text-align:right;">
-    			<label id="id-lbl-pcTotCumul-pre{{$tabnum}}"
-    				  for="id-pre{{$tabnum}}-pctTotCumul">total</label>
+    			<label id="id-lbl-pctTotJourSoirNuitWeekend-pre{{$tabnum}}"
+    				  for="id-pre{{$tabnum}}-pctTotJourSoirNuitWeekend"></label>
     		</td>
     		<td>
-    			<input id="id-pre{{$tabnum}}-pctTotCumul"
-    				 type="text" class="total" size="3" readonly> %
+    			<input id="id-pre{{$tabnum}}-pctTotJourSoirNuitWeekend"
+    				 type="text" class="total" size="3" value="100" readonly> %
     		</td>
     	</tr>
 
-    	<tr> {{-- spacer --}}
-    		<td>&nbsp;</td>
-    		<td>&nbsp;</td>
+    	<tr> <!-- spacer -->
+    		<td colspan="4">&nbsp;</td>
     	</tr>
 
-		{{-- territoires ciblés --}}
+		<!-- territoires ciblés -->
 
     	<tr id="id-tr-territoires-cibles-pre{{$tabnum}}">
     		<td colspan="2"><input id="id-btn-terr-pre{{$tabnum}}" type="button" value="Territoires ciblés..."></td>

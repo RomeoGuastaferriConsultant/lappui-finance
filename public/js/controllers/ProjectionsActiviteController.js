@@ -40,36 +40,36 @@ function ProjectionsActiviteController(previsions, tabindex) {
 		});
 		
 		// set summation controllers to display correct totals
-		this.setSummationController(this.previsions, prefix + 'pct');
+		//this.setSummationController(this.previsions, prefix + 'pct');
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(previsions, this.index);
 	}
 
-	this.setSummationController = function(values, prefix) {
-		// create summation controller for weekdays values
-		var weekdayController = new SummationController(
-				prefix + "TotSemaine",
-				prefix + "JourSemaine",
-				prefix + "SoirSemaine",
-				prefix + "NuitSemaine"
-			);
-		
-		// ... and also create summation controller for weekend values
-		var weekendController = new SummationController(
-				prefix + "TotWeekend",
-				prefix + "JourWeekend",
-				prefix + "SoirWeekend",
-				prefix + "NuitWeekend"
-			);
-		
-		// ... and lastly, cumulative totals
-		var cumulativeController = new SummationController(
-				prefix + "TotCumul",
-				prefix + "TotWeekend",
-				prefix + "TotSemaine"
-			);
-	}
+//	this.setSummationController = function(values, prefix) {
+//		// create summation controller for weekdays values
+//		var weekdayController = new SummationController(
+//				prefix + "TotSemaine",
+//				prefix + "JourSemaine",
+//				prefix + "SoirSemaine",
+//				prefix + "NuitSemaine"
+//			);
+//		
+//		// ... and also create summation controller for weekend values
+//		var weekendController = new SummationController(
+//				prefix + "TotWeekend",
+//				prefix + "JourWeekend",
+//				prefix + "SoirWeekend",
+//				prefix + "NuitWeekend"
+//			);
+//		
+//		// ... and lastly, cumulative totals
+//		var cumulativeController = new SummationController(
+//				prefix + "TotCumul",
+//				prefix + "TotWeekend",
+//				prefix + "TotSemaine"
+//			);
+//	}
 	
 	this.displayTerritoiresCibles = function(prevision, index) {
 		// start by cleaning up what's already there in current index

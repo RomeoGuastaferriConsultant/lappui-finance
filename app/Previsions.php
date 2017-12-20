@@ -131,15 +131,15 @@ class Previsions
         // the rest of these properties are shared by all activity types
         if ($previsions->activite->volet == Activite::REPIT) {
             // on doit rajouter la nuit aux prévisions de répit
-            $pctSemaine = rand(50, 100);
-            $pctWeekend = 100 - $pctSemaine;
-            $previsions->pctNuitSemaine = rand(0, $pctSemaine/3);
-            $previsions->pctJourSemaine = rand(0, $pctSemaine - $previsions->pctNuitSemaine);
-            $previsions->pctSoirSemaine = $pctSemaine - $previsions->pctJourSemaine - $previsions->pctNuitSemaine;
+            $previsions->pctSemaine = rand(50, 100);
+            $previsions->pctWeekend = 100 - $previsions->pctSemaine;
+            $previsions->pctSoirSemaine = rand(10, 70);
+            $previsions->pctNuitSemaine = rand(0, 100 - $previsions->pctSoirSemaine);
+            $previsions->pctJourSemaine = 100 - $previsions->pctSoirSemaine - $previsions->pctNuitSemaine;
 
-            $previsions->pctNuitWeekend = rand(0, $pctWeekend/3);
-            $previsions->pctJourWeekend = rand(0, $pctWeekend - $previsions->pctNuitWeekend);
-            $previsions->pctSoirWeekend = $pctWeekend - $previsions->pctJourWeekend - $previsions->pctNuitWeekend;
+            $previsions->pctSoirWeekend = rand(10, 60);
+            $previsions->pctNuitWeekend = rand(0, 100 - $previsions->pctSoirWeekend);
+            $previsions->pctJourWeekend = 100 - $previsions->pctSoirWeekend - $previsions->pctNuitWeekend;
 
             // a few other common fields
             $previsions->pctUrgence = rand(0,20);
@@ -147,12 +147,12 @@ class Previsions
             $previsions->natureInterv = rand(0,1);
         }
         else {
-            $pctSemaine = rand(60, 100);
-            $pctWeekend = 100 - $pctSemaine;
-            $previsions->pctSoirSemaine = rand(0, $pctSemaine/3);
-            $previsions->pctJourSemaine = $pctSemaine - $previsions->pctSoirSemaine;
-            $previsions->pctSoirWeekend = rand(0, $pctWeekend/3);
-            $previsions->pctJourWeekend = $pctWeekend - $previsions->pctSoirWeekend;
+            $previsions->pctSemaine = rand(60, 100);
+            $previsions->pctWeekend = 100 - $previsions->pctSemaine;
+            $previsions->pctJourSemaine = rand(50, 100);
+            $previsions->pctSoirSemaine = 100 - $previsions->pctJourSemaine;
+            $previsions->pctJourWeekend = rand(50, 100);
+            $previsions->pctSoirWeekend = 100 - $previsions->pctJourWeekend;
         }
     }
 
