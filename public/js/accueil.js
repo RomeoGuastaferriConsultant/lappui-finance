@@ -11,7 +11,7 @@ $(document).ready(function(){
 	});
 
 	// initialize regions select box
-	$.get('api/regions', function(data) {
+	document.controllers.ajax.get('api/regions', function(data) {
 		regions = new Regions(data)
 	});
 

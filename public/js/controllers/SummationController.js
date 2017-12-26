@@ -43,6 +43,7 @@ function SummationController(total, add1, add2, add3) {
 		// update & show
 		this.summation.val(sum);
 		this.summation.closest('tr').show();
+		this.summation.trigger('change');
 	}
 	
 	this.attachEventHandlers = function() {

@@ -2,7 +2,7 @@ function onRegionSelected() {
 	var region = $("#region option:selected").val();
 
 	// fetch list of organizations for selected region
-	$.get('api/regions/' + region + '/organismes', function(data) {
+	document.controllers.ajax.get('api/regions/' + region + '/organismes', function(data) {
 		// bind this list to select element
 		var select = $('#organisme');
 		// ensure select is empty before init

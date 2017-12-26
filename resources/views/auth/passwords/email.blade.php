@@ -23,7 +23,7 @@
                         {{ csrf_field() }}
 
 						{{-- for communicating language changes back to server --}}
-                        <input id="id-frm-lang" name="lang" type="hidden">
+                        <input id="id-frm-lang" name="lang" type="hidden" value="fr">
 
                         <div class="form-group{{ $errors->has('courriel') ? ' has-error' : '' }}">
                             <label id="id-lbl-email" for="courriel" class="col-md-4 control-label"></label>

@@ -18,7 +18,7 @@
 
                         <input type="hidden" name="token" value="{{ $token }}">
 						{{-- for communicating language changes back to server --}}
-                        <input id="id-frm-lang" name="lang" type="hidden">
+                        <input id="id-frm-lang" name="lang" type="hidden"  value="fr">
 
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

@@ -4,7 +4,9 @@
 @push('scripts')
     <script src="{{ asset('js/api/activites.js') }}"></script>
     <script src="{{ asset('js/controllers/PercentageFieldsController.js') }}"></script>
+    <script src="{{ asset('js/controllers/PercentageRatioController.js') }}"></script>
     <script src="{{ asset('js/controllers/SummationController.js') }}"></script>
+    <script src="{{ asset('js/controllers/FieldEchoController.js') }}"></script>
     <script src="{{ asset('js/controllers/WeeklyDistributionController.js') }}"></script>
     <script src="{{ asset('js/controllers/ProjectionsActiviteController.js') }}"></script>
     <script src="{{ asset('js/controllers/ProjectionsController.js') }}"></script>
@@ -22,7 +24,7 @@
     {{ csrf_field() }}
 
 	{{-- for communicating language changes back to server --}}
-    <input id="id-frm-lang" name="lang" type="hidden">
+    <input id="id-frm-lang" name="lang" type="hidden" value="fr">
 
     {{-- user region --}}
     @if(Auth::user()->isRegional())

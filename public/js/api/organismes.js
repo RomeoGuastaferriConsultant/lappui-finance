@@ -34,7 +34,7 @@ function Organismes(regionId, list) {
 				$('#id-nom-organisme').text(organisme.nom);
 
 				// fetch projects associated with current organization
-				$.get(organisme.links.projets, function(data) {
+				document.controllers.ajax.get(organisme.links.projets, function(data) {
 					organismes.projets = new Projets(data);
 				});
 			}

@@ -35,5 +35,6 @@
     "id-lbl-pctSoirWeekend-pre" : "Soir",
     "id-lbl-pctNuitWeekend-pre" : "Nuit",
     "id-btn-terr-pre" : "Territoires ciblés...",
-    "id-btn-save-pre" : "Sauvegarder"
+    "id-btn-save-pre" : "Sauvegarder",
+    "id-btn-soumission-pre" : "Soumission..."
 }

@@ -30,12 +30,12 @@ function Projets(list) {
 				$('#id-txt-dates').val(formatPeriodes(this.current.periodes));
 				
 				// delegate tabs related stuff
-				$.get(this.current.links.previsions, function(projections) {
+				document.controllers.ajax.get(this.current.links.previsions, function(projections) {
 					// projections tab
 					regions.organismes.projets.current.previsions = new ProjectionsController(projections);
 					
 					// results tab
-					$.get(regions.organismes.projets.current.links.resultats, function(resultats) {
+					document.controllers.ajax.get(regions.organismes.projets.current.links.resultats, function(resultats) {
 						// projections tab
 						regions.organismes.projets.current.resultats = new ResultatsController(projections, resultats);
 					});

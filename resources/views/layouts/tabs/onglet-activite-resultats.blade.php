@@ -136,7 +136,7 @@
     		</td>
     		<td>&nbsp;
     			<span class="percent">
-    				&nbsp;=<span id="id-res{{$tabnum}}-totUrgence-pct">25</span>%
+    				&nbsp;=<span id="id-res{{$tabnum}}-totUrgence-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -166,7 +166,7 @@
     		</td>
     		<td>&nbsp;
     			<span class="percent">
-    				&nbsp;=<span id="id-res{{$tabnum}}-totPonctuel-pct">25</span>%
+    				&nbsp;=<span id="id-res{{$tabnum}}-totPonctuel-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -317,7 +317,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSemaine-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSemaine-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -345,7 +345,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totWeekend-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totWeekend-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -419,7 +419,7 @@
     		</td>
     		<td>
     			<span class="percent">
-	    			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSemaine-pct">25</span>%
+	    			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSemaine-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -446,7 +446,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSoirSemaine-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSoirSemaine-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -473,7 +473,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totNuitSemaine-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totNuitSemaine-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -498,7 +498,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirSemaine-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirSemaine-pct">100</span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -522,7 +522,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirNuitSemaine-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirNuitSemaine-pct">100</span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -561,7 +561,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourWeekend-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourWeekend-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -588,7 +588,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSoirWeekend-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSoirWeekend-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -615,7 +615,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totNuitWeekend-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totNuitWeekend-pct"></span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -640,7 +640,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirWeekend-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirWeekend-pct">100</span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>
@@ -664,7 +664,7 @@
     		</td>
     		<td>
     			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirNuitWeekend-pct">25</span>%
+        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirNuitWeekend-pct">100</span>%
     			</span>
     			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
     		</td>

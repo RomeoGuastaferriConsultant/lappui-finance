@@ -47,13 +47,13 @@ function LocalizationController() {
 	this.updateDocLang = function(jsonFile) {
 		// fetch language file on server via AJAX
 		// then use contents to update doc language
-		$.get(getLangPath(jsonFile), updateDocument);
+		document.controllers.ajax.get(getLangPath(jsonFile), updateDocument);
 	}
 	
 	this.updateTooltipsLang = function(jsonFile) {
 		// fetch language file on server via AJAX
 		// then use contents to update tooltip texts
-		$.get(getLangPath(jsonFile), function(data) {
+		document.controllers.ajax.get(getLangPath(jsonFile), function(data) {
 			// update title contents
 			$("[data-tooltip-id]").each(function(index, element) {
 				setTitleLocale(element, data);

@@ -23,37 +23,79 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 		// css class of fields to display
 		var cssClass = ".tab-resultats-" + this.index;
 		
+		// id prefixes that identify current tab elements
+		var idPrefixProj = "id-proj2" + this.index + "-";
+		var idPrefixRes  = "id-res"   + this.index + "-";
+		
+		// initialize all results fields to begin with
+		initializeFields(idPrefixRes);
+		
 		// hide all the fields to begin with: only show on-demand
 		$(cssClass).closest("tr").hide();
 		
 		// display projections data elements
-		var idprefix1 = "id-proj2" + this.index + "-";
-		displayFields(cssClass, idprefix1, this.projections);
+		displayFields(cssClass, idPrefixProj, this.projections);
 
 		// display results data elements
-		idprefix2 = "id-res" + this.index + "-";
-		displayFields(cssClass, idprefix2, this.resultats);
+		displayFields(cssClass, idPrefixRes, this.resultats);
 		
 		// show correct totals line
 		if (this.resultats.activite.volet == 3) {
 			// les activités de répit incluent la période de nuit
-			displayField(idprefix2 + 'totJourSoirNuitSemaine', '');
-			displayField(idprefix2 + 'totJourSoirNuitWeekend', '');
+			displayField(idPrefixRes + 'totJourSoirNuitSemaine', '');
+			displayField(idPrefixRes + 'totJourSoirNuitWeekend', '');
 		}
 		else {
 			// les autres activités incluent le jour et la nuit uniquement
-			displayField(idprefix2 + 'totJourSoirSemaine', '');
-			displayField(idprefix2 + 'totJourSoirWeekend', '');
+			displayField(idPrefixRes + 'totJourSoirSemaine', '');
+			displayField(idPrefixRes + 'totJourSoirWeekend', '');
 		}
 
 		// 3 = repit
 		var includeNights = this.resultats.activite.volet == 3;
 
+		// set echo fields
+		if (this.resultats.activite.volet == 3) {
+			// les activités de répit incluent la période de nuit
+			var echo1 = new FieldEchoController(idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totSemaine');
+			var echo2 = new FieldEchoController(idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totWeekend');
+		}
+		else {
+			// les autres activités incluent le jour et la nuit uniquement
+			var echo1 = new FieldEchoController(idPrefixRes + 'totJourSoirSemaine', idPrefixRes + 'totSemaine');
+			var echo2 = new FieldEchoController(idPrefixRes + 'totJourSoirWeekend', idPrefixRes + 'totWeekend');
+		}
+		
 		// set summation controllers to display correct totals
-		setSummationControllers(this.resultats, idprefix2, includeNights);
+		setSummationControllers(this.resultats, idPrefixRes, includeNights);
+		
+		// set percentage ratios
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totUrgence',  idPrefixRes + 'totCumul', idPrefixRes + 'totUrgence-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totPonctuel', idPrefixRes + 'totCumul', idPrefixRes + 'totPonctuel-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totSemaine',  idPrefixRes + 'totCumul', idPrefixRes + 'totSemaine-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totWeekend',  idPrefixRes + 'totCumul', idPrefixRes + 'totWeekend-pct');
+		
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totJourSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totJourSemaine-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totSoirSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totSoirSemaine-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totNuitSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totNuitSemaine-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totJourWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totJourWeekend-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totSoirWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totSoirWeekend-pct');
+		var ratio1 = new PercentageRatioController(idPrefixRes + 'totNuitWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totNuitWeekend-pct');
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(this.resultats, this.index);
+	}
+	
+	var initializeFields = function(prefix) {
+		$('[id^=' + prefix + ']').each(function(index, element) {
+			// hide all the fields to begin with: only show on-demand
+			$(element).closest("tr").hide();
+			// initialize value
+			$(element).val(0);
+			// remove any event handlers that might have been previously set
+			$(element).off();
+		});
+		
 	}
 	
 	var displayFields = function(cssClass, idprefix, values) {
@@ -83,13 +125,8 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 				// display standard value
 				$("#"+id).val(value);
 			}
-
 			// make sure it shows
 			$("#"+id).closest("tr").show();
-		}
-		else{
-			// no value to display in this field: reset
-			$(id).val(0);
 		}
 	}
 	

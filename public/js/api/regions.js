@@ -21,7 +21,7 @@ function Regions(list) {
 				$('#id-nom-region').text(this.list[region].name);
 
 				// fetch organizations associated with current region
-				$.get(list[region].links['organismes'], function(data) {
+				document.controllers.ajax.get(list[region].links['organismes'], function(data) {
 					regions.organismes = new Organismes(regionId, data);
 				});	
 			}
