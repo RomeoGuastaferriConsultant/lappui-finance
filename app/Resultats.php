@@ -12,6 +12,19 @@ class Resultats extends Previsions
     public function __construct($periode, $activite)
     {
         parent::__construct($periode, $activite);
+
+        // add actuals to what is originally only a territories list
+        $this->territoires = $this->addActuals($this->territoires);
+    }
+
+    protected function addActuals($territoires) {
+        $result = array();
+        foreach($territoires as $territoire)
+        {
+            // assign random value to current territory
+            $result[$territoire] = rand(0, 60);
+        }
+        return $result;
     }
 
     protected function initializePlagesHorairesPeriodes($resultats) {

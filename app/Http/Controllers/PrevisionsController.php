@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\ActiviteFormation;
+use App\ActiviteInformation;
 use App\Previsions;
+use Exception;
+use App\ActiviteRepit;
+use App\ActiviteSoutien;
 
 class PrevisionsController extends Controller
 {
+    protected static $previsions = array();
+
     /**
      *
      */
@@ -22,7 +29,8 @@ class PrevisionsController extends Controller
         {
             for ($activite = 0; $activite < $nbActivites; $activite++)
             {
-                array_push($result, $this->createPrevisions($projet->periodes[$periode], $projet->activites[$activite]));
+                $prevision = $this->createPrevisions($projet->periodes[$periode], $projet->activites[$activite]);
+                array_push($result, $prevision);
             }
         }
         return response()->json($result);

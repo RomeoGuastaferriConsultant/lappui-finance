@@ -104,7 +104,7 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 			$(element).closest("tr").hide();
 			// initialize value
 			$(element).val(0);
-			// remove any event handlers that might have been previously set
+			// remove any event handlers that might be lingering
 			$(element).off();
 		});
 		
@@ -209,12 +209,13 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 				var tr = "<tr class='territoires-res" + index + "'>"
 					   +    "<td colspan='2' style='text-align:right;'>"
 					   +       "<label id='id-lbl-terr" + terr + "-res" + index + "' for='id-chk-terr" + terr + "-res" + index + "'>" 
-					   +          values.territoires[terr] 
+					   +          terr 
 					   +       "</label>"
 					   +    "</td>"
 					   +    "<td>"
 					   +       "<input id='id-res" + index + "-terr" + terr + "' " 
 					   +          "type='number' min='0' max='999' class='tab-resultats-" + index + "' "
+					   +          "value='" + values["territoires"][terr] + "' "
 					   +       "onfocus='onFocus(this)' oninput='onNumberChange(this);'>"
 					   +    "</td>"
 					   +	"<td colspan='3'></td>"

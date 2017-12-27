@@ -15,7 +15,8 @@ function PercentageRatioController(idPart, idTotal, idDisplay) {
 	this.updateDisplay = function() {
 		var part = controller.part.val();
 		var total = controller.total.val();
-		controller.display.text(parseInt((part * 100) / total));
+		var result = Math.round(((parseInt(part) * 100) + 0.5) / parseInt(total));
+		controller.display.text(result);
 	}
 	
 	this.setupHandlers = function() {

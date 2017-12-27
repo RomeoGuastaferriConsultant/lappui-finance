@@ -3,28 +3,13 @@
 namespace App;
 
 use Illuminate\Support\Facades\Log;
+use Exception;
 
 class Previsions
 {
     public $periode;
     public $activite;
-
-    public $territoires = array(
-        'Agglomération de Longueuil',
-        'Beauharnois-Salaberry',
-        'Haut-Richelieu',
-        'Jardins-de-Napierville',
-        'La Haute-Yamaska',
-        'La Vallée-du-Richelieu',
-        'Marguerite-D\'Youville',
-        'Maskoutains',
-        'Pierre-de-Saurel',
-        'Roussillon',
-        'Rouville',
-        'Vaudreuil Soulanges',
-        'Acton',
-        'Brome-Missisquoi'
-    );
+    public $territoires;
 
     /**
      * construct an arbitrary Previsions object for testing purposes
@@ -33,6 +18,7 @@ class Previsions
     {
         $this->periode = $periode;
         $this->activite = $activite;
+        $this->territoires = $this->getTerritoires($activite->type);
 
         $this->initialize($this);
     }
@@ -122,9 +108,6 @@ class Previsions
 
         // plages horaire et périodes
         $this->initializePlagesHorairesPeriodes($previsions);
-
-        // territoires
-        $previsions->territoires = $this->assignerTerritoires();
     }
 
     protected function initializePlagesHorairesPeriodes($previsions) {
@@ -156,32 +139,97 @@ class Previsions
         }
     }
 
-    protected function assignerTerritoires()
-    {
-        $result = $this->getCopy($this->territoires);
+    /**
+     * return some arbitrary territory list
+     * based on activity type
+     */
+    protected function getTerritoires($typeActivite) {
+        switch($typeActivite) {
+            case ActiviteFormation::FORMATION_INDIVIDUELLE :
+                return array(
+                'Agglomération de Longueuil',
+                'La Vallée-du-Richelieu',
+                'Marguerite-D\'Youville',
+                'Pierre-de-Saurel'
+                    );
 
-        // we'll remove a few elements to make it interesting
-        $removeCount = rand(8, 12);
-        while ($removeCount-- > 0)
-        {
-            // remove random element
-            $index = rand(0, sizeOf($result)-1);
-            // key associated with element to remove
-            $key = array_keys($result)[$index];
+            case ActiviteFormation::FORMATION_GROUPE :
+                return array(
+                'Haut-Richelieu',
+                'Jardins-de-Napierville',
+                'Maskoutains',
+                'Pierre-de-Saurel',
+                'Rouville',
+                'Acton'
+                    );
 
-            // remove element
-            unset($result[$key]);
+            case ActiviteInformation::CAFE_RENCONTRE :
+                return array(
+                'Beauharnois-Salaberry',
+                'Rouville',
+                'Vaudreuil Soulanges'
+                    );
+
+            case ActiviteInformation::SENSIBILISATION :
+            case ActiviteInformation::CONFERENCE :
+                return array(
+                'La Haute-Yamaska',
+                'La Vallée-du-Richelieu',
+                'Maskoutains',
+                'Pierre-de-Saurel'
+                    );
+
+            case ActiviteInformation::SEANCE_INFORMATION :
+            case ActiviteInformation::OUTIL_INFO_DOC :
+                return array(
+                'Beauharnois-Salaberry',
+                'Jardins-de-Napierville',
+                'La Haute-Yamaska',
+                'Roussillon',
+                'Brome-Missisquoi'
+                    );
+
+            case ActiviteInformation::OUTIL_WEB:
+                return array(
+                'Beauharnois-Salaberry',
+                'La Vallée-du-Richelieu',
+                'Vaudreuil Soulanges',
+                'Haut-Richelieu',
+                'Jardins-de-Napierville',
+                'Maskoutains',
+                'Rouville'
+                    );
+
+
+            case ActiviteRepit::REPIT_GROUPE :
+            case ActiviteSoutien::SOUTIEN_INDIVIDUEL :
+                return array(
+                'Maskoutains',
+                'Pierre-de-Saurel',
+                'Rouville',
+                'Acton'
+                    );
+
+            case ActiviteRepit::REPIT_INDIVIDUEL :
+            case ActiviteSoutien::GROUPE_ENTRAIDE :
+                return array(
+                'La Haute-Yamaska',
+                'La Vallée-du-Richelieu',
+                'Maskoutains'
+                    );
+
+            case ActiviteRepit::REPIT_ACCESSOIRE :
+            case ActiviteSoutien::GROUPE_SOUTIEN :
+                return array(
+                'Beauharnois-Salaberry',
+                'Jardins-de-Napierville',
+                'La Haute-Yamaska',
+                'Roussillon',
+                'Brome-Missisquoi'
+                    );
+
+            default :
+                throwException(new Exception("unknown project id"));
         }
-        return $result;
-    }
-
-    protected function getCopy($array)
-    {
-        $result = array();
-        foreach($array as $element)
-        {
-            array_push($result, $element);
-        }
-        return $result;
     }
 }
