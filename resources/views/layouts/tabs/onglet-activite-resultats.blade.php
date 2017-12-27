@@ -9,6 +9,7 @@
     			<span id="id-lbl-reel-res{{$tabnum}}" class="column-title"
     			   style="font-style: italic; font-weight: bold;"></span>
     		</td>
+    		<td colspan="3"></td>
     		<td>
     			<span style="font-style: italic;" class="column-title">&nbsp;&nbsp;Notes</span>
     		</td>
@@ -33,6 +34,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -58,6 +60,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -82,6 +85,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -107,6 +111,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -134,11 +139,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totUrgence-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
     		<td>&nbsp;
-    			<span class="percent">
-    				&nbsp;=<span id="id-res{{$tabnum}}-totUrgence-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -164,23 +171,25 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totPonctuel-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
     		<td>&nbsp;
-    			<span class="percent">
-    				&nbsp;=<span id="id-res{{$tabnum}}-totPonctuel-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
     	<!-- titre:  Séances et heures d'intervention -->
 
     	<tr>
-    		<td colspan="4">
+    		<td colspan="7">
     			<span id="id-lbl-seances-res{{$tabnum}}" style="font-weight: 700;"></span>
     		</td>
     	</tr>
     	<tr> <!-- spacer -->
-    		<td colspan="4">&nbsp;</td>
+    		<td colspan="7">&nbsp;</td>
     	</tr>
 
     	<!-- nombre d'heures directes qui ont été données -->
@@ -205,6 +214,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -229,6 +239,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -253,6 +264,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -277,6 +289,7 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
+    		<td colspan="3"></td>
     		<td>&nbsp;
     			<textarea id="" class="notes" rows="1" cols="60"></textarea>
     		</td>
@@ -292,7 +305,7 @@
     			...<span id="id-lbl-plage-per-res" style="font-weight: 700;"></span>:</td>
     	</tr>
     	<tr> <!-- spacer -->
-    		<td colspan="4">&nbsp;</td>
+    		<td colspan="7">&nbsp;</td>
     	</tr>
 
 		<!-- nombre d'activités semaine -->
@@ -315,11 +328,13 @@
     				 type="text" size="4" disabled
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSemaine-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totSemaine-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -343,11 +358,13 @@
     				 type="text" size="4" disabled
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totWeekend-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totWeekend-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -369,16 +386,18 @@
     			  oninput="onNumberChange(this);"
     				class="total">
     		</td>
-    		<td>
-    			<span class="percent">
-    				&nbsp;= <span id="id-res{{$tabnum}}-totCumul-pct">100%</span>
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="54"></textarea>
+    		<td class="percent">=&nbsp;</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totCumul-pct" class="percent">100</span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
     	<tr> <!-- spacer -->
-    		<td colspan="4">&nbsp;</td>
+    		<td colspan="7">&nbsp;</td>
     	</tr>
 
    		<!-- par plage horaire -->
@@ -388,7 +407,7 @@
     			...<span id="id-lbl-plageHoraire-res{{$tabnum}}"
     			   style="font-weight: bold;"></span>:
     		</td>
-    		<td></td>
+    		<td colspan="4"></td>
     	</tr>
 
 		<!-- semaine -->
@@ -417,11 +436,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-	    			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSemaine-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totJourSemaine-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -444,11 +465,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSoirSemaine-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totSoirSemaine-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -471,11 +494,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totNuitSemaine-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totNuitSemaine-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -496,11 +521,13 @@
     			  oninput="onNumberChange(this);"
     				class="total">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirSemaine-pct">100</span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=&nbsp;</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totJourSoirSemaine-pct" class="percent">100</span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -520,16 +547,18 @@
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);" class="total">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirNuitSemaine-pct">100</span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=&nbsp;</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totJourSoirNuitSemaine-pct" class="percent">100</span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
     	<tr> <!-- spacer -->
-    		<td colspan="4">&nbsp;</td>
+    		<td colspan="7">&nbsp;</td>
     	</tr>
 
 		<!-- week-end -->
@@ -559,11 +588,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourWeekend-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totJourWeekend-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -586,11 +617,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totSoirWeekend-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totSoirWeekend-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -613,11 +646,13 @@
     			  oninput="onNumberChange(this);"
     				class="tab-resultats-{{$tabnum}}">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totNuitWeekend-pct"></span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totNuitWeekend-pct" class="percent"></span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -638,11 +673,13 @@
     			  oninput="onNumberChange(this);"
     				class="total">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirWeekend-pct">100</span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=&nbsp;</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totJourSoirWeekend-pct" class="percent">100</span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
@@ -662,16 +699,18 @@
     			  onfocus="onFocus(this);"
     			  oninput="onNumberChange(this);" class="total">
     		</td>
-    		<td>
-    			<span class="percent">
-        			&nbsp;=&nbsp;<span id="id-res{{$tabnum}}-totJourSoirNuitWeekend-pct">100</span>%
-    			</span>
-    			<textarea id="" class="notes percent" rows="1" cols="55"></textarea>
+    		<td class="percent">=&nbsp;</td>
+    		<td style="text-align: right">
+    			<span id="id-res{{$tabnum}}-totJourSoirNuitWeekend-pct" class="percent">100</span>
+    		</td>
+    		<td class="percent">&nbsp;%</td>
+    		<td>&nbsp;
+    			<textarea id="" class="notes percent" rows="1" cols="60"></textarea>
     		</td>
     	</tr>
 
     	<tr> <!-- spacer -->
-    		<td colspan="4">&nbsp;</td>
+    		<td colspan="7">&nbsp;</td>
     	</tr>
 
 		<!-- participation par territoire -->
@@ -684,7 +723,7 @@
 
         <!-- spacer & anchor for insertions by controller -->
     	<tr id="id-tr-territoires-cibles-res{{$tabnum}}">
-    		<td colspan="4">&nbsp;</td>
+    		<td colspan="7">&nbsp;</td>
     	</tr>
 
     </table>

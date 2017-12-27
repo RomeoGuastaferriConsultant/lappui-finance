@@ -71,16 +71,28 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 		
 		// set percentage ratios
 		var ratio1 = new PercentageRatioController(idPrefixRes + 'totUrgence',  idPrefixRes + 'totCumul', idPrefixRes + 'totUrgence-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totPonctuel', idPrefixRes + 'totCumul', idPrefixRes + 'totPonctuel-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totSemaine',  idPrefixRes + 'totCumul', idPrefixRes + 'totSemaine-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totWeekend',  idPrefixRes + 'totCumul', idPrefixRes + 'totWeekend-pct');
+		var ratio2 = new PercentageRatioController(idPrefixRes + 'totPonctuel', idPrefixRes + 'totCumul', idPrefixRes + 'totPonctuel-pct');
+		var ratio3 = new PercentageRatioController(idPrefixRes + 'totSemaine',  idPrefixRes + 'totCumul', idPrefixRes + 'totSemaine-pct');
+		var ratio4 = new PercentageRatioController(idPrefixRes + 'totWeekend',  idPrefixRes + 'totCumul', idPrefixRes + 'totWeekend-pct');
 		
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totJourSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totJourSemaine-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totSoirSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totSoirSemaine-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totNuitSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totNuitSemaine-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totJourWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totJourWeekend-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totSoirWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totSoirWeekend-pct');
-		var ratio1 = new PercentageRatioController(idPrefixRes + 'totNuitWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totNuitWeekend-pct');
+		if (this.resultats.activite.volet == 3) {
+			// les activités de répit incluent la période de nuit
+			var ratio05 = new PercentageRatioController(idPrefixRes + 'totJourSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totJourSemaine-pct');
+			var ratio06 = new PercentageRatioController(idPrefixRes + 'totSoirSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totSoirSemaine-pct');
+			var ratio07 = new PercentageRatioController(idPrefixRes + 'totNuitSemaine', idPrefixRes + 'totJourSoirNuitSemaine', idPrefixRes + 'totNuitSemaine-pct');
+			var ratio08 = new PercentageRatioController(idPrefixRes + 'totJourWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totJourWeekend-pct');
+			var ratio09 = new PercentageRatioController(idPrefixRes + 'totSoirWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totSoirWeekend-pct');
+			var ratio10 = new PercentageRatioController(idPrefixRes + 'totNuitWeekend', idPrefixRes + 'totJourSoirNuitWeekend', idPrefixRes + 'totNuitWeekend-pct');
+		}
+		else {
+			// les autres activités incluent le jour et la nuit uniquement
+			var ratio05 = new PercentageRatioController(idPrefixRes + 'totJourSemaine', idPrefixRes + 'totJourSoirSemaine', idPrefixRes + 'totJourSemaine-pct');
+			var ratio06 = new PercentageRatioController(idPrefixRes + 'totSoirSemaine', idPrefixRes + 'totJourSoirSemaine', idPrefixRes + 'totSoirSemaine-pct');
+			var ratio07 = new PercentageRatioController(idPrefixRes + 'totNuitSemaine', idPrefixRes + 'totJourSoirSemaine', idPrefixRes + 'totNuitSemaine-pct');
+			var ratio08 = new PercentageRatioController(idPrefixRes + 'totJourWeekend', idPrefixRes + 'totJourSoirWeekend', idPrefixRes + 'totJourWeekend-pct');
+			var ratio09 = new PercentageRatioController(idPrefixRes + 'totSoirWeekend', idPrefixRes + 'totJourSoirWeekend', idPrefixRes + 'totSoirWeekend-pct');
+			var ratio10 = new PercentageRatioController(idPrefixRes + 'totNuitWeekend', idPrefixRes + 'totJourSoirWeekend', idPrefixRes + 'totNuitWeekend-pct');
+		}
 		
 		// update territoires ciblés
 		this.displayTerritoiresCibles(this.resultats, this.index);
@@ -205,6 +217,7 @@ function ResultatsActiviteController(projections, resultats, tabindex) {
 					   +          "type='number' min='0' max='999' class='tab-resultats-" + index + "' "
 					   +       "onfocus='onFocus(this)' oninput='onNumberChange(this);'>"
 					   +    "</td>"
+					   +	"<td colspan='3'></td>"
 					   +    "<td>&nbsp;"
 					   +       "<textarea class='notes' rows='1' cols='60'></textarea>"
 					   +    "</td>"
